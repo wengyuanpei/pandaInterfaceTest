@@ -6,11 +6,19 @@ import time
 import os
 import unittest
 #导入接口参数包
+<<<<<<< HEAD
 from pandaInterface.parameter.pdParameter import *
 #导入公共包
 from pandaInterface.common.resultPath import saveReportPath
 from pandaInterface.common import HTMLTestReport
 from pandaInterface.common.interfaceUrl import *
+=======
+from pandaInterfaceTest.parameter.pdParameter import *
+#导入公共包
+from pandaInterfaceTest.common.resultPath import saveReportPath
+from pandaInterfaceTest.common import HTMLTestReport
+from pandaInterfaceTest.common.interfaceUrl import *
+>>>>>>> aeff419 (20220811 提交更新)
 
 @ddt
 class testPdInterface(unittest.TestCase):
