@@ -1,31 +1,43 @@
-from locust import HttpLocust
-from locust import HttpUser
-from locust import task
-from locust import TaskSet
+import time
+from locust import HttpUser, task, between, events
+
+from locust.contrib.fasthttp import FastHttpLocust
 
 
-# 指定一个任务集
-class My_task_set(TaskSet):
 
-    # 这是某个任务,30是比例，比如这里是30/50
-    @task(30)
-    def getindex1(self):
-        # client就是个requests对象
-        # catch_response，告诉locust如何判断请求失败还是成功
-        res = self.client.get("/bainianminguo/p/10952586.html")
-
-    @task(20)
-    def getindex2(self):
-        # client就是个requests对象
-        res = self.client.get("/bainianminguo/p/7253930.html")
+@events.test_start.add_listener
+def on_test_start(**kwargs):
+    print('===测试最开始提示===')
 
 
-class WebSite(HttpUser):
-    # 指定要执行哪个任务集
-    tasks = [My_task_set, ]
-    # 请求和请求之间最小的间隔时间
+@events.test_stop.add_listener
+def on_test_stop(**kwargs):
+    print('===测试结束了提示===')
+
+
+class TestTask(HttpUser):
+    wait_time = between(1, 5)
+    # host = 'https://www.baidu.com'
+
+    def on_start(self):
+        print('这是SETUP，每次实例化User前都会执行！')
+
+    @task(1)
+    def getBaidu(self):
+        self.client.get(url="/", verify=False)
+
+    def on_stop(self):
+        print('这是TEARDOWN，每次销毁User实例时都会执行！')
+
+class MyLocust(FastHttpLocust):
+
+    task_set = TestTask
     min_wait = 1000
-    # 请求和请求之间最大的间隔时间
-    max_waif = 2000
+    max_wait = 60000
 
-# 启动命令  >locust -f locustForPanda.py --host=https://www.cnblogs.com
+if __name__ == "__main__":
+
+    import os
+
+    os.system("locust -f locustDemo1.py --host=https://www.baidu.com")
+#  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
