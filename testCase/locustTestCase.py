@@ -1,22 +1,29 @@
-from locust import HttpUser, TaskSet, task
+from locust import HttpUser, TaskSet, task,events
+from pandaInterfaceTest.parameter.locustParameter import *
 import json
+
+
+@events.test_start.add_listener
+def on_test_start():
+    print('===测试最开始提示===')
+
+
+@events.test_stop.add_listener
+def on_test_stop():
+    print('===测试结束了提示===')
 
 # 定义每个用户的任务集合
 class DeptList(TaskSet):
 
+
     # 任务A--GET示例
     @task(7)        # 权重 7/ 10
     def t_login(self):
-        url = '/api/ip/ipdept/deptList'
-        h = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-             "Cookie": "sessionToken=2e183b7bb566461d"}
-        data = {'draw': '5',
-                'start': '0',
-                'length': '13',
-                'deptTypes': '[]',
-                'defunctInd': 'N',
-                'searchStr': 'FSK_01',
-                '_': '1597112917355'}
+        url = url_001()
+        h = headerForRequests()
+
+        #get接口数据包
+        data = dataForGet()
 
         # catch_response =True：允许该请求被标记为失败
         with self.client.get(url, headers=h, params=data, catch_response=True) as response:
@@ -26,19 +33,10 @@ class DeptList(TaskSet):
     # 任务B--POST示例
     @task(3)        # 权重 3/ 10
     def t_query_dept(self):
-        url = '/api/ip/entity/save'
-        h = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-             "Content-Length": "355",
-             "Cookie": "sessionToken=6b67c3bfd60c4008"}
-        entity = {"ipEntityMstrId": 7233101,
-                      "entityCode": "BLL1",
-                      "entityDesc": "BLL2019",
-                      "entityDescLang1": "BLL2019#",
-                      "shortCode": "BLL",
-                      "seqNo": "1",
-                      "entityNameAlias": "BL",
-                      "entityNameAlias1": "BL#",
-                      "addressDetail": "详细地址111"}
+        url = url_001()
+        h =headerForRequests()
+
+        entity = dataForPost()
 
         body = {'entityInfo': json.dumps(entity)}
 
@@ -60,4 +58,11 @@ class Login(HttpUser):
     max_wait = 3000
     # 超时时间
     stop_timeout = 5
+    #定义测试host
     host = "10.227.253.226:7000"
+
+
+if __name__ == "__main__":
+
+    import os
+    os.system("locust -f locustForPanda.py --host=https://www.baidu.com")

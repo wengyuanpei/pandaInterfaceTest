@@ -1,7 +1,7 @@
 import time
 from locust import HttpUser, task, between, events
 
-from locust.contrib.fasthttp import FastHttpLocust
+from locust.contrib.fasthttp import FastHttpUser
 
 
 
@@ -29,15 +29,17 @@ class TestTask(HttpUser):
     def on_stop(self):
         print('这是TEARDOWN，每次销毁User实例时都会执行！')
 
-class MyLocust(FastHttpLocust):
+class MyLocust(FastHttpUser):
 
     task_set = TestTask
     min_wait = 1000
     max_wait = 60000
 
+
+
 if __name__ == "__main__":
 
     import os
 
-    os.system("locust -f locustDemo1.py --host=https://www.baidu.com")
+    os.system("locust -f locustForPanda.py --host=https://www.baidu.com")
 #  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
