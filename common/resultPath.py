@@ -10,11 +10,3 @@ def saveReportPath():
     return repot_path
 
 
-<<<<<<< HEAD
-saveReportPath()
-=======
-saveReportPath()
-
-
-
->>>>>>> aeff419 (20220811 提交更新)

@@ -6,19 +6,13 @@ import time
 import os
 import unittest
 #导入接口参数包
-<<<<<<< HEAD
-from pandaInterface.parameter.pdParameter import *
-#导入公共包
-from pandaInterface.common.resultPath import saveReportPath
-from pandaInterface.common import HTMLTestReport
-from pandaInterface.common.interfaceUrl import *
-=======
+
 from pandaInterfaceTest.parameter.pdParameter import *
 #导入公共包
 from pandaInterfaceTest.common.resultPath import saveReportPath
 from pandaInterfaceTest.common import HTMLTestReport
 from pandaInterfaceTest.common.interfaceUrl import *
->>>>>>> aeff419 (20220811 提交更新)
+
 
 @ddt
 class testPdInterface(unittest.TestCase):
@@ -78,9 +72,7 @@ repot_path_n = repot_path  + '.html'
 
 fp = open(repot_path_n, 'wb')
 
-reportRun=HTMLTestReport(stream=fp, title='接口测试报告',
-                                       description='接口测试演示报告详情,脚本版本号V202202',
-                                        tester='测试人员-翁远陪')
+reportRun=HTMLTestReport(stream=fp, title='接口测试报告',description='接口测试演示报告详情,脚本版本号V202202',tester='测试人员-翁远陪')
 
 
 runner.run(suite)
