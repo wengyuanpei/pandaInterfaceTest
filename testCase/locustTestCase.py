@@ -66,3 +66,4 @@ if __name__ == "__main__":
 
     import os
     os.system("locust -f locustForPanda.py --host=https://www.baidu.com")
+#  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
