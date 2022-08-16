@@ -33,7 +33,7 @@
 
 timestamp_ok=20321513231266
 sign_ok="xxxx"
-body_ok={"tagsTypeName":"百科标签"}
+body_ok="百科标签"
 code_ok="200"
 
 

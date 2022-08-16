@@ -10,43 +10,73 @@ import unittest
 from pandaInterfaceTest.parameter.pdParameter import *
 #导入公共包
 from pandaInterfaceTest.common.resultPath import saveReportPath
-from pandaInterfaceTest.common.HTMLTestReport import *
+from pandaInterfaceTest.common.HTMLTestReport import HTMLTestRunner
 from pandaInterfaceTest.common import interfaceUrl
 
-
+baseurl=interfaceUrl.baseurl()
 
 @ddt
 class testPdInterface(unittest.TestCase):
     def setUp(self):
 
-        self.header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+        self.header = header={
+                                "Accept": "application/json",
+                                "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9",
+                                "Content-Type": "application/json;charset=UTF-8"
+                                }
 
-                       }
+    def test_gift_bag_group_add(self):
+        header = self.header
+        gift_bag_group_add_url=interfaceUrl.gift_bag_group_add()
+        url=baseurl+gift_bag_group_add_url
+        print(url)
+        data1={
+              "timestamp":23143516166, #时间戳
+              "sign":"asdf234teqasdg", #签名
+              "body":{
+                "giftBagGroupName": "熊猫平板P10礼包合集", #礼包合集名称-验重
+                "applyType":"适用型号", # 适用型号 用于平板与权益关联
+              }
+}
 
-    @unpack
-    @data(
-        * tags_type_add()
-    )
-    def testPdinterface01(self, timestamp, sign, body,code):
-            # self.header["Authorization"] = Authorization
-            header = self.header
-            baseurl=interfaceUrl.baseurl()
-            url = interfaceUrl.tags_type_add_url()
-            url_end=baseurl+url
-            params = {
-                    "timestamp":timestamp,
-                    "sign":sign,
-                    "body":body,
-                    }
-            rq_get = requests.post(url=url_end, data=params, headers=header)
-            # print(rq_get.json())
-            code_rq=rq_get.json()
-            code_rq_end = json.loads(code_rq)["code"]
+        request=requests.post(url=url,data=data1,headers=header)
+        respose=request.json()
+        print((respose["code"]))
 
-            # 断言
-            self.assertEqual(code_rq_end, code, '接口返回参数失败')
-            print('服务端返回参数', code_rq_end)
 
+
+#
+#     @unpack
+#     @data(
+#         * tags_type_add()
+#     )
+#     def testPdinterface01(self, timestamp, sign, body,code):
+#             print(timestamp,sign,body,code)
+#             # self.header["Authorization"] = Authorization
+#             header = self.header
+#             url = interfaceUrl.tags_type_add_url()
+#             url_end=baseurl+url
+#             # params = {
+#             #         "timestamp":timestamp,
+#             #         "sign":sign,
+#             #         "body":{"tagsTypeName":body},
+#             #         }
+#             params={
+#                     "timestamp":20321513231266,
+#                     "sign":"xxxx",
+#                     "body":{
+#                         "tagsTypeName":"百科标签"												// 标签类型名称
+#                     }
+# }
+#             rq_get = requests.post(url=url_end, data=params, headers=header)
+#             # print(rq_get.json())
+#             code_rq=rq_get.json()
+#             code_rq_end = str(code_rq["code"])
+#
+#             # 断言
+#             self.assertEqual(code_rq_end, code, '接口返回参数失败')
+#             print('服务端返回参数', code_rq_end)
+#
 
     def tearDown(self):
         pass
@@ -67,7 +97,7 @@ repot_path_n = repot_path + '.html'
 
 fp = open(repot_path_n, 'wb')
 
-reportRun = HTMLTestRunner(stream=fp, title='接口测试报告', description='接口测试报告,脚本版本号V202208', tester='测试人员-翁远陪')
+reportRun = HTMLTestRunner(title='接口测试报告', description='接口测试报告,脚本版本号V202208',stream=fp)
 
 runner.run(suite)
 fp.close()
