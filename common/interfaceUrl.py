@@ -37,6 +37,38 @@ def gift_bag_list():
     return url
 
 
+#SN码领取记录   特殊字符
+
+def sn_list():
+    url='s/drpanda/pad/web/application/'
+
+#小程序判断平板是否已经发放权益
+def receive():
+    url ='ns/drpanda/pad/min-app/judge/receive'
+    return url
+
+# 平板判断是否已经发放权益
+
+#小程序端扫码绑定领取权益
+def equity():
+    url='ns/drpanda/pad/min-app/bind/equity'
+    return
+
+#小程序端查看平板权益
+def equity_see():
+    url='ns/drpanda/pad/min-app/query/equity'
+    return url
+
+#pad端查看权益
+def equity_pad_see():
+    url='ns/drpanda/pad/pad/application/query/equity'
+    return url
+
+#小程序激活已经领取的权益
+def equity_live():
+    url='ns/drpanda/pad/min-app/active/equity'
+    return url
+
 
 
 
