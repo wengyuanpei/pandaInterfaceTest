@@ -3,6 +3,8 @@ def baseurl():
     baseurl='https://pad-api-dev.xiongmaoboshi.com/'
     return baseurl
 
+
+
 #创建平板礼包合集
 def gift_bag_group_add():
     url="s/drpanda/pad/web/gift-bag-group-add"
