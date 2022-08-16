@@ -5,24 +5,47 @@
 '''
 #   1  查询用户行为轨迹接口数据************************************************************************************
 
-tokenRight="Bearer 397a8491-ef14-4f8c-9844-5b1effa4c102" #测试之前抓取一个正确的token值(最好用登录接口抓取)
 
-tokenLate="Bearer f36f1500-5216-428f-8f9a-4f56784f259f" #过期的token
+# def tags_type_add1():
+#
+#     paraMeter1=(
+#         {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
+#         {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
+#         {'Authorization': tokenWrong, 'customerId': nullParameter, 'code': "900"},
+#         {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
+#         {'Authorization': tokenRight, 'customerId': nullParameter, 'code': "200"},
+#         {'Authorization': tokenRight, 'customerId': '480', 'code': "200"},
+#         {'Authorization': tokenRight, 'customerId': '92233720368547758070', 'code': "500"},
+#         {'Authorization': tokenRight, 'customerId': '你好', 'code': "500"},
+#         {'Authorization': tokenRight, 'customerId': 'ABC', 'code': "500"}
+#     )
 
-nullParameter="" #空的token值
 
-tokenWrong="Bearer ec608034-3fac-4a54-a4b3-239dcb76666" #错误的token值
 
-def paraMeter1():
+# tags_type_add 添加标签类型请求参数格式  json
+#     "timestamp":20321513231266,
+#     "sign":"xxxx",
+#     "body":{
+#         "tagsTypeName":"百科标签"
+#     }
 
-    paraMeter1=(
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenWrong, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenRight, 'customerId': nullParameter, 'code': "200"},
-        {'Authorization': tokenRight, 'customerId': '480', 'code': "200"},
-        {'Authorization': tokenRight, 'customerId': '92233720368547758070', 'code': "500"},
-        {'Authorization': tokenRight, 'customerId': '你好', 'code': "500"},
-        {'Authorization': tokenRight, 'customerId': 'ABC', 'code': "500"}
+
+
+timestamp_ok=20321513231266
+sign_ok="xxxx"
+body_ok={"tagsTypeName":"百科标签"}
+code_ok="200"
+
+
+
+def tags_type_add():
+
+     para_tags_type_add=(
+        {"timestamp":timestamp_ok,"sign":sign_ok,"body":body_ok,"code":code_ok},
+        {"timestamp": timestamp_ok, "sign": sign_ok, "body": body_ok, "code": code_ok}
+
     )
+     return para_tags_type_add
+
+
+
