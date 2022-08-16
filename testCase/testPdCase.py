@@ -10,7 +10,7 @@ import unittest
 from pandaInterfaceTest.parameter.pdParameter import *
 #导入公共包
 from pandaInterfaceTest.common.resultPath import saveReportPath
-from pandaInterfaceTest.common.HTMLTestReport import HTMLTestRunner
+from pandaInterfaceTest.common import HTMLTestReport
 from pandaInterfaceTest.common import interfaceUrl
 
 baseurl=interfaceUrl.baseurl()
@@ -82,6 +82,8 @@ class testPdInterface(unittest.TestCase):
         pass
 
 
+# if __name__=='__main__':
+#     unittest.main()
 
 
 repot_path = saveReportPath()
@@ -97,7 +99,7 @@ repot_path_n = repot_path + '.html'
 
 fp = open(repot_path_n, 'wb')
 
-reportRun = HTMLTestRunner(title='接口测试报告', description='接口测试报告,脚本版本号V202208',stream=fp)
+reportRun = HTMLTestReport.HTMLTestRunner(title='接口测试报告', description='接口测试报告,脚本版本号V202208',stream=fp)
 
 runner.run(suite)
 fp.close()
