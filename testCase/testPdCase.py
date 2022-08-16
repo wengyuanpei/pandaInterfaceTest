@@ -6,7 +6,6 @@ import time
 import os
 import unittest
 #导入接口参数包
-
 from pandaInterfaceTest.parameter.pdParameter import *
 #导入公共包
 from pandaInterfaceTest.common.resultPath import saveReportPath
@@ -64,10 +63,10 @@ class TestPdInterface(unittest.TestCase):
             #         "body":{"tagsTypeName":body},
             #         }
             params={
-                    "timestamp":20321513231266,
-                    "sign":"xxxx",
+                    "timestamp":timestamp,
+                    "sign":sign,
                     "body":{
-                        "tagsTypeName":"百科标签"
+                        "tagsTypeName":body
                     }
 }
             rq_get = requests.post(url=url_end, data=params, headers=header)
