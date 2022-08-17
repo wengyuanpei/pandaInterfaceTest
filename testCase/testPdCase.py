@@ -85,6 +85,8 @@ class TestPdInterface(unittest.TestCase):
 
 
 
+
+
 # 加载测试类
 suite = unittest.TestSuite()
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestPdInterface))
