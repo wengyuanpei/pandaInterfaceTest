@@ -1,6 +1,6 @@
 
 def baseurl():
-    baseurl='https://pad-api-dev.xiongmaoboshi.com/'
+    baseurl='https://pad-dev.xiongmaoboshi.com/'
     return baseurl
 
 

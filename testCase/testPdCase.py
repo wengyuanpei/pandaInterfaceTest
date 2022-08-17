@@ -20,7 +20,7 @@ class TestPdInterface(unittest.TestCase):
 
         self.header = header={
                                 "Accept": "application/json",
-                                "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9",
+                                "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJlbWFpbFwiOlwid2VuZ3l1YW5wZWlAZHJwYW5kYS5jb21cIixcImlkXCI6MjIzLFwibW9iaWxlXCI6XCIxNzM0NTA0MzM2NVwiLFwidXNlcm5hbWVcIjpcIndlbmd5dWFucGVpXCJ9IiwiZXhwIjoxNjYxMjQyMDQ2fQ.jZXyn3oH0FuNgF6wdbkkKyPLR8n5Te2woGZIFdJ3RLyEPnMlOkIRicqDu7otCLREx3cIMUceEwvbd9q3Xmfrrw",
                                 "Content-Type": "application/json;charset=UTF-8"
                                 }
 
@@ -34,7 +34,7 @@ class TestPdInterface(unittest.TestCase):
               "sign":"asdf234teqasdg", #签名
               "body":{
                 "giftBagGroupName": "熊猫平板P10礼包合集", #礼包合集名称-验重
-                "applyType":"适用型号", # 适用型号 用于平板与权益关联
+                "applyType":"P10", # 适用型号 用于平板与权益关联
               }
                 }
 
@@ -42,7 +42,9 @@ class TestPdInterface(unittest.TestCase):
         # request_code=request.status_code
         respose=request.json()
         a=respose["code"]
-        self.assertEqual(a, 1080, '接口返回参数失败')
+        print(a,"11111111111111111111")
+
+        self.assertEqual(a, 200, '接口返回参数失败')
         # print(request_code,'###########################')
 
 
