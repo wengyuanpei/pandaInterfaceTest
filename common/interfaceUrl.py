@@ -1,17 +1,17 @@
 
-baseurl='https://pad-dev.xiongmaoboshi.com/'  #这个是后台的接口
+baseurl_web='https://pad-dev.xiongmaoboshi.com/'  #这个是后台的接口
 
 
 
 
-baseurl='https://pad-api-dev.xiongmaoboshi.com/'  #这个是pad的接口
+baseurl_pad='https://pad-api-dev.xiongmaoboshi.com/'  #这个是pad的接口
 
 
 
 
 #创建平板礼包合集
 def gift_bag_group_add():
-    url=baseurl+"s/drpanda/pad/web/gift-bag-group-add"
+    url=baseurl_web+"s/drpanda/pad/web/gift-bag-group-add"
     return url
 
 

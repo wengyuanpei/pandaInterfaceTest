@@ -17,33 +17,32 @@ def auth():
 #状态码
 code_ok="0"
 code_f="-1"
+code_f_1080="1080"
 
+
+
+
+'''*******************************************************************************************************'''
 
 num_gift=random_num()
 giftBagGroupName1=num_gift
 applyType1="P10"
 
-
-
-
 giftBagGroupName2=num_gift
 applyType2="P10"
-
-
-
 
 def gift_bag_group_add_para():
 
      para_tags_type_add= (
          {'giftBagGroupName': giftBagGroupName1,'applyType': applyType1, 'code': code_ok},
-         {'giftBagGroupName': giftBagGroupName1,'applyType': applyType1, 'code': code_ok}
+         {'giftBagGroupName': giftBagGroupName1,'applyType': applyType1, 'code': code_f}
      )
 
      return para_tags_type_add
 
 
 
-
+'''*******************************************************************************************************'''
 
 
 giftBagGroupCode1="P10"

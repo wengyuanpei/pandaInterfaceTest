@@ -25,14 +25,13 @@ class TestPandaInterface(unittest.TestCase):
     @data(*gift_bag_group_add_para())
     @unpack
     def test_gift_bag_group_add(self, giftBagGroupName, applyType, code):
+        '''创建平板礼包合集'''   #对当前接口进行描述
 
-        print(giftBagGroupName,applyType,code)
+        print("接口测试参数：",giftBagGroupName,applyType,code)
 
         header = self.header
-
         url=gift_bag_group_add()
         print("测试地址",str(url))
-
 
         data = {
             "timestamp": "",
@@ -47,22 +46,10 @@ class TestPandaInterface(unittest.TestCase):
         request = requests.post(url=url, data=data_json, headers=header)
         codebase = str(request.json()["code"])
         self.assertEqual(code, codebase, '接口请求失败')
-        print('接口描述')
-        time.sleep(0.5)
+
+        time.sleep(0.5)  #防止接口请求被限制
 
 
-    def testaa(self):
-        '''这个是第二个测试用例'''
-        self.assertEqual(1, 1)
-        print('第二个用例')
-
-    def testdd(self):
-        '''用例描述3'''
-        print('第三个用例')
-
-    def testbb(self):
-        '''用例描述4'''
-        print('第四个用例')
 
 
 if "__name__"=="__main__":
