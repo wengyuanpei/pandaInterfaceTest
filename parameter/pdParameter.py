@@ -18,15 +18,15 @@ def auth():
 code_ok="0"
 code_f="-1"
 code_f_1080="1080"
-
+gift_app_type="P10"
 
 
 
 '''*******************************************************************************************************'''
 
-num_gift=random_num()
+num_gift="礼包集合"+random_num()
 giftBagGroupName1=num_gift
-applyType1="P10"
+
 
 giftBagGroupName2=num_gift
 applyType2="P10"
@@ -34,8 +34,8 @@ applyType2="P10"
 def gift_bag_group_add_para():
 
      para_tags_type_add= (
-         {'giftBagGroupName': giftBagGroupName1,'applyType': applyType1, 'code': code_ok},
-         {'giftBagGroupName': giftBagGroupName1,'applyType': applyType1, 'code': code_f}
+         {'giftBagGroupName': giftBagGroupName1,'applyType': gift_app_type, 'code': code_ok},
+         {'giftBagGroupName': giftBagGroupName1,'applyType': gift_app_type, 'code': code_f}
      )
 
      return para_tags_type_add
@@ -43,25 +43,72 @@ def gift_bag_group_add_para():
 
 
 '''*******************************************************************************************************'''
+'''
+{
+  "timestamp":23143516166, #时间戳
+  "sign":"asdf234teqasdg", #签名
+  "body":{
+    "giftBagGroupCode": "P10", #礼包合集编码
+    "giftBagGroupStatus":0,0-待上架 1-上架中 2-已下架
+    "size":1, # 每页条数
+    "current":1  #第几页
+  }
+}
+'''
 
 
-giftBagGroupCode1="P10"
+
+
 giftBagGroupStatus1="0"
+giftBagGroupStatus2="1"
+giftBagGroupStatus3="2"
 
 
-def gift_bag_group_list():
+def gift_bag_group_list_para():
     gift_bag_group_list=(
-        {"giftBagGroupCode": giftBagGroupCode1, "giftBagGroupStatus": giftBagGroupStatus1, "code": code_ok}
+        {"giftBagGroupCode": gift_app_type, "giftBagGroupStatus": giftBagGroupStatus1, "code": code_ok},
+        {"giftBagGroupCode": gift_app_type, "giftBagGroupStatus": giftBagGroupStatus2, "code": code_ok},
+        {"giftBagGroupCode": gift_app_type, "giftBagGroupStatus": giftBagGroupStatus3, "code": code_ok}
 
     )
 
     return gift_bag_group_list
 
 
+'''*******************************************************************************************************'''
+
+'''
+{
+  "timestamp":23143516166, #时间戳
+  "sign":"asdf234teqasdg", #签名
+  "body":{
+    "giftBagName": "识字启蒙大礼包", #礼包名称
+    "giftBagGroupId": 12, #所属礼包合集ID
+    "giftBagOrder": 444, #礼包顺序
+    "goodsInfos":{[
+      "goodsId": 13415, #商品编码
+      "goodsName": "(791)平板虚拟权限", #商品名称
+      "goodsShowName": "(791)平板虚拟权限", #商品展示名称
+      "goodsBgUrl":"www.baidu.com",#商品背影图片url
+      "gameId": "Pad Launcher", #项目ID 
+      "gameName": "Pad Launcher", #项目名称
+      "goodsEffectivePeriod": 36, #有效期，无表示永久,否则按月算 以接口为准，
+    ]}, #--good 相关信息 @Dave
+    "useRule": 0 , # 0-全部 1-部分
+    "useRuleDesc": "全部" # 全部
+    "useRuleChooseNum": 1 # 几选几 ，范围[1-goodInfoSize),在useRule=1时有效
+  }
+}
+'''
+giftBagName="礼包" + random_num()
+giftBagGroupId="171"
+giftBagOrder="666"
 
 
-
-
+def gift_bag_add_para():
+    gift_bag_add=(
+        {'giftBagName':giftBagName,'giftBagGroupId':giftBagGroupId,'giftBagOrder':giftBagOrder,}
+    )
 
 
 
