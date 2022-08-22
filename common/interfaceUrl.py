@@ -1,13 +1,17 @@
 
-def baseurl():
-    baseurl='https://pad-dev.xiongmaoboshi.com/'
-    return baseurl
+baseurl='https://pad-dev.xiongmaoboshi.com/'  #这个是后台的接口
+
+
+
+
+baseurl='https://pad-api-dev.xiongmaoboshi.com/'  #这个是pad的接口
+
 
 
 
 #创建平板礼包合集
 def gift_bag_group_add():
-    url="s/drpanda/pad/web/gift-bag-group-add"
+    url=baseurl+"s/drpanda/pad/web/gift-bag-group-add"
     return url
 
 
@@ -71,7 +75,48 @@ def equity_live():
     url='ns/drpanda/pad/min-app/active/equity'
     return url
 
+#web端添加白名单
+def white_list_add():
+    url="s/drpanda/pad/web/application/white-list-add"
+    return url
 
+#web端白名单修改
+def white_list_update():
+    url="s/drpanda/pad/web/application/white-list-update"
+    return url
+
+#web端白名单删除
+def white_list_delete():
+    url="s/drpanda/pad/web/application/white-list-delete?id={id}"
+    return url
+
+#web端白名单列表
+def white_list():
+    url="s/drpanda/pad/web/application/white-list"
+    return url
+
+#pad端获取所有白名单
+def white_list_pad():
+    url="ns/drpanda/pad/pad/application/white-list"
+    return url
+
+#平台礼包合集上下架
+def white_list_release():
+    url="s/drpanda/pad/web/gift-bag-group/release"
+
+    return url
+
+#B端-平板SN激活详情
+def pad_sn():
+    url="s/drpanda/pad/web/application/receive/record/detail"
+
+    return url
+
+#web端获取机型列表
+def pad_type_list():
+    url="s/drpanda/pad/web/pad-type-list"
+
+    return url
 
 
 
