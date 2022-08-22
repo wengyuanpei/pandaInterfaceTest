@@ -13,3 +13,4 @@ report_path = report_path1 + '.html'
 run = bf(suite) #实例化BeautifulReport模块
 repost_path=saveReportPath()
 run.report(filename="test",description='这个描述参数是必填的',report_dir=repost_path)
+
