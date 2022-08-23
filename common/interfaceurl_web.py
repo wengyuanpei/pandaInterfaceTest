@@ -21,8 +21,8 @@ def gift_bag_group_list_url():
     return url
 
 #创建平板礼包
-def gift_bag_add():
-    url="s/drpanda/pad/web/gift-bag-add"
+def gift_bag_add_url():
+    url=baseurl_web+"s/drpanda/pad/web/gift-bag-add"
     return url
 
 #平板礼包编辑

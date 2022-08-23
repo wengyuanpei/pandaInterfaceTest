@@ -103,14 +103,24 @@ def gift_bag_group_list_para():
 giftBagName="礼包" + random_num()
 giftBagGroupId="171"
 giftBagOrder="666"
-
+goodsId="861"
+goodsShowName="熊猫平板国学-1年-V2.1-new"
+goodsBgUrl="https://business.xiongmaoboshi.com/dpshop/res/img/630%2B260%2B2.png"
+gameId="1027828421423538201"
+gameName="熊猫博士国学"
+goodsEffectivePeriod="24"
+useRule="0"
+useRuleChooseNum="1"
 
 def gift_bag_add_para():
     gift_bag_add=(
-        {'giftBagName':giftBagName,'giftBagGroupId':giftBagGroupId,'giftBagOrder':giftBagOrder,}
+        {'giftBagName':giftBagName,'giftBagGroupId':giftBagGroupId,
+         'giftBagOrder':giftBagOrder,'goodsId':goodsId,'goodsShowName':goodsShowName,
+         'goodsBgUrl':goodsBgUrl,'gameId':gameId,'gameName':gameName,'goodsEffectivePeriod':goodsEffectivePeriod,
+         'useRule':useRule,'useRuleChooseNum':useRuleChooseNum,'code':code_ok}
     )
 
-
+    return gift_bag_add
 
 
 
