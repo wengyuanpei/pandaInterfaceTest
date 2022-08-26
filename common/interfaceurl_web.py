@@ -48,8 +48,8 @@ def gift_bag_list_url():
 
 
 #web端添加白名单
-def white_list_add():
-    url="s/drpanda/pad/web/application/white-list-add"
+def white_list_add_url():
+    url=baseurl_web+"s/drpanda/pad/web/application/white-list-add"
     return url
 
 #web端白名单修改

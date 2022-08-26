@@ -199,5 +199,29 @@ class TestPandaInterface(unittest.TestCase):
         print("返回参数：" + request.text)
 
 
+
+    @data(*white_list_add_para())
+    @unpack
+    def test_white_list_add(self,applicationName_wht_add,packageName_add,code):
+        ''' 添加白名单'''
+        print("接口参数：",applicationName_wht_add,packageName_add,code)
+        header = self.header
+        url = white_list_add_url()
+        print("测试地址", str(url))
+        data_white={
+                  "timestamp":23143516166, # 时间戳
+                  "sign":"asdf234teqasdg", # 签名
+                  "body":{
+                    "applicationName": applicationName_wht_add, # 应用名
+                    "packageName":packageName_add,
+                  }
+                }
+        request = requests.post(url=url, json=data_white, headers=header)
+        codebase = str(request.json()["code"])
+        self.assertEqual(code, codebase, '接口请求失败')
+
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+
 if "__name__"=="__main__":
     unittest.main()

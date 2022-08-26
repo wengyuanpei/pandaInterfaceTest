@@ -181,8 +181,24 @@ def gift_bag_list_para():
     return gift_list
 
 
+'''
+{
+  "timestamp":23143516166, # 时间戳
+  "sign":"asdf234teqasdg", # 签名
+  "body":{
+    "applicationName": "熊猫博士国学", # 应用名
+    "packageName":"Dr.panda.com", # packageName
+  }
+}
+'''
 
+applicationName='test_name'
+packageName="Dr.panda.com" +random_num()
 
+def white_list_add_para():
+    white_list_add=({'applicationName_wht_add':applicationName,'packageName_add':packageName,'code':code_ok},
+                    {'applicationName_wht_add':applicationName,'packageName_add':packageName,'code':code_f})
+    return white_list_add
 
 
 
