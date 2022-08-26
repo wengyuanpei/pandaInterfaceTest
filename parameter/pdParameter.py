@@ -3,13 +3,13 @@
 这个地方封装的是接口的请求参数信息
 
 '''
-from    pandaInterfaceTest.common.make_num_random import *
+from pandaInterfaceTest.common.make_num_random import *
 
 
 #运行之前需要抓令牌
 def auth():
 
-    auth="Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJlbWFpbFwiOlwid2VuZ3l1YW5wZWlAZHJwYW5kYS5jb21cIixcImlkXCI6MjIzLFwibW9iaWxlXCI6XCIxNzM0NTA0MzM2NVwiLFwidXNlcm5hbWVcIjpcIndlbmd5dWFucGVpXCJ9IiwiZXhwIjoxNjYxMjQyMDQ2fQ.jZXyn3oH0FuNgF6wdbkkKyPLR8n5Te2woGZIFdJ3RLyEPnMlOkIRicqDu7otCLREx3cIMUceEwvbd9q3Xmfrrw"
+    auth="Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJlbWFpbFwiOlwid2VuZ3l1YW5wZWlAZHJwYW5kYS5jb21cIixcImlkXCI6MjIzLFwibW9iaWxlXCI6XCIxNzM0NTA0MzM2NVwiLFwidXNlcm5hbWVcIjpcIndlbmd5dWFucGVpXCJ9IiwiZXhwIjoxNjYyMTAxNjMxfQ.UrsmdShTdFPbNq2qe1yv7ElUbmJs3N1QbOw0GnDsqQiuJqlfLVPY0_hEkTPLZGABq01wiAt7IMU6nncBZuU5_A"
     return auth
 
 
@@ -100,67 +100,70 @@ def gift_bag_group_list_para():
   }
 }
 '''
-giftBagName="礼包" + random_num()
-giftBagGroupId="171"
-giftBagOrder="666"
-goodsId="861"
-goodsShowName="熊猫平板国学-1年-V2.1-new"
-goodsBgUrl="https://business.xiongmaoboshi.com/dpshop/res/img/630%2B260%2B2.png"
-gameId="1027828421423538201"
-gameName="熊猫博士国学"
-goodsEffectivePeriod="24"
-useRule="0"
-useRuleChooseNum="1"
 
+giftBagName="new_gift"+random_num()
 def gift_bag_add_para():
     gift_bag_add=(
-        {'giftBagName':giftBagName,'giftBagGroupId':giftBagGroupId,
-         'giftBagOrder':giftBagOrder,'goodsId':goodsId,'goodsShowName':goodsShowName,
-         'goodsBgUrl':goodsBgUrl,'gameId':gameId,'gameName':gameName,'goodsEffectivePeriod':goodsEffectivePeriod,
-         'useRule':useRule,'useRuleChooseNum':useRuleChooseNum,'code':code_ok}
+        {'giftBagName':giftBagName,'code':code_ok},
+        {'giftBagName': giftBagName, 'code': code_f}
     )
 
     return gift_bag_add
 
 
 
+'''***************************************************************************************************'''
+'''
+
+{
+  "timestamp":23143516166, 
+  "sign":"asdf234teqasdg", 
+  "body":{
+    "id":59, 
+    "giftBagName": "识字启蒙大礼包", 
+    "giftBagGroupId": 170, 
+    "giftBagOrder": 444,
+    "goodsInfos":[{
+      "goodsId": 13415, 
+      "goodsName": "(791)平板虚拟权限", 
+      "goodsShowName": "(791)平板虚拟权限", 
+      "goodsBgUrl":"www.baidu.com",
+      "gameId": "Pad Launcher", 
+      "gameName": "Pad Launcher", 
+      "goodsEffectivePeriod": 36}], 
+    "useRule": 0 , 
+    "useRuleDesc": "全部",
+    "useRuleChooseNum": 1 
+  }
+}
+
+'''
 
 
+#平板礼包编辑
+giftBagName_u="编辑礼包"+random_num()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-tokenRight="Bearer 397a8491-ef14-4f8c-9844-5b1effa4c102" #测试之前抓取一个正确的token值(最好用登录接口抓取)
-
-tokenLate="Bearer f36f1500-5216-428f-8f9a-4f56784f259f" #过期的token
-
-nullParameter="" #空的token值
-
-tokenWrong="Bearer ec608034-3fac-4a54-a4b3-239dcb76666" #错误的token值
-def paraMeter1():
-
-    paraMeter1=(
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenWrong, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenLate, 'customerId': nullParameter, 'code': "900"},
-        {'Authorization': tokenRight, 'customerId': nullParameter, 'code': "200"},
-        {'Authorization': tokenRight, 'customerId': '480', 'code': "200"},
-        {'Authorization': tokenRight, 'customerId': '92233720368547758070', 'code': "500"},
-        {'Authorization': tokenRight, 'customerId': '你好', 'code': "500"},
-        {'Authorization': tokenRight, 'customerId': 'ABC', 'code': "500"}
+def gift_bag_update_para():
+    bag_update_para=({'giftBagName_up':giftBagName_u,'code':code_ok}
     )
+    return bag_update_para
 
 
-    return paraMeter1
+
+# 平板礼包删除  数据库查礼包id实现
+
+id_del_para='35'
+
+def gift_bag_delete_para():
+    id_ddel=({'id_del':{'id':id_del_para},'code':code_ok},{'id_del':{'id':id_del_para},'code':code_f})
+    return id_ddel
+
+
+
+
+
+
+
+
+
+

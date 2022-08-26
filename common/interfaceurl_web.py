@@ -9,30 +9,31 @@ baseurl_pad='https://pad-api-dev.xiongmaoboshi.com/'  #这个是pad的接口
 
 
 
-#创建平板礼包合集
+#创建平板礼包合集-ok
 def gift_bag_group_add():
     url=baseurl_web+"s/drpanda/pad/web/gift-bag-group-add"
     return url
 
 
-#平台礼包合集列表
+#平台礼包合集列表-ok
 def gift_bag_group_list_url():
     url=baseurl_web+"s/drpanda/pad/web/gift-bag-group-list"
     return url
 
-#创建平板礼包
+#创建平板礼包-ok
 def gift_bag_add_url():
     url=baseurl_web+"s/drpanda/pad/web/gift-bag-add"
     return url
 
-#平板礼包编辑
-def gift_bag_update():
-    url="s/drpanda/pad/web/gift-bag-update"
+#平板礼包编辑-ok
+def gift_bag_update_url():
+    url=baseurl_web+"s/drpanda/pad/web/gift-bag-update"
     return url
+
 
 #平板礼包删除
 def gift_bag_delete():
-    url="s/drpanda/pad/web/gift-bag-delete?id={id}"
+    url=baseurl_web+"s/drpanda/pad/web/gift-bag-delete?"
     return url
 
 

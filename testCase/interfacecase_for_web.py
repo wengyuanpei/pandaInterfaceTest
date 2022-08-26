@@ -55,7 +55,7 @@ class TestPandaInterface(unittest.TestCase):
     @data(*gift_bag_group_list_para())
     @unpack
     def test_gift_bag_group_list(self, giftBagGroupCode, giftBagGroupStatus, code):
-        '''创建平板礼包合集'''   #对当前接口进行描述
+        '''平台礼包合集列表'''   #对当前接口进行描述
 
         print("接口测试参数：",giftBagGroupCode,giftBagGroupStatus,code)
 
@@ -80,6 +80,95 @@ class TestPandaInterface(unittest.TestCase):
         self.assertEqual(code, codebase, '接口请求失败')
 
         time.sleep(0.5)  #防止接口请求被限制
+        print("返回参数：" + request.text)
+
+
+    @data(*gift_bag_add_para())
+    @unpack
+    def test_gift_bag_add_url(self,giftBagName,code):
+        ''' 创建平板礼包'''
+        print("接口参数：",giftBagName,code)
+        header = self.header
+        url=gift_bag_add_url()
+        print("测试地址", str(url))
+        data_gad = {
+            "timestamp": 23143516166,
+            "sign": "asdf234teqasdg",
+            "body": {
+                "giftBagName": giftBagName,
+                "giftBagGroupId": 170,
+                "giftBagOrder": 444,
+                "goodsInfos": [{
+                    "goodsId": 13415,
+                    "goodsName": "(791)平板虚拟权限",
+                    "goodsShowName": "(791)平板虚拟权限",
+                    "goodsBgUrl": "www.baidu.com",
+                    "gameId": "Pad Launcher",
+                    "gameName": "Pad Launcher",
+                    "goodsEffectivePeriod": 36}],
+                "useRule": 0,
+                "useRuleDesc": "全部",
+                "useRuleChooseNum": 1
+            }
+        }
+        # data_json = json.dumps(data)
+        request = requests.post(url=url, json=data_gad, headers=header)
+        codebase = str(request.json()["code"])
+        self.assertEqual(code, codebase, '接口请求失败')
+
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+
+
+    @data(*gift_bag_update_para())
+    @unpack
+    def test_gift_bag_update(self,giftBagName_up,code):
+        ''' 编辑平板礼包'''
+        print("接口参数：",giftBagName_up,code)
+        header = self.header
+        url=gift_bag_update_url()
+        print("测试地址", str(url))
+        data_updata = {
+            "timestamp": 23143516166,
+            "sign": "asdf234teqasdg",
+            "body": {
+                "id": 32,
+                "giftBagName": giftBagName_up,
+                "giftBagGroupId": 170,
+                "giftBagOrder": 444,
+                "goodsInfos": [{
+                    "goodsId": 13415,
+                    "goodsName": "(791)平板虚拟权限",
+                    "goodsShowName": "(791)平板虚拟权限",
+                    "goodsBgUrl": "www.baidu.com",
+                    "gameId": "Pad Launcher",
+                    "gameName": "Pad Launcher",
+                    "goodsEffectivePeriod": 36}],
+                "useRule": 0,
+                "useRuleDesc": "全部",
+                "useRuleChooseNum": 1
+            }
+        }
+        request = requests.post(url=url, json=data_updata, headers=header)
+        codebase = str(request.json()["code"])
+        self.assertEqual(code, codebase, '接口请求失败')
+
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+
+    @data(*gift_bag_delete_para())
+    @unpack
+    def test_gift_bag_delete(self,id_del,code):
+        ''' 删除平板礼包'''
+        print("接口参数：",id_del,code)
+        header = self.header
+        url=gift_bag_delete()
+        print("测试地址", str(url))
+
+        request = requests.post(url=url, params=id_del, headers=header)
+        codebase = str(request.json()["code"])
+        self.assertEqual(code, codebase, '接口请求失败')
+        time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
 
 
