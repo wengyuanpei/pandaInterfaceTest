@@ -160,6 +160,25 @@ def gift_bag_delete_para():
 
 
 
+#平板礼包列表
+'''
+{
+  "timestamp":23143516166, # 时间戳
+  "sign":"asdf234teqasdg", # 签名
+  "body":{
+    "giftBagCode": "pad 0001", # 礼包Code
+    "giftBagName": "张三", # 礼包名称,
+    "giftBagGroupId":1 #礼包合集ID
+  }
+}
+'''
+
+giftBagCode='pad0044'
+giftBagName_list=" "
+giftBagGroupId=" "
+def gift_bag_list_para():
+    gift_list=({'giftBagCode':giftBagCode,'giftBagName':giftBagName_list,'giftBagGroupId':giftBagGroupId,'code':code_ok},)
+    return gift_list
 
 
 

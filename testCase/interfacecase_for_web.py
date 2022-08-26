@@ -120,11 +120,11 @@ class TestPandaInterface(unittest.TestCase):
         print("返回参数：" + request.text)
 
 
-    @data(*gift_bag_update_para())
-    @unpack
-    def test_gift_bag_update(self,giftBagName_up,code):
+    # @data(*gift_bag_update_para())
+    # @unpack
+    def test_gift_bag_update(self):
         ''' 编辑平板礼包'''
-        print("接口参数：",giftBagName_up,code)
+        # print("接口参数：",giftBagName_up,code)
         header = self.header
         url=gift_bag_update_url()
         print("测试地址", str(url))
@@ -133,7 +133,7 @@ class TestPandaInterface(unittest.TestCase):
             "sign": "asdf234teqasdg",
             "body": {
                 "id": 32,
-                "giftBagName": giftBagName_up,
+                "giftBagName": 'giftBagName_up',
                 "giftBagGroupId": 170,
                 "giftBagOrder": 444,
                 "goodsInfos": [{
@@ -151,7 +151,7 @@ class TestPandaInterface(unittest.TestCase):
         }
         request = requests.post(url=url, json=data_updata, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
+        self.assertEqual("0", codebase, '接口请求失败')
 
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
@@ -172,6 +172,31 @@ class TestPandaInterface(unittest.TestCase):
         print("返回参数：" + request.text)
 
 
+
+    # @data(*gift_bag_list_para())
+    # @unpack
+    def test_gift_bag_list(self):
+        ''' 平板礼包列表'''
+        # print("接口参数：",giftBagCode,giftBagName_list,giftBagGroupId,code)
+        header = self.header
+        url = gift_bag_list_url()
+        print("测试地址", str(url))
+        data_list={
+              "timestamp":23143516166, # 时间戳
+              "sign":"asdf234teqasdg", # 签名
+              "body":{
+                "giftBagCode": '', # 礼包Code
+                "giftBagName": '', # 礼包名称,
+                "giftBagGroupId":'' #礼包合集ID
+              }
+}
+
+        request = requests.post(url=url, json=data_list, headers=header)
+        codebase = str(request.json()["code"])
+        self.assertEqual("0", codebase, '接口请求失败')
+
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
 
 
 if "__name__"=="__main__":
