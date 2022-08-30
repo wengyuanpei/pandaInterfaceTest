@@ -66,7 +66,7 @@ def white_list_update_url():
 
 #web端白名单删除-ok
 def white_list_delete_url():
-    url=baseurl_web+"s/drpanda/pad/web/application/white-list-delete?id={id}"
+    url=baseurl_web+"s/drpanda/pad/web/application/white-list-delete?"
     return url
 
 
