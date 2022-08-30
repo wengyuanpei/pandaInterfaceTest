@@ -45,12 +45,9 @@ class TestPandaInterface(unittest.TestCase):
         data_json = json.dumps(data)
         request = requests.post(url=url, data=data_json, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
-
         time.sleep(0.5)  #防止接口请求被限制
-
         print("返回参数："+request.text)
-
+        self.assertEqual(code, codebase, '接口请求失败')
 
     @data(*gift_bag_group_list_para())
     @unpack
@@ -77,11 +74,9 @@ class TestPandaInterface(unittest.TestCase):
         data_json = json.dumps(data)
         request = requests.post(url=url, data=data_json, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
-
         time.sleep(0.5)  #防止接口请求被限制
         print("返回参数：" + request.text)
-
+        self.assertEqual(code, codebase, '接口请求失败')
 
     @data(*gift_bag_add_para())
     @unpack
@@ -114,11 +109,9 @@ class TestPandaInterface(unittest.TestCase):
         # data_json = json.dumps(data)
         request = requests.post(url=url, json=data_gad, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
-
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
-
+        self.assertEqual(code, codebase, '接口请求失败')
 
     # @data(*gift_bag_update_para())
     # @unpack
@@ -151,10 +144,9 @@ class TestPandaInterface(unittest.TestCase):
         }
         request = requests.post(url=url, json=data_updata, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual("0", codebase, '接口请求失败')
-
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
+        self.assertEqual("0", codebase, '接口请求失败')
 
     @data(*gift_bag_delete_para())
     @unpack
@@ -162,15 +154,14 @@ class TestPandaInterface(unittest.TestCase):
         ''' 删除平板礼包'''
         print("接口参数：",id_del,code)
         header = self.header
-        url=gift_bag_delete()
+        url=gift_bag_delete_url()
         print("测试地址", str(url))
 
         request = requests.post(url=url, params=id_del, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
-
+        self.assertEqual(code, codebase, '接口请求失败')
 
 
     # @data(*gift_bag_list_para())
@@ -193,12 +184,31 @@ class TestPandaInterface(unittest.TestCase):
 
         request = requests.post(url=url, json=data_list, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual("0", codebase, '接口请求失败')
-
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
+        self.assertEqual("0", codebase, '接口请求失败')
 
-
+    def test_receive_record_list(self):
+        ''' SN码领取记录 '''
+        header = self.header
+        url = receive_record_list_url()
+        print("测试地址", str(url))
+        data_record={
+                      "timestamp":23143516166, # 时间戳
+                      "sign":"asdf234teqasdg", # 签名
+                      "body":{
+                        "current": 1, # 页码
+                        "size": 10, # 条数
+                        "snNum": "", # SN码 条件查询
+                        "activeMobile":"", # 领取账号 条件查询
+                        "activeStatus":1, # 0 未领取 1 部分 2 全部 不传是全部  条件查询
+                      }
+                    }
+        request = requests.post(url=url, json=data_record, headers=header)
+        codebase = str(request.json()["code"])
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+        self.assertEqual("0", codebase, '接口请求失败')
 
     @data(*white_list_add_para())
     @unpack
@@ -218,10 +228,86 @@ class TestPandaInterface(unittest.TestCase):
                 }
         request = requests.post(url=url, json=data_white, headers=header)
         codebase = str(request.json()["code"])
-        self.assertEqual(code, codebase, '接口请求失败')
-
         time.sleep(0.5)  # 防止接口请求被限制
         print("返回参数：" + request.text)
+        self.assertEqual(code, codebase, '接口请求失败')
+
+    @data(*white_list_update_para())
+    @unpack
+    def test_white_list_update(self,applicationName_white_update,packageName_para,code):
+        ''' 更新白名单'''
+        print("接口参数：", applicationName_white_update, packageName_para, code)
+        header = self.header
+        url = white_list_update_url()
+        print("测试地址", str(url))
+        data_white_update = {
+                  "timestamp":23143516166, # 时间戳
+                  "sign":"asdf234teqasdg", # 签名
+                  "body":{
+                    "id":16, #主键ID
+                    "applicationName": applicationName_white_update, # 应用名
+                    "packageName":packageName_para, # packageName
+                  }
+                }
+        request = requests.post(url=url, json=data_white_update, headers=header)
+        codebase = str(request.json()["code"])
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+        self.assertEqual(code, codebase, '接口请求失败')
+
+    @data(*white_list_delete_para())
+    @unpack
+    def test_white_list_delete(self,id_white_del,code):
+        ''' 删除白名单'''
+        print("接口参数：",id_white_del,code)
+        header = self.header
+        url=white_list_delete_url()
+        print("测试地址", str(url))
+        request = requests.post(url=url, params=id_white_del, headers=header)
+        codebase = str(request.json()["code"])
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+        self.assertEqual(code, codebase, '接口请求失败')
+
+    def test_application_white_list(self):
+        ''' 白名单列表'''
+        # print("接口参数：", applicationName_white_update, packageName_para, code)
+        header = self.header
+        url = application_white_list_url()
+        print("测试地址", str(url))
+        data_white_list = {
+                      "timestamp":23143516166, # 时间戳
+                      "sign":"asdf234teqasdg", # 签名
+                      "body":{
+                        "applicatioName": "", # 应用名
+                        "packageName":"", # packageName
+                      }
+                    }
+        request = requests.post(url=url, json=data_white_list, headers=header)
+        codebase = str(request.json()["code"])
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+        self.assertEqual("0", codebase, '接口请求失败')
+
+    def test_pad_type_list(self):
+        ''' 白名单列表'''
+        # print("接口参数：", applicationName_white_update, packageName_para, code)
+        header = self.header
+        url = pad_type_list_url()
+        print("测试地址", str(url))
+        data_pad_type_list = {
+                      "timestamp":23143516166, #时间戳
+                      "sign":"asdf234teqasdg", #签名
+                      "body":{
+                        "current":1,
+                        "size":10
+                      }
+                    }
+        request = requests.post(url=url, json=data_pad_type_list, headers=header)
+        codebase = str(request.json()["code"])
+        time.sleep(0.5)  # 防止接口请求被限制
+        print("返回参数：" + request.text)
+        self.assertEqual("0", codebase, '接口请求失败')
 
 if "__name__"=="__main__":
     unittest.main()

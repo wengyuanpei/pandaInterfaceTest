@@ -4,7 +4,7 @@
 
 '''
 from pandaInterfaceTest.common.make_num_random import *
-
+from pandaInterfaceTest.common.sql_for_para import *
 
 #运行之前需要抓令牌
 def auth():
@@ -24,21 +24,19 @@ gift_app_type="P10"
 
 '''*******************************************************************************************************'''
 
-num_gift="礼包集合"+random_num()
-giftBagGroupName1=num_gift
-
-
-giftBagGroupName2=num_gift
-applyType2="P10"
 
 def gift_bag_group_add_para():
+    num_gift = "礼包集合" + random_num()
+    giftBagGroupName1 = num_gift
 
-     para_tags_type_add= (
+
+    para_tags_type_add= (
          {'giftBagGroupName': giftBagGroupName1,'applyType': gift_app_type, 'code': code_ok},
          {'giftBagGroupName': giftBagGroupName1,'applyType': gift_app_type, 'code': code_f}
      )
+    return para_tags_type_add
 
-     return para_tags_type_add
+
 
 
 
@@ -59,12 +57,12 @@ def gift_bag_group_add_para():
 
 
 
-giftBagGroupStatus1="0"
-giftBagGroupStatus2="1"
-giftBagGroupStatus3="2"
-
 
 def gift_bag_group_list_para():
+    giftBagGroupStatus1 = "0"
+    giftBagGroupStatus2 = "1"
+    giftBagGroupStatus3 = "2"
+
     gift_bag_group_list=(
         {"giftBagGroupCode": gift_app_type, "giftBagGroupStatus": giftBagGroupStatus1, "code": code_ok},
         {"giftBagGroupCode": gift_app_type, "giftBagGroupStatus": giftBagGroupStatus2, "code": code_ok},
@@ -101,8 +99,9 @@ def gift_bag_group_list_para():
 }
 '''
 
-giftBagName="new_gift"+random_num()
+
 def gift_bag_add_para():
+    giftBagName = "new_gift" + random_num()
     gift_bag_add=(
         {'giftBagName':giftBagName,'code':code_ok},
         {'giftBagName': giftBagName, 'code': code_f}
@@ -141,9 +140,10 @@ def gift_bag_add_para():
 
 
 #平板礼包编辑
-giftBagName_u="编辑礼包"+random_num()
+
 
 def gift_bag_update_para():
+    giftBagName_u = "编辑礼包" + random_num()
     bag_update_para=({'giftBagName_up':giftBagName_u,'code':code_ok}
     )
     return bag_update_para
@@ -152,9 +152,10 @@ def gift_bag_update_para():
 
 # 平板礼包删除  数据库查礼包id实现
 
-id_del_para='35'
+
 
 def gift_bag_delete_para():
+    id_del_para = get_gift_bag_id()
     id_ddel=({'id_del':{'id':id_del_para},'code':code_ok},{'id_del':{'id':id_del_para},'code':code_f})
     return id_ddel
 
@@ -173,10 +174,11 @@ def gift_bag_delete_para():
 }
 '''
 
-giftBagCode='pad0044'
-giftBagName_list=" "
-giftBagGroupId=" "
+
 def gift_bag_list_para():
+    giftBagCode = 'pad0044'
+    giftBagName_list = " "
+    giftBagGroupId = " "
     gift_list=({'giftBagCode':giftBagCode,'giftBagName':giftBagName_list,'giftBagGroupId':giftBagGroupId,'code':code_ok},)
     return gift_list
 
@@ -192,13 +194,70 @@ def gift_bag_list_para():
 }
 '''
 
-applicationName='test_name'
-packageName="Dr.panda.com" +random_num()
+
 
 def white_list_add_para():
+    applicationName = 'test_name'
+    packageName = "Dr.panda.com" + random_num()
     white_list_add=({'applicationName_wht_add':applicationName,'packageName_add':packageName,'code':code_ok},
                     {'applicationName_wht_add':applicationName,'packageName_add':packageName,'code':code_f})
     return white_list_add
+
+
+
+
+'''
+{
+  "timestamp":23143516166, # 时间戳
+  "sign":"asdf234teqasdg", # 签名
+  "body":{
+    "id":1, #主键ID
+    "applicationName": "熊猫博士国学", # 应用名
+    "packageName":"Dr.panda.com", # packageName
+  }
+}
+
+白名单修改
+'''
+
+def  white_list_update_para():
+    update_par='熊猫'+random_num()
+    packageName_para='Dr.'+random_num()
+    white_update_para=({'applicationName_white_update': update_par,'packageName_para':packageName_para,'code':code_ok},
+                       {'applicationName_white_update': update_par,'packageName_para':packageName_para,'code':code_f})
+    return white_update_para
+
+'''
+{
+  "code":0, #0-成功 其他 错误或失败
+  "success":true,
+  "msg":"success", # 非成功时可作为提示信息
+  "traceId":"122135-t234t23-qewqt-qweq",  # traceId,用于排查问题
+  "data":{} # 有需要返回结果时，会有data数据
+}
+白名单删除
+'''
+
+
+def white_list_delete_para():
+    id_white_para01 = get_white_list_id()
+    id_white=({'id_white_del':{'id':id_white_para01},'code':code_ok},{'id_white_del':{'id':id_white_para01},'code':code_f})
+    return id_white
+
+
+
+'''
+{
+  "timestamp":23143516166, # 时间戳
+  "sign":"asdf234teqasdg", # 签名
+  "body":{
+    "applicatioName": "熊猫博士国学", # 应用名
+    "packageName":"Dr.panda.com", # packageName
+  }
+}
+web 白名单列表
+
+'''
 
 
 

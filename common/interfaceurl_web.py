@@ -32,69 +32,56 @@ def gift_bag_update_url():
 
 
 #平板礼包删除 -ok
-def gift_bag_delete():
+def gift_bag_delete_url():
     url=baseurl_web+"s/drpanda/pad/web/gift-bag-delete?"
     return url
 
 
 
-#平板礼包列表
+#平板礼包列表-ok
 def gift_bag_list_url():
     url=baseurl_web+"s/drpanda/pad/web/gift-bag-list"
     return url
 
+#SN码领取记录 -ok
+
+def receive_record_list_url():
+    url=baseurl_web+"s/drpanda/pad/web/application/receive/record/list"
+    return url
 
 
-
-
-#web端添加白名单
+#web端添加白名单 -ok
 def white_list_add_url():
     url=baseurl_web+"s/drpanda/pad/web/application/white-list-add"
     return url
 
-#web端白名单修改
-def white_list_update():
-    url="s/drpanda/pad/web/application/white-list-update"
+
+
+#web端白名单修改 -ok
+def white_list_update_url():
+    url=baseurl_web+"s/drpanda/pad/web/application/white-list-update"
     return url
 
-#web端白名单删除
-def white_list_delete():
-    url="s/drpanda/pad/web/application/white-list-delete?id={id}"
+
+
+#web端白名单删除-ok
+def white_list_delete_url():
+    url=baseurl_web+"s/drpanda/pad/web/application/white-list-delete?id={id}"
     return url
 
-#web端白名单列表
-def white_list():
-    url="s/drpanda/pad/web/application/white-list"
+
+
+#web端白名单列表 -ok
+def application_white_list_url():
+    url=baseurl_web+"s/drpanda/pad/web/application/white-list"
     return url
 
-#pad端获取所有白名单
-def white_list_pad():
-    url="ns/drpanda/pad/pad/application/white-list"
-    return url
-
-#平台礼包合集上下架
-def white_list_release():
-    url="s/drpanda/pad/web/gift-bag-group/release"
-
-    return url
-
-#B端-平板SN激活详情
-def pad_sn():
-    url="s/drpanda/pad/web/application/receive/record/detail"
-
-    return url
 
 #web端获取机型列表
-def pad_type_list():
-    url="s/drpanda/pad/web/pad-type-list"
+def pad_type_list_url():
+    url=baseurl_web+"s/drpanda/pad/web/pad-type-list"
 
     return url
 
 
-
-# 灯塔接口
-
-def tags_type_add_url():
-    url01='s/**/tags-type-add'
-    return url01
 
