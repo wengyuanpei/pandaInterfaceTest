@@ -241,7 +241,7 @@ def  white_list_update_para():
 
 def white_list_delete_para():
     id_white_para01 = get_white_list_id()
-    id_white=({'id_white_del':{'id':id_white_para01},'code':code_ok},{'id_white_del':{'id':id_white_para01},'code':code_f})
+    id_white=({'id_white_del':{'id':id_white_para01},'code':code_ok},{'id_white_del':{'id':id_white_para01},'code':code_ok})
     return id_white
 
 
