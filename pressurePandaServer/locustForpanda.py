@@ -30,27 +30,18 @@ class TestTask(HttpUser):
         self.port = 1883
 
 
-        def on_connect(client, userdata, flags, rc):
-            print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
-            client.subscribe("chanel_01")
+    def on_connect(self,client, userdata, flags, rc):
+        print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
+        client.subscribe("chanel_01")
 
-    @task(1)
-    def getBaidu(self):
-        broker_url = 'emqx-dev.xiongmaoboshi.com'
-        port = 1883
-        self = str(random.randint(0, 1000)) + 'test'
-        HOST = broker_url
-        PORT = port
-        def on_connect(client, userdata, flags, rc):
-            print("Connected with result code :0 表示连接成功  其它表示失败" + str(rc))
-            client.subscribe("chanel_01")
 
-        def main():
-            client = mqtt.Client(client_id)
-            client.connect(HOST, PORT, 60)
-            client.on_connect = on_connect
-            client.username_pw_set(client_id, password=self.mqtttoeken)
-            client.loop_forever()  # 长连接
+    @task(10)
+    def main(self):
+        client = mqtt.Client()
+        client.connect(self.broker_url, self.port, 60000)
+        client.on_connect = self.on_connect
+        client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
+        client.loop_forever()  # 长连接
 
     def on_stop(self):
         print('这是TEARDOWN，每次销毁User实例时都会执行！')
@@ -69,5 +60,5 @@ if __name__ == "__main__":
 
     import os
 
-    os.system("locust -f locustForPanda.py --host=emqx-dev.xiongmaoboshi.com")
+    os.system("locust -f locustForPanda.py --host=http://emqx-dev.xiongmaoboshi.com")
 #  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
