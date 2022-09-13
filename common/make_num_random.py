@@ -1,9 +1,12 @@
-#生成随机数字的包
+#生成不重复的随机数字的包
 
 
-from random import randint
+import random
 
 def random_num():
-    num_rad=randint(1,100000)
-    return str(num_rad)
+    num_rad = random.sample(range(10000000), 1)
+    print(num_rad[0])
+    return str(num_rad[0])
 
+if __name__=="__main__":
+    random_num()
