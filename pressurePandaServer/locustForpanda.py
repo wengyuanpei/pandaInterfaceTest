@@ -36,7 +36,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
-    @task(1)
+    @task(2)
     def mqtt2(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
@@ -50,7 +50,7 @@ class My_task_set(TaskSet):
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
 
-    @task(1)
+    @task(2)
     def mqtt3(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
@@ -63,7 +63,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
-    @task(1)
+    @task(5)
     def mqtt4(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))

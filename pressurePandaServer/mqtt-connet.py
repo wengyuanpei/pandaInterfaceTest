@@ -30,9 +30,9 @@ def main():
     client.loop_forever()  #长连接
 
 
-while 1==1:
-    main()
-    time.sleep(1)
+
+main()
+
 
 
 
