@@ -4,7 +4,7 @@
 import random
 
 def random_num():
-    num_rad = random.sample(range(10000000), 1)
+    num_rad = random.sample(range(100000000000000000), 1)
     print(num_rad[0])
     return str(num_rad[0])
 

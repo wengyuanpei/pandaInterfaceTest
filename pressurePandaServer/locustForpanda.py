@@ -2,6 +2,8 @@ import time
 from locust import HttpUser, task, between, events
 from locust import FastHttpUser,TaskSet
 import paho.mqtt.client as mqtt
+
+from pandaInterfaceTest.common.make_num_random import random_num
 from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
 
 
@@ -13,9 +15,11 @@ class My_task_set(TaskSet):
     def on_start(self):
 
         print('开始初始化！！')
+
         mqttpara = getmqtttoeken()
         self.mqtttoeken = mqttpara[0]
         self.mqttsn = mqttpara[1]
+        self.clientID = self.mqttsn
         self.broker_url = 'emqx-dev.xiongmaoboshi.com'
         self.port = 1883
 
@@ -26,7 +30,7 @@ class My_task_set(TaskSet):
             client.subscribe("chanel_01")
             print('mqtt1')
 
-        client = mqtt.Client()
+        client = mqtt.Client(self.clientID)
         client.connect(self.broker_url, self.port, 60000)
         time.sleep(1)
         client.on_connect = on_connect
@@ -39,7 +43,7 @@ class My_task_set(TaskSet):
             client.subscribe("chanel_01")
             print('mqtt2')
 
-        client = mqtt.Client()
+        client = mqtt.Client(self.clientID)
         client.connect(self.broker_url, self.port, 60000)
         time.sleep(1)
         client.on_connect = on_connect
@@ -53,7 +57,7 @@ class My_task_set(TaskSet):
             client.subscribe("chanel_01")
             print('mqtt3')
 
-        client = mqtt.Client()
+        client = mqtt.Client(self.clientID)
         client.connect(self.broker_url, self.port, 60000)
         time.sleep(1)
         client.on_connect = on_connect
@@ -66,7 +70,7 @@ class My_task_set(TaskSet):
             client.subscribe("chanel_01")
             print('mqtt4')
 
-        client = mqtt.Client()
+        client = mqtt.Client(self.clientID)
         client.connect(self.broker_url, self.port, 60000)
         time.sleep(1)
         client.on_connect = on_connect
