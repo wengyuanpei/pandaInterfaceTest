@@ -12,7 +12,7 @@ class My_task_set(TaskSet):
 
     def on_start(self):
 
-        print('这是SETUP，每次实例化User前都会执行！')
+        print('开始初始化！！')
         mqttpara = getmqtttoeken()
         self.mqtttoeken = mqttpara[0]
         self.mqttsn = mqttpara[1]
@@ -24,7 +24,7 @@ class My_task_set(TaskSet):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
             client.subscribe("chanel_01")
-            print('执行了这段')
+            print('mqtt1')
 
         client = mqtt.Client()
         client.connect(self.broker_url, self.port, 60000)
@@ -37,7 +37,7 @@ class My_task_set(TaskSet):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
             client.subscribe("chanel_01")
-            print('执行了这段')
+            print('mqtt2')
 
         client = mqtt.Client()
         client.connect(self.broker_url, self.port, 60000)
@@ -51,7 +51,7 @@ class My_task_set(TaskSet):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
             client.subscribe("chanel_01")
-            print('执行了这段')
+            print('mqtt3')
 
         client = mqtt.Client()
         client.connect(self.broker_url, self.port, 60000)
@@ -64,7 +64,7 @@ class My_task_set(TaskSet):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
             client.subscribe("chanel_01")
-            print('执行了这段')
+            print('mqtt4')
 
         client = mqtt.Client()
         client.connect(self.broker_url, self.port, 60000)
