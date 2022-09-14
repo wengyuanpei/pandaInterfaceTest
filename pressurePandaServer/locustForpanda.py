@@ -1,9 +1,7 @@
 import time
-from locust import HttpUser, task, between, events
-from locust import FastHttpUser,TaskSet
+from locust import HttpUser, task, between, events,TaskSet
 import paho.mqtt.client as mqtt
-
-from pandaInterfaceTest.common.make_num_random import random_num
+# from pandaInterfaceTest.common.make_num_random import random_num
 from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
 
 
@@ -31,7 +29,7 @@ class My_task_set(TaskSet):
             print('mqtt1')
 
         client = mqtt.Client(self.clientID)
-        client.connect(self.broker_url, self.port, 60000)
+        client.connect(self.broker_url, self.port, 60)
         time.sleep(1)
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
@@ -45,7 +43,7 @@ class My_task_set(TaskSet):
             print('mqtt2')
 
         client = mqtt.Client(self.clientID)
-        client.connect(self.broker_url, self.port, 60000)
+        client.connect(self.broker_url, self.port, 60)
         time.sleep(1)
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
@@ -59,7 +57,7 @@ class My_task_set(TaskSet):
             print('mqtt3')
 
         client = mqtt.Client(self.clientID)
-        client.connect(self.broker_url, self.port, 60000)
+        client.connect(self.broker_url, self.port, 60)
         time.sleep(1)
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
@@ -72,7 +70,7 @@ class My_task_set(TaskSet):
             print('mqtt4')
 
         client = mqtt.Client(self.clientID)
-        client.connect(self.broker_url, self.port, 60000)
+        client.connect(self.broker_url, self.port, 60)
         time.sleep(1)
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
@@ -91,6 +89,12 @@ class WebSite(HttpUser):
 if __name__ == "__main__":
 
     import os
+    #
+    # os.system("locust -f locustForPanda.py --master")
+    # os.system("locust -f locustForPanda.py --worker")
+    # os.system("locust -f locustForPanda.py --worker")
+    # os.system("locust -f locustForPanda.py --worker")
+    # os.system("locust -f locustForPanda.py --worker")
 
     os.system("locust -f locustForPanda.py --host=http://emqx-dev.xiongmaoboshi.com")
 #  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
