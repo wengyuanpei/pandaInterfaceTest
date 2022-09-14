@@ -36,6 +36,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
+
     @task(2)
     def mqtt2(self):
         def on_connect(client, userdata, flags, rc):
@@ -82,8 +83,8 @@ class My_task_set(TaskSet):
 class WebSite(HttpUser):
 
     tasks = [My_task_set,]
-    min_wait = 100
-    max_wait = 600
+    min_wait = 1000
+    max_wait = 2000
 
 
 
