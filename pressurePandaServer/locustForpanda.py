@@ -1,27 +1,17 @@
 import time
 from locust import HttpUser, task, between, events
-from locust.contrib.fasthttp import FastHttpUser
-import random
+from locust import FastHttpUser,TaskSet
 import paho.mqtt.client as mqtt
 from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
 
 
-@events.test_start.add_listener
-def on_test_start(**kwargs):
-    print('===测试开始===')
+
+class My_task_set(TaskSet):
 
 
-@events.test_stop.add_listener
-def on_test_stop(**kwargs):
-    print('===测试结束===')
-
-
-class TestTask(HttpUser):
-    wait_time = between(1, 5)
-    broker_url = 'emqx-dev.xiongmaoboshi.com'
 
     def on_start(self):
-        broker_url = 'emqx-dev.xiongmaoboshi.com'
+
         print('这是SETUP，每次实例化User前都会执行！')
         mqttpara = getmqtttoeken()
         self.mqtttoeken = mqttpara[0]
@@ -29,31 +19,68 @@ class TestTask(HttpUser):
         self.broker_url = 'emqx-dev.xiongmaoboshi.com'
         self.port = 1883
 
+    @task(1)
+    def mqtt1(self):
+        def on_connect(client, userdata, flags, rc):
+            print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
+            client.subscribe("chanel_01")
+            print('执行了这段')
 
-    def on_connect(self,client, userdata, flags, rc):
-        print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
-        client.subscribe("chanel_01")
-
-
-    @task(10)
-    def main(self):
         client = mqtt.Client()
         client.connect(self.broker_url, self.port, 60000)
-        client.on_connect = self.on_connect
+        time.sleep(1)
+        client.on_connect = on_connect
+        client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
+        client.loop_forever()  # 长连接
+    @task(1)
+    def mqtt2(self):
+        def on_connect(client, userdata, flags, rc):
+            print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
+            client.subscribe("chanel_01")
+            print('执行了这段')
+
+        client = mqtt.Client()
+        client.connect(self.broker_url, self.port, 60000)
+        time.sleep(1)
+        client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
 
-    def on_stop(self):
-        print('这是TEARDOWN，每次销毁User实例时都会执行！')
+    @task(1)
+    def mqtt3(self):
+        def on_connect(client, userdata, flags, rc):
+            print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
+            client.subscribe("chanel_01")
+            print('执行了这段')
+
+        client = mqtt.Client()
+        client.connect(self.broker_url, self.port, 60000)
+        time.sleep(1)
+        client.on_connect = on_connect
+        client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
+        client.loop_forever()  # 长连接
+    @task(1)
+    def mqtt4(self):
+        def on_connect(client, userdata, flags, rc):
+            print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
+            client.subscribe("chanel_01")
+            print('执行了这段')
+
+        client = mqtt.Client()
+        client.connect(self.broker_url, self.port, 60000)
+        time.sleep(1)
+        client.on_connect = on_connect
+        client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
+        client.loop_forever()  # 长连接
 
 
 
+class WebSite(HttpUser):
 
-class MyLocust(FastHttpUser):
+    tasks = [My_task_set,]
+    min_wait = 100
+    max_wait = 600
 
-    task_set = TestTask
-    min_wait = 1000
-    max_wait = 60000
 
 
 if __name__ == "__main__":

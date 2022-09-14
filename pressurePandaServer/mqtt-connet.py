@@ -1,6 +1,10 @@
 import random
+import time
+
 import paho.mqtt.client as mqtt
 from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
+
+
 
 mqttpara=getmqtttoeken()
 mqtttoeken=mqttpara[0]
@@ -26,13 +30,17 @@ def main():
     client.loop_forever()  #长连接
 
 
-if __name__ == '__main__':
-    for i in range(100000):
-        main()
-        print(i)
+while 1==1:
+    main()
+    time.sleep(1)
 
 
-# 代码结构 1、定义数据库插入方法关联cilentId和用户  2、定义一个循环持续连接并保持连接
+
+
+
+
+
+
 
 
 
