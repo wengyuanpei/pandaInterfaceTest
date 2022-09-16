@@ -4,7 +4,7 @@ from pandaInterfaceTest.common.make_num_random import random_num
 
 
 
-token="tal173bFwMOBHWX8nyh0ewjtFyWW9PhnOvfrDZ2BcnyRNWuqYy6-WAn1Dg0z1eA3wsRN2j1ZRWBDsJQO1f7xPODAvM4R4UNLvikgBk7Qfw1zt9UQJeYDgVmUu5juAHWjM5zGutbRHFCOruDbDudi6A-_cBhg5K8J_IcaH6Ew3hdD_UVfUey"
+token="tal173UaFSsPwBw2IHBAFoCKcQd2zcLM_90E4t_bHVa7UjTmScoD4bblbOdLghDfRBk1vx-SzynsBL1-rV3GIFORelxxFVIZZ1Sz9D55KTYyOIwkn-mD2B2Zp5BsFsV4wJMvYUfHfrETylSWBtpBTu4361eyy3HalNjdtQF36qgBX969Qey"
 
 url="https://pad-api-dev.xiongmaoboshi.com/s/drpanda/pad/pad/mqtt/auth/token"
 header = {
