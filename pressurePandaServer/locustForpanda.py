@@ -1,5 +1,5 @@
 import time
-from locust import HttpUser, task, between, events,TaskSet
+from locust import HttpUser, task, between, events,TaskSet,User
 import paho.mqtt.client as mqtt
 # from pandaInterfaceTest.common.make_num_random import random_num
 from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
@@ -34,7 +34,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
-
+        between(1,2)
     @task(2)
     def mqtt2(self):
         def on_connect(client, userdata, flags, rc):
@@ -48,7 +48,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
-
+        between(1, 2)
     @task(2)
     def mqtt3(self):
         def on_connect(client, userdata, flags, rc):
@@ -62,6 +62,7 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
+        between(1, 2)
     @task(5)
     def mqtt4(self):
         def on_connect(client, userdata, flags, rc):
@@ -75,12 +76,12 @@ class My_task_set(TaskSet):
         client.on_connect = on_connect
         client.username_pw_set(self.mqttsn, password=self.mqtttoeken)
         client.loop_forever()  # 长连接
+        between(1, 2)
 
 
+class WebSite(User):
 
-class WebSite(HttpUser):
-
-    tasks = [My_task_set,]
+    tasks = {My_task_set}
     min_wait = 1000
     max_wait = 2000
 

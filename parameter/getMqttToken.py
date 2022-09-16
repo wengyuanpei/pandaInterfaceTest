@@ -2,9 +2,13 @@ import requests
 import time
 from pandaInterfaceTest.common.make_num_random import random_num
 
+
+
+token="tal173bFwMOBHWX8nyh0ewjtFyWW9PhnOvfrDZ2BcnyRNWuqYy6-WAn1Dg0z1eA3wsRN2j1ZRWBDsJQO1f7xPODAvM4R4UNLvikgBk7Qfw1zt9UQJeYDgVmUu5juAHWjM5zGutbRHFCOruDbDudi6A-_cBhg5K8J_IcaH6Ew3hdD_UVfUey"
+
 url="https://pad-api-dev.xiongmaoboshi.com/s/drpanda/pad/pad/mqtt/auth/token"
 header = {
-            "Authorization": "tal173bzS7sPdIdmUJbe9NCcgBVxF4Lhvx4Fu_A9KTfttgyuABT_Kva9z8wUaCOeWYUKJlMDs-x5NqFVWv689Qz78VuxcR-4REnBfJe6sRk0lGE_4wStTs86U68VizJsGn3da_h0SXPZu0z1j6mL5Xo4kwlFLXTexciUtxtiOtGeH4N7Mey",
+            "Authorization": token,
             "Content-Type": "application/json;charset=UTF-8"
         }
 
