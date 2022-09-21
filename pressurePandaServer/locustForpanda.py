@@ -98,4 +98,4 @@ if __name__ == "__main__":
     # os.system("locust -f locustForPanda.py --worker")
 
     os.system("locust -f locustForPanda.py --host=http://emqx-dev.xiongmaoboshi.com")
-#  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
+#  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx灌灌灌灌灌灌灌灌灌灌灌灌灌灌灌灌烦烦烦
