@@ -84,4 +84,28 @@ def pad_type_list_url():
     return url
 
 
+# 添加-平板介绍视频
+def pad_introduce_add_url():
+    url=baseurl_web+"s/drpanda/pad/web/mananger/pad-introduce-add"
+    return url
+
+#列表-操作引导视频
+def pad_introduce_list_url():
+    url=baseurl_web+"s/drpanda/pad/web/manager/pad-introduce-list"
+    return url
+
+#修改-操作引导视频
+def pad_introduce_update_url():
+    url=baseurl_web+"s/drpanda/pad/web/manager/pad-introduce-update"
+    return url
+
+#删除-操作引导视频
+def pad_introduce_delete_url():
+    url=baseurl_web+"s/drpanda/pad/web/manager/pad-introduce-delete?"
+    return url
+
+#上架-操作引导视频
+def pad_introduce_operation_url():
+    url=baseurl_web+"s/drpanda/pad/web/manager/pad-introduce-operation"
+    return url
 
