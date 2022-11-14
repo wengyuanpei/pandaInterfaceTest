@@ -33,7 +33,7 @@ class Test1(TaskSet):
             }
         req2=self.client.post(url_dc,json=data_dc)
     #绘本详情
-    @task(5)
+    @task(2)
     def data_hbx(self):
         print('绘本详情')
         url_hbx = '/v1/book/book-detail'
@@ -41,19 +41,9 @@ class Test1(TaskSet):
             "uid": 2729,
             "book_id": 2927
         }
-        req2 = self.client.post(url_hbx, json=data_hbx)
+        req3 = self.client.post(url_hbx, json=data_hbx)
 
-    @task(5)
-    def data_hbx(self):
-        print('单词详情')
-        url_dcx='/v1/book/words-list'
-        data_dcx = {
-            "uid": 2927,
-            "status": 3,
-            "size": 100,
-            "current": 1
-        }
-        req2 = self.client.post(url_dcx, json=data_dcx)
+
 
     def on_stop(self):
         # 清除方法，相当于teardown
