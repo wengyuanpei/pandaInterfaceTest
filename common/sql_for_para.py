@@ -2,6 +2,7 @@
 
 import pymysql
 from random import randint
+randdd=randint(0,20)
 
 def get_gift_bag_id():
 
@@ -93,7 +94,38 @@ def get_sn_num():
     return str(result[0][0])
 
 
+def get_tlj_uid():
+
+    # randdd=randint(0,5)
+    # print(randdd)
+    # 1. 连接数据库，
+    conn = pymysql.connect(
+        host='rm-bp1qz4b7e260219h5ho.mysql.rds.aliyuncs.com',
+        user='uis',
+        password='2RZshQ6Mc0eR',
+        db='uis',
+        charset='utf8',
+           # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
+    )
+    # ****python, 必须有一个游标对象， 用来给数据库发送sql语句， 并执行的.
+    # 2. 创建游标对象，
+    cur = conn.cursor()
+
+    # 4). **************************数据库查询*****************************
+    sqli = "select id from user;"
+    cur.execute(sqli)  # 默认不返回查询结果集， 返回数据记录数。
+    result=cur.fetchall()
+    print("SN—num：",result[randdd][0])
+
+    # 4. 关闭游标
+    cur.close()
+    # 5. 关闭连接
+    conn.close()
+    return str(result[0][0])
+
+
 # get_gift_bag_id()
 # get_white_list_id()
 # get_sn_num()
 
+get_tlj_uid()
