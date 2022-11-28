@@ -37,16 +37,17 @@ class tlj_pressure(TaskSet):
             else:
                 response.failure('Failed!')
 
-
-        #返回bookid 作为其他接口的参数
-        lenth = len(response.json()['data']['records'])
-        # print('lenth:', lenth)
-        raadom = random.randint(0, lenth-1)
-        # print('raadom:', raadom)
-        self.bookID = response.json()['data']['records'][raadom]['id']
-        # print('bookID:', self.bookID)
-        return  self.bookID
-
+        try:
+            #返回bookid 作为其他接口的参数
+            lenth = len(response.json()['data']['records'])
+            # print('lenth:', lenth)
+            raadom = random.randint(0, lenth-1)
+            # print('raadom:', raadom)
+            self.bookID = response.json()['data']['records'][raadom]['id']
+            # print('bookID:', self.bookID)
+            return  self.bookID
+        except:
+            return 2927
 
     # 绘本内容
     @task(3)
