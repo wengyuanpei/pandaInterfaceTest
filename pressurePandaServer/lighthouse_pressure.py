@@ -225,7 +225,7 @@ class light_house_sp(TaskSet):
 # 创建用户类
 class TLJ(FastHttpUser):
     wait_time = between(1,10)   #设置运行过程中的间隔时间，需要在locust中引入between
-    tasks = [light_house_hb]
+    tasks = [light_house_hb,]
     min_wait = 1000
     max_wait = 2000
 
