@@ -416,6 +416,13 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts=requests.post(url=url,headers=header,json=data)
                 print('S1字卡学习完成上报：',reqsts.text)
+                #获取当日推荐学习内容
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 1:
         S1_lesson = S1_lesson
         for i_S1_w in S1_words:
@@ -425,6 +432,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S1古诗学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 2:
         S1_video = S1_video
         for i_S1_w in S1_words:
@@ -434,6 +447,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S1视频学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
 
 
 for i in range(3):
@@ -448,6 +467,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts=requests.post(url=url,headers=header,json=data)
                 print('S2字卡学习完成上报：',reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 1:
         S2_lesson = S2_lesson
         for i_S1_w in S1_words:
@@ -457,6 +482,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S2古诗学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 2:
         S2_video = S2_video
         for i_S1_w in S1_words:
@@ -466,6 +497,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S2视频学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
 for i in range(3):
     print('这是S3学习')
     if i == 0:
@@ -478,6 +515,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts=requests.post(url=url,headers=header,json=data)
                 print('S3字卡学习完成上报：',reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 1:
         S3_lesson = S3_lesson
         for i_S1_w in S1_words:
@@ -487,6 +530,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S3古诗学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 2:
         S3_video = S3_video
         for i_S1_w in S1_words:
@@ -496,6 +545,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S3视频学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
 for i in range(3):
     print('这是S4学习')
     if i == 0:
@@ -508,6 +563,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts=requests.post(url=url,headers=header,json=data)
                 print('S4字卡学习完成上报：',reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 1:
         S4_lesson = S4_lesson
         for i_S1_w in S1_words:
@@ -517,6 +578,12 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S4古诗学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
     if i == 2:
         S4_video = S4_video
         for i_S1_w in S1_words:
@@ -526,3 +593,11 @@ for i in range(3):
                 print('请求参数：',data)
                 reqsts = requests.post(url=url, headers=header, json=data)
                 print('S4视频学习完成上报：', reqsts.text)
+                plan_url="https://hear.abctime.com/v1/study-cn/plan-info"
+                data_plan={"uid": 1561969032355688449}
+                plan_req=requests.post(url=plan_url,headers=header,json=data_plan)
+                plan_next_day = plan_req.json()["data"]["user_plan_id"]
+                if plan_next_day==str(i_S1_w):
+                    print('当日推荐计划与预期一致')
+                if plan_next_day!=str(i_S1_w):
+                    print('当日推荐计划与预期不一致')
