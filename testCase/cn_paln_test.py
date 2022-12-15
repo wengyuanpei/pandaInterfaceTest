@@ -404,6 +404,7 @@ S_plan_resorse=[1,2,3]
 url="https://hear.abctime.com/v1/study-cn/finish-plan"
 header={  "Content-Type": "application/json;charset=UTF-8"}
 # data={"event_id":3,"user_plan_id":2335,"uid":1561969032355688449}
+times=0
 for i in range(3):
     print('这是S1学习')
     if i == 0:
