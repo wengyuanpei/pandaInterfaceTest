@@ -886,26 +886,38 @@ S_plan_resorse=[1,2,3]
 url="https://hear.abctime.com/v1/study-cn/finish-plan"
 header={  "Content-Type": "application/json;charset=UTF-8"}
 # data={"event_id":3,"user_plan_id":2335,"uid":1561969032355688449}
-uid_18384243506=1562629060075102209  #
+uid_18384243506=1562629060075102209
+uid_173=1585185031592185857
 
 aa=1
-for i_S1_w,plan_id_s in list_plan_id,list_plan:
-    aa+=1
-    if aa == 7:
-        break
+
+con=1
+conr=1
+for i_S1_w,plan_id_s in zip(list_plan_id,list_plan):
+
+
     for i_S1_w_event_id in (1, 2, 3):
-        data = {"event_id": i_S1_w_event_id, "user_plan_id": i_S1_w, "uid": uid_18384243506}
+        data = {"event_id": i_S1_w_event_id, "user_plan_id": i_S1_w, "uid": uid_173}
         sleep(2)
         print('请求参数：', data)
         reqsts = requests.post(url=url, headers=header, json=data)
         print('S1字卡学习完成上报：', reqsts.text)
         # 获取当日推荐学习内容
         plan_url = "https://hear.abctime.com/v1/study-cn/plan-info"
-        data_plan = {"uid": uid_18384243506}
+        data_plan = {"uid": uid_173}
         plan_req = requests.post(url=plan_url, headers=header, json=data_plan)
         plan_next_day = plan_req.json()["data"]["user_plan_info"]["ch_character"][plan_id_s[0]]
         if plan_next_day == str(plan_id_s[1]):
             print('当日推荐计划与预期一致')
+            con+=1
         else:
-            print('当日推荐计划与预期一致,IDs:',plan_id_s[1])
+            print('当日推荐计划与预期不一致,ID:',plan_id_s[1],"plan_next_day:",plan_next_day)
+            conr +=1
 
+        if aa == 7:
+            aa += 1
+            break
+
+
+print("总计381，当日推荐计划与预期一致数量：",con)
+print("总计381，当日推荐计划与预期不一致数量：",conr)
