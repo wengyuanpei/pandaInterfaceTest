@@ -6,7 +6,6 @@ from pandaInterfaceTest.parameter.pdParameter import *
 
 
 
-
 @ddt
 class TestPandaInterface(unittest.TestCase):
     def setUp(self):

@@ -3,8 +3,8 @@
 这个地方封装的是接口的请求参数信息
 
 '''
-from pandaInterfaceTest.common.make_num_random import *
-from pandaInterfaceTest.common.sql_for_para import *
+from common.make_num_random import *
+from common.sql_for_para import *
 
 #运行之前需要抓令牌
 def auth():

@@ -127,5 +127,7 @@ def get_tlj_uid():
 # get_gift_bag_id()
 # get_white_list_id()
 # get_sn_num()
+if __name__=="__main__":
+    pass
 
-get_tlj_uid()
+    # get_tlj_uid()
