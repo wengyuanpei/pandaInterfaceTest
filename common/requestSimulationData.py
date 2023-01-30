@@ -4,6 +4,7 @@ from faker import *
 def user_agent():
     fc = Factory.create()
     user_agt=fc.user_agent()
+    print(user_agt)
     return user_agt
 
 def phone_num():
@@ -28,3 +29,4 @@ def cart_num():
 if __name__ == '__main__':
     manname_num()
     cart_num()
+    user_agent()
