@@ -4,14 +4,13 @@ from faker import *
 def user_agent():
     fc = Factory.create()
     user_agt=fc.user_agent()
-    # print(user_agt)
     return user_agt
 
 def phone_num():
     fake=Faker(locale='zh_CN') # 初始化，指定生成中文格式数据
     phone = fake.phone_number()
     return  phone
-    # print(phone)
+
 
 def manname_num():
     fake = Faker(locale='zh_CN')  # 初始化，指定生成中文格式数据
