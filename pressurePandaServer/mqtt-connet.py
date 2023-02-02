@@ -2,7 +2,7 @@ import random
 import time
 
 import paho.mqtt.client as mqtt
-from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
+from parameter.getMqttToken import getmqtttoeken
 
 
 

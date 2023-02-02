@@ -1,6 +1,6 @@
 import requests
 import time
-from pandaInterfaceTest.common.make_num_random import random_num
+from common.make_num_random import random_num
 
 
 

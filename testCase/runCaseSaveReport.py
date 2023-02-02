@@ -1,6 +1,6 @@
 import unittest
-from pandaInterfaceTest.testCase.interfacecase_for_web import *
-from pandaInterfaceTest.common.resultPath import *
+from testCase.interfacecase_for_web import *
+from common.resultPath import *
 from BeautifulReport import BeautifulReport as bf
 
 

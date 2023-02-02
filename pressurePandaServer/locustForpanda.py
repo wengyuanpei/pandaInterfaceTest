@@ -2,7 +2,7 @@ import time
 from locust import HttpUser, task, between, events,TaskSet,User
 import paho.mqtt.client as mqtt
 # from pandaInterfaceTest.common.make_num_random import random_num
-from pandaInterfaceTest.parameter.getMqttToken import getmqtttoeken
+from parameter.getMqttToken import getmqtttoeken
 
 
 
