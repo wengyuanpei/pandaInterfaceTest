@@ -93,7 +93,7 @@ def demo1():
 
 if __name__ == '__main__':
     print('主线程开始...')
-    threads = [Thread(target=demo1) for _ in range(60)]  # 这里是创建200个线程，放到一个列表里
+    threads = [Thread(target=demo1) for _ in range(40)]  # 这里是创建？个线程，放到一个列表里
     for t in threads:
         t.start()  # 启动线程
     for t in threads:
