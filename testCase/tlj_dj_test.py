@@ -18,7 +18,7 @@ a=0
 while True:
     auth_end = getauth()[0]   #令牌
     phone_end = getauth()[1]  #手机号
-    phnoe_num_list=phnoe_num_list.append(phone_end)
+    phnoe_num_list.append(phone_end)
     uid_end=int(getauth()[2])     #uid
     print("uid:",uid_end)
     print("auth_end:",auth_end)
@@ -102,7 +102,6 @@ while True:
     time.sleep(1)
     a+=1
 
-    print(a)
-    if a==5000:
-        print("英语顶级次数：",en_fd,"语文顶级次数：",cn_fn,"失败次数：",fails)
+    if a==50:
+        print("英语顶级次数：",en_fd,"语文顶级次数：",cn_fn,"失败次数：",fails,"注册手机号码：",phnoe_num_list)
         break
