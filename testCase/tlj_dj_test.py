@@ -11,9 +11,9 @@ url_reset_interface="https://hear-dev.abctime.com/v1/study/reset-level"
 url_firstset_interface="https://hear-dev.abctime.com/v1/study/set-level"
 
 phnoe_num_list=[]
-en_fd=0
-cn_fn=0
-fails=0
+en_fd=0  #英语定级次数统计
+cn_fn=0 #语文顶级次数统计
+fails=0 #失败次数统计
 a=0
 while True:
     auth_end = getauth()[0]   #令牌
