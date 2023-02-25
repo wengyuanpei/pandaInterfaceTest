@@ -10,11 +10,15 @@ url_reset_interface="https://hear-dev.abctime.com/v1/study/reset-level"
 
 url_firstset_interface="https://hear-dev.abctime.com/v1/study/set-level"
 
-
-a=1
+phnoe_num_list=[]
+en_fd=0
+cn_fn=0
+fails=0
+a=0
 while True:
     auth_end = getauth()[0]   #令牌
     phone_end = getauth()[1]  #手机号
+    phnoe_num_list=phnoe_num_list.append(phone_end)
     uid_end=int(getauth()[2])     #uid
     print("uid:",uid_end)
     print("auth_end:",auth_end)
@@ -28,8 +32,11 @@ while True:
     print("req_set:",req_set.text)
 
     if req_set.json()["code"]==str(200):
+        en_fd+=1
         print("英语定级成功")
+
     else:
+        fails+=1
         print("英语定级失败,req_set.status_code:",req_set.text)
     time.sleep(1)
 
@@ -43,8 +50,10 @@ while True:
     print("req_set_en.text:",req_set_en.text)
 
     if req_set_en.json()["code"]==str(200):
+        cn_fn+=1
         print("语文定级成功")
     else:
+        fails += 1
         print("语文定级失败,req_set.status_code:",req_set_en.text)
     time.sleep(1)
 
@@ -75,6 +84,7 @@ while True:
     if req_e.json()["code"]==str(200):
         print("英语重定级成功")
     else:
+        fails += 1
         print("英语定级失败,req_set.status_code:",req_e.text)
     time.sleep(1)
 
@@ -86,6 +96,7 @@ while True:
     if req_c.json()["code"]==str(200):
         print("语文重定级成功")
     else:
+        fails += 1
         print("语文定级失败,req_set.status_code:",req_c.text)
 
     time.sleep(1)
@@ -93,4 +104,5 @@ while True:
 
     print(a)
     if a==5000:
+        print("英语顶级次数：",en_fd,"语文顶级次数：",cn_fn,"失败次数：",fails)
         break
