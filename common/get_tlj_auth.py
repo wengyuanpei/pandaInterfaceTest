@@ -14,12 +14,14 @@ def getauth():
     data_log={"bundleId":"com.drpanda.aural.launcher","code":"888888","key":phone_num_end}
     header={"X-USER-API-VERSION":"3",}
     req_log=requests.post(url_log,json=data_log,headers=header)
-    auth=req_log.headers["Authorization"]
+    auth_beare_token=req_log.headers["Authorization"]
     uid=req_log.json()["data"]["id"]
+    tal_auth=req_log.headers['Tal-Token']
+    # print(tal_auth)
     # print("uid:",uid)
     # print(req_log.text)
     # print(auth)
-    return auth,phone_num_1,uid
+    return auth_beare_token,tal_auth,phone_num_1,uid
 
-# getauth()
+getauth()
 
