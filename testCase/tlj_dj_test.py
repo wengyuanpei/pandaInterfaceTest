@@ -18,11 +18,10 @@ a=0
 while True:
     auth_end = getauth()[0]   #令牌
     phone_end = getauth()[1]  #手机号
-    phnoe_num_list.append(phone_end)
-    uid_end=int(getauth()[2])     #uid
+    uid_end=int(getauth()[3])     #uid
     print("uid:",uid_end)
     print("auth_end:",auth_end)
-    # print("uid:",uid_end)
+    print("手机号:",phone_end)
 
     header = {"Authorization":auth_end}
     data_set_ch={"level":"S4","type":int(2),"week_plan":"1,2,3,4,5,6,7","uid":uid_end}
@@ -33,11 +32,12 @@ while True:
 
     if req_set.json()["code"]==str(200):
         en_fd+=1
-        print("英语定级成功")
+        print("语文定级成功")
 
     else:
         fails+=1
-        print("英语定级失败,req_set.status_code:",req_set.text)
+        print("语文定级失败,req_set.status_code:",req_set.text)
+        break
     time.sleep(1)
 
 
@@ -51,10 +51,11 @@ while True:
 
     if req_set_en.json()["code"]==str(200):
         cn_fn+=1
-        print("语文定级成功")
+        print("英语定级成功")
     else:
         fails += 1
-        print("语文定级失败,req_set.status_code:",req_set_en.text)
+        print("英语定级失败,req_set.status_code:",req_set_en.text)
+        break
     time.sleep(1)
 
     data_e = {
@@ -72,12 +73,6 @@ while True:
         "level": "S1"
     }
 
-    datalist = [
-        data_e, data_c
-    ]
-
-
-
     req_e=requests.post(url=url_reset_interface,json=data_e,headers=header)
     print("req_e.text:",req_e.text)
     time.sleep(1)
@@ -86,6 +81,7 @@ while True:
     else:
         fails += 1
         print("英语定级失败,req_set.status_code:",req_e.text)
+        break
     time.sleep(1)
 
 
@@ -98,10 +94,11 @@ while True:
     else:
         fails += 1
         print("语文定级失败,req_set.status_code:",req_c.text)
+        break
 
     time.sleep(1)
     a+=1
 
-    if a==50:
+    if a==5000:
         print("英语顶级次数：",en_fd,"语文顶级次数：",cn_fn,"失败次数：",fails,"注册手机号码：",phnoe_num_list)
         break

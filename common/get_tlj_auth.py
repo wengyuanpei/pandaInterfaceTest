@@ -20,7 +20,7 @@ def getauth():
     # print(tal_auth)
     # print("uid:",uid)
     # print(req_log.text)
-    # print(auth)
+
     return auth_beare_token,tal_auth,phone_num_1,uid
 
 getauth()
