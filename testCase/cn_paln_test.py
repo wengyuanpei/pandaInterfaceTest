@@ -15,36 +15,52 @@ en_url="https://hear.abctime.com/v1/study/finish-plan"
 
 
 #dev
-dev_eb_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
-dev_UID=1571801686167822338
-dev_header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzMxNjI0MTQ4NDU1NDI2Iiwic3ViIjoie1wiaWRcIjoxNjA3MzMxNjI0MTQ4NDU1NDI2LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTY5NjgxNzk3NH0.RaQ8Uw0Iz5e2iP7J7i_DM1jet2rzJOK2sRVQJWVvKFVmRGW0fdoxzXq2P_sHAermp2JgHPL5wPyrmfFex28VlA"}
+dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
+UID=1562629060075102209
+dev_header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNTYyNjI5MDYwMDc1MTAyMjA5Iiwic3ViIjoie1wiaWRcIjoxNTYyNjI5MDYwMDc1MTAyMjA5LFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTY5NzU5MjQyNn0.cxJqNLvfFPOpaMtnb7t7VLCLxshttK1-biTWQpiYPpLF1gi-GA-M6ekvMrsMLnLguEcouBfZlWCKUU1d5m4GyQ"}
 
 
+plan_info_list_erro=[]
 
-
-user_plan_id=1181474
-while user_plan_id <= 1181474:
+user_plan_id=16576879
+while user_plan_id <= 16576987+1184:
 # while user_plan_id <= 15416864:
 
+
+#获取计划信息
+    plan_info="https://hear.abctime.com/v1/study/plan-info"
+    plan_info_data={"next":0,"uid":UID}
+    requestt_plan_info=requests.post(url=plan_info,json=plan_info_data,headers=dev_header)
+    if requestt_plan_info.json()['code']==str(300):
+        print("ERRO异常计划id:",user_plan_id)
+        plan_info_list_erro.append(user_plan_id)
+    else:
+        print("计划正常！",requestt_plan_info.json())
+
+    sleep(0.5)
+
     data_1 = {
-                  "uid": dev_UID,
+                  "uid": UID,
                   "user_plan_id": user_plan_id,
                   "event_id": 1
                 }
     data_2 = {
-                  "uid": dev_UID,
+                  "uid": UID,
                   "user_plan_id": user_plan_id,
                   "event_id": 2
                 }
 
     print('请求参数1：', data_1,'请求参数2：', data_2)
 
-    reqsts = requests.post(url=dev_eb_url, headers=dev_header, json=data_1)
+    reqsts = requests.post(url=en_url, headers=dev_header, json=data_1)
     print('英语学习完成上报1返回：', reqsts.text)
     sleep(0.5)
-    reqsts = requests.post(url=dev_eb_url, headers=dev_header, json=data_2)
+    reqsts = requests.post(url=en_url, headers=dev_header, json=data_2)
     print('英语学习完成上报2返回：', reqsts.text)
     sleep(0.5)
+
+
+
     user_plan_id += 1
 
-
+print(plan_info_list_erro)
