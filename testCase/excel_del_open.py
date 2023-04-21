@@ -26,7 +26,7 @@ for i in cell:
         json_data=json.loads(j.value)
         for ii in json_data["audio_book_ids"]:
             if ii>2950:
-                print("第",day,"天",ii)
+                print("第",day,"天，错误id",ii)
 
 
 
