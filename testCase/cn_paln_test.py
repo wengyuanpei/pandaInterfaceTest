@@ -21,9 +21,10 @@ dev_header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNTYyNjI5MDY
 
 
 plan_info_list_erro=[]
+day=1
 
-user_plan_id=16576879
-while user_plan_id <= 16576987+1184:
+user_plan_id=16582696
+while user_plan_id <= 16582696:
 # while user_plan_id <= 15416864:
 
 
@@ -32,12 +33,14 @@ while user_plan_id <= 16576987+1184:
     plan_info_data={"next":0,"uid":UID}
     requestt_plan_info=requests.post(url=plan_info,json=plan_info_data,headers=dev_header)
     if requestt_plan_info.json()['code']==str(300):
-        print("ERRO异常计划id:",user_plan_id)
+        print("ERRO异常计划id:",user_plan_id,)
+        print("ERRO",requestt_plan_info.json())
+        print(day)
         plan_info_list_erro.append(user_plan_id)
     else:
-        print("计划正常！",requestt_plan_info.json())
-
-    sleep(0.5)
+        print("计划正常！",requestt_plan_info.json()['code'],user_plan_id)
+        print(day)
+    # sleep(0.5)
 
     data_1 = {
                   "uid": UID,
@@ -50,17 +53,17 @@ while user_plan_id <= 16576987+1184:
                   "event_id": 2
                 }
 
-    print('请求参数1：', data_1,'请求参数2：', data_2)
+    # print('请求参数1：', data_1,'请求参数2：', data_2)
 
     reqsts = requests.post(url=en_url, headers=dev_header, json=data_1)
-    print('英语学习完成上报1返回：', reqsts.text)
-    sleep(0.5)
+    # print('英语学习完成上报1返回：', reqsts.text)
+    # sleep(0.5)
     reqsts = requests.post(url=en_url, headers=dev_header, json=data_2)
-    print('英语学习完成上报2返回：', reqsts.text)
-    sleep(0.5)
+    # print('英语学习完成上报2返回：', reqsts.text)
+    # sleep(0.5)
 
 
 
     user_plan_id += 1
-
+    day+=1
 print(plan_info_list_erro)
