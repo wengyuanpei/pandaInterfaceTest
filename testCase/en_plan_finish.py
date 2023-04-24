@@ -66,3 +66,4 @@ while day <= 1055:
 
     day+=1
 print(plan_info_list_erro)
+
