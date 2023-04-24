@@ -8,12 +8,12 @@ import openpyxl
 path = r"C:\Users\zhang\Desktop"
 os.chdir(path)  # 修改工作路径
 
-workbook = openpyxl.load_workbook('dev计划0424.xlsx')  # 返回一个workbook数据类型的值
+workbook = openpyxl.load_workbook('新计划绘本模板数据.xlsx')  # 返回一个workbook数据类型的值
 sheet = workbook.active  # 获取活动表
 # print('当前活动表是：')
 # print(sheet)
 
-cell = sheet['E2:E1055']  # 获取A1到A5的数据
+cell = sheet['E2:E1056']  # 获取A1到A5的数据
 
 # print(cell)
 
@@ -26,6 +26,7 @@ for i in cell:
         json_data=json.loads(j.value)
         for ii in json_data["audio_book_ids"]:
             if ii>2956:
+            # if ii>2006:
                 print("第",day,"天，错误id",ii)
 
 

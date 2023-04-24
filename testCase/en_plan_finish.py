@@ -14,9 +14,9 @@ header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNDAyOTA4MDY
 
 plan_info_list_erro=[]
 
-day=1
+day=3
 
-user_plan_id=1186410
+user_plan_id=1186555
 while day <= 1055:
 
     data_1 = {
@@ -44,6 +44,7 @@ while day <= 1055:
 
     plan_info_data = {"next": 1, "uid": UID}
     requestt_plan_info = requests.post(url=plan_info, json=plan_info_data, headers=header_dev)
+    print(requestt_plan_info.json())
     try:
         user_plan_id = requestt_plan_info.json()['data']['user_plan_id']
         if requestt_plan_info.json()['code'] == str(300) or requestt_plan_info.json()['data']['user_plan_id']==0 or requestt_plan_info.json()['data']['user_plan_info']=="None":
@@ -58,6 +59,7 @@ while day <= 1055:
         else:
             print("计划正常！code:", requestt_plan_info.json()['code'], '计划ID', requestt_plan_info.json()['data']['user_plan_id'])
             print('第', day, '天')
+            print( requestt_plan_info.json())
         #处理ID异常
 
     except:
