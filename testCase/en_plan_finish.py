@@ -4,19 +4,19 @@ import requests
 
 # 英语部分
 
-UID=1562629060075102209
+UID=1402908065974005762
 
 
 #dev
 dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
 
-header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTkxMzI1NzEwOTg3MzQ1OTIyIiwic3ViIjoie1wiaWRcIjoxMTkxMzI1NzEwOTg3MzQ1OTIyLFwibW9iaWxlXCI6XCIrODYxODg4ODg4ODg4OFwiLFwidXNlcm5hbWVcIjpcIkFha2FzaCDpmL_ljaHku4BcIn0iLCJleHAiOjE2OTc0NDU1ODl9.felcnqDtixPGVNaKNFDBGmOByUGGJI390GOYqsc_uwWzy0rq-ggf0XDB4-eIwoDbZXvibTENielLtM7kE7OJIQ"}
+header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNDAyOTA4MDY1OTc0MDA1NzYyIiwic3ViIjoie1wiaWRcIjoxNDAyOTA4MDY1OTc0MDA1NzYyLFwibW9iaWxlXCI6XCIrODYxNTg4ODg4ODg4OFwifSIsImV4cCI6MTY5Nzg3OTA1Mn0.p65JHIexy4KgysO2QDPZpUFlrdnulNHzXtivwSGDPI2Dp3qSVPvZQddBC8SG02XrrILhUtdNDQr2YDSbhyGj9A"}
 
 plan_info_list_erro=[]
 
 day=1
 
-user_plan_id=16770335
+user_plan_id=1186410
 while day <= 1055:
 
     data_1 = {

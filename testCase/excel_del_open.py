@@ -8,12 +8,12 @@ import openpyxl
 path = r"C:\Users\zhang\Desktop"
 os.chdir(path)  # 修改工作路径
 
-workbook = openpyxl.load_workbook('新计划绘本模板数据.xlsx')  # 返回一个workbook数据类型的值
+workbook = openpyxl.load_workbook('dev计划0424.xlsx')  # 返回一个workbook数据类型的值
 sheet = workbook.active  # 获取活动表
 # print('当前活动表是：')
 # print(sheet)
 
-cell = sheet['E2:E1056']  # 获取A1到A5的数据
+cell = sheet['E2:E1055']  # 获取A1到A5的数据
 
 # print(cell)
 
