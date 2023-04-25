@@ -28,7 +28,7 @@ data_en={
   "book_id": book_id
 }
 
-# 打印A1到A5的数据
+
 for i in cell:
     day+=1
     for j in i:
@@ -37,7 +37,7 @@ for i in cell:
             book_id=ii
             requestss=requests.post(url=url,json=data_en,headers=header_dev)
             try:
-                if requestss.json()['code'] == str(300) or requestss.json()['data']=="Null" or requestss.json()['data']=="Null"or requestss.json()['data']['id']<=1:
+                if requestss.json()['code'] == str(300) or requestss.json()['data']=="Null" or requestss.json()['message']=="无数据！"or requestss.json()['data']['id']<=1:
                     print("错误绘本，id：",ii)
                     list_data.append(ii)
             except:
@@ -45,7 +45,7 @@ for i in cell:
             if ii>2956:
             # if ii>2006:
                 print("第",day,"天，错误id",ii)
-print(list_data)
+print("异常绘本ID",list_data)
 
 
 

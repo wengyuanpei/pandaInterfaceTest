@@ -14,7 +14,7 @@ header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNDAyOTA4MDY
 
 plan_info_list_erro=[]
 
-day=3
+day=2
 
 user_plan_id=1187616
 while day <= 1055:
