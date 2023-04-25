@@ -8,7 +8,7 @@ import requests
 path = r"C:\Users\zhang\Desktop"
 os.chdir(path)  # 修改工作路径
 
-workbook = openpyxl.load_workbook('新计划绘本模板数据.xlsx')  # 返回一个workbook数据类型的值
+workbook = openpyxl.load_workbook('用户计划模板查询.xlsx')  # 返回一个workbook数据类型的值
 sheet = workbook.active  # 获取活动表
 # print('当前活动表是：')
 # print(sheet)
@@ -39,12 +39,13 @@ for i in cell:
             try:
                 if requestss.json()['code'] == str(300) or requestss.json()['data']=="Null" or requestss.json()['data']=="Null"or requestss.json()['data']['id']<=1:
                     print("错误绘本，id：",ii)
+                    list_data.append(ii)
             except:
                 print("绘本正常，id",ii)
             if ii>2956:
             # if ii>2006:
                 print("第",day,"天，错误id",ii)
-
+print(list_data)
 
 
 
