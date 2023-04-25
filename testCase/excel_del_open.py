@@ -3,6 +3,7 @@ import json
 import os
 import openpyxl
 import requests
+from time import sleep
 
 
 path = r"C:\Users\zhang\Desktop"
@@ -35,6 +36,7 @@ for i in cell:
         json_data=json.loads(j.value)
         for ii in json_data["audio_book_ids"]:
             book_id=ii
+            sleep(0.5)
             requestss=requests.post(url=url,json=data_en,headers=header_dev)
             try:
                 if requestss.json()['code'] == str(300) or requestss.json()['data']=="Null" or requestss.json()['message']=="无数据！"or requestss.json()['data']['id']<=1:
