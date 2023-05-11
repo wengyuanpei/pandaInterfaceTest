@@ -16,7 +16,7 @@ post_data={"resource_id":24,"uid":uid}
 
 #获取音频信息
 requestss=requests.post(url=dev_get_video_id_url,json=post_data,headers=header)
-print(requestss.json())
+# print(requestss.json())
 
 # print(requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio'])
 l1_video_id_list=requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio']
