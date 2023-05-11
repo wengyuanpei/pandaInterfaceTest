@@ -18,7 +18,7 @@ post_data={"resource_id":24,"uid":uid}
 requestss=requests.post(url=dev_get_video_id_url,json=post_data,headers=header)
 # print(requestss.json())
 
-print(requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio'])
+# print(requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio'])
 l1_video_id_list=requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio']
 # print("l1_video_id_list",requestss.json()["data"]['lesson_list'][1]['medias_obj']['audio'])
 l2_video_id_list=requestss.json()["data"]['lesson_list'][1]['medias_obj']['audio']
@@ -71,7 +71,7 @@ for L1video_id in l1_video_id_list:
         req_sub_2 = requests.get(secondaryFileUrl_video)
         # 计算行数
         txt_hs2=HS_methd(req_sub_2)
-        print('音频中文字幕', req_sub_2.text, "行数：", req_sub_2)
+        print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
         try:
             if txt_hs2==txt_hs1:
                 print(L1video_id,"音频通过")
