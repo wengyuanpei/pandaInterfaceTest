@@ -5,11 +5,10 @@ import requests
 from time import sleep
 
 # 英语部分
-uid_173=1640976882862985217
-xie=1584826171582775298
+
 
 UID=1640976882862985217
-header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTY5Nzk3NjI1OH0.PHVbFL-xzc2os7DL9HpVK1c9gwECU55G7Dx6QJM4mE93h-SfqxzYmjIpUQKAW0tJeMSUklxW4ALRZT0h3i6yKA"}
+header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTY5OTE0Nzk5NX0.FZsrcKVuT2fuhgUOI8dQRTrnnMAgUW1uviNDs5jf8LzsO9tv1g7MBxBm9fXNZpKRLuMKnncFf98uPDoTtWe_Sg"}
 en_url="https://hear.abctime.com/v1/study/finish-plan"
 
 
@@ -21,10 +20,10 @@ header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTkxMzI1NzE
 
 
 plan_info_list_erro=[]
-day=293
+day=1
 
-user_plan_id=17054705
-while user_plan_id <= 17054710:
+user_plan_id=19029081
+while user_plan_id <= 19029081+52:
 # while user_plan_id <= 15416864:
 
 
