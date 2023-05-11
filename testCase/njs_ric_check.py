@@ -31,6 +31,7 @@ l5_video_id_list=requestss.json()["data"]['lesson_list'][4]['medias_obj']['audio
 # print("l5_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
 l6_video_id_list=requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio']
 # print("l6_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
+list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_video_id_list,l6_video_id_list]
 
 def HS_methd(req_sub_2):
     #传入请求统计行数（去除空行）
@@ -45,49 +46,50 @@ error_list=[]
 #播放地址空
 play_list_error=[]
 #遍历音频
-for L1video_id in l1_video_id_list:
+for list_id in list:
+    for L1video_id in list_id:
 
-    dev_get_video_info1=dev_get_video_info+str(L1video_id)
+        dev_get_video_info1=dev_get_video_info+str(L1video_id)
 
-    req_get_video_info=requests.get(url=dev_get_video_info1,headers=header)
+        req_get_video_info=requests.get(url=dev_get_video_info1,headers=header)
 
-    # print("音频id:",L1video_id,'音频地址',req_get_video_info.json()['data']['urls']['playUrls'][0]['playUrl'])
-    #音频地址
-    try:
-        play_url=req_get_video_info.json()['data']['urls']['playUrls'][0]['playUrl']
-        if play_url=="":
-            play_list_error.append(L1video_id)
-            print('播放地址空',L1video_id)
-
-
-
-        # 音频英文字幕
-        subtitleFileUrl_video=req_get_video_info.json()['data']['subtitleFileUrl']
-        req_sub_1=requests.get(subtitleFileUrl_video)
-        # print('音频英文字幕',req_sub_1)
-        #计算行数
-        txt_hs1 = HS_methd(req_sub_1)
-        print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
+        # print("音频id:",L1video_id,'音频地址',req_get_video_info.json()['data']['urls']['playUrls'][0]['playUrl'])
+        #音频地址
+        try:
+            play_url=req_get_video_info.json()['data']['urls']['playUrls'][0]['playUrl']
+            if play_url=="":
+                play_list_error.append(L1video_id)
+                print('播放地址空',L1video_id)
 
 
 
-        #音频中文字幕
-        secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
-        req_sub_2 = requests.get(secondaryFileUrl_video)
-        # 计算行数
-        txt_hs2=HS_methd(req_sub_2)
-        print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
-
-        if txt_hs2==txt_hs1:
-            print(L1video_id,"音频通过")
-        else:
-            error_list.append(L1video_id)
-            print(L1video_id, "音频不通过")
+            # 音频英文字幕
+            subtitleFileUrl_video=req_get_video_info.json()['data']['subtitleFileUrl']
+            req_sub_1=requests.get(subtitleFileUrl_video)
+            # print('音频英文字幕',req_sub_1)
+            #计算行数
+            txt_hs1 = HS_methd(req_sub_1)
+            print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
 
 
-    except:
-        wrong_list.append(L1video_id)
-        print(L1video_id,"id请求错误需要检查")
+
+            #音频中文字幕
+            secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
+            req_sub_2 = requests.get(secondaryFileUrl_video)
+            # 计算行数
+            txt_hs2=HS_methd(req_sub_2)
+            print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
+
+            if txt_hs2==txt_hs1:
+                print(L1video_id,"音频通过")
+            else:
+                error_list.append(L1video_id)
+                print(L1video_id, "音频不通过")
+
+
+        except:
+            wrong_list.append(L1video_id)
+            print(L1video_id,"id请求错误需要检查")
 print('id错误list',wrong_list)
 print('字幕错误错误list',error_list)
 print('播放地址空',play_list_error)
