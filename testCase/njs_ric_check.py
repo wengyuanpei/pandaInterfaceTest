@@ -16,7 +16,7 @@ post_data={"resource_id":24,"uid":uid}
 
 #获取音频信息
 requestss=requests.post(url=dev_get_video_id_url,json=post_data,headers=header)
-# print(requestss.json())
+print(requestss.json())
 
 # print(requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio'])
 l1_video_id_list=requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio']
@@ -42,6 +42,8 @@ def HS_methd(req_sub_2):
 wrong_list=[]
 #文件错误list
 error_list=[]
+#播放地址空
+play_list_error=[]
 #遍历音频
 for L1video_id in l1_video_id_list:
 
@@ -53,6 +55,9 @@ for L1video_id in l1_video_id_list:
     #音频地址
     try:
         play_url=req_get_video_info.json()['data']['urls']['playUrls'][0]['playUrl']
+        if play_url=="":
+            play_list_error.append(L1video_id)
+            print('播放地址空',L1video_id)
 
 
 
@@ -72,18 +77,20 @@ for L1video_id in l1_video_id_list:
         # 计算行数
         txt_hs2=HS_methd(req_sub_2)
         print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
-        try:
-            if txt_hs2==txt_hs1:
-                print(L1video_id,"音频通过")
-        except:
+
+        if txt_hs2==txt_hs1:
+            print(L1video_id,"音频通过")
+        else:
             error_list.append(L1video_id)
             print(L1video_id, "音频不通过")
+
+
     except:
         wrong_list.append(L1video_id)
         print(L1video_id,"id请求错误需要检查")
 print('id错误list',wrong_list)
 print('字幕错误错误list',error_list)
-
+print('播放地址空',play_list_error)
 
 
 
