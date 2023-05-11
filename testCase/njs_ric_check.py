@@ -17,20 +17,20 @@ post_data={"resource_id":24,"uid":uid}
 #获取音频信息
 requestss=requests.post(url=dev_get_video_id_url,json=post_data,headers=header)
 print(requestss.json())
+
 print(requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio'])
 l1_video_id_list=requestss.json()["data"]['lesson_list'][0]['medias_obj']['audio']
-print(requestss.json()["data"]['lesson_list'][1]['medias_obj']['audio'])
+print("l1_video_id_list",requestss.json()["data"]['lesson_list'][1]['medias_obj']['audio'])
 l2_video_id_list=requestss.json()["data"]['lesson_list'][1]['medias_obj']['audio']
-print(requestss.json()["data"]['lesson_list'][2]['medias_obj']['audio'])
+print("l2_video_id_list",requestss.json()["data"]['lesson_list'][2]['medias_obj']['audio'])
 l3_video_id_list=requestss.json()["data"]['lesson_list'][2]['medias_obj']['audio']
-print(requestss.json()["data"]['lesson_list'][3]['medias_obj']['audio'])
+print("l3_video_id_list",requestss.json()["data"]['lesson_list'][3]['medias_obj']['audio'])
 l4_video_id_list=requestss.json()["data"]['lesson_list'][3]['medias_obj']['audio']
-print(requestss.json()["data"]['lesson_list'][4]['medias_obj']['audio'])
+print("l4_video_id_list",requestss.json()["data"]['lesson_list'][4]['medias_obj']['audio'])
 l5_video_id_list=requestss.json()["data"]['lesson_list'][4]['medias_obj']['audio']
-
-print(requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
+print("l5_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
 l6_video_id_list=requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio']
-
+print("l6_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
 #
 # def HS_methd(req_sub_2):
 #     #传入请求统计行数（去除空行）
