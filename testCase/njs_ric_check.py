@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from time import sleep
 
@@ -35,8 +36,8 @@ list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_vid
 
 def HS_methd(req_sub_2):
     #传入请求统计行数（去除空行）
-    txt = req_sub_2.text.splitlines(True)
-    HS = len([l for l in txt if l.strip(' \n') != ''])
+    txt = req_sub_2.text.splitlines(True).strip()
+    HS = len([l for l in txt if l.strip(' \n') != '' and l.strip('\n') != '' and l.strip('\n ') != ''])
     return HS
 
 #id错误list
@@ -69,6 +70,8 @@ for list_id in list:
             # print('音频英文字幕',req_sub_1)
             #计算行数
             txt_hs1 = HS_methd(req_sub_1)
+
+            # prob_res.encoding = 'gb2312'
             print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
 
 
