@@ -40,6 +40,7 @@ def HS_methd(req_sub_2):
     HS = len([l for l in txt if l.strip(' \n') != '' and l.strip('\n') != '' and l.strip('\n ') != ''])
     return HS
 
+
 #id错误list
 wrong_list=[]
 #文件错误list
