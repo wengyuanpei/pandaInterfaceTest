@@ -67,5 +67,5 @@ while day <= 1055:
 
 
     day+=1
-print(plan_info_list_erro)
+print("异常英语计划ID列表：",plan_info_list_erro)
 
