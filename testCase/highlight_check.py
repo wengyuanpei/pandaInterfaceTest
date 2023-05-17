@@ -10,7 +10,7 @@ url='https://hear-pre.abctime.com/v1/highlights/level'
 
 
 level_list=[0,1,2,3,4,5,6]
-type_list=[1,2]
+type_list=[2]
 # 绘本总数查看
 book_count=[]
 for level in level_list:
@@ -27,6 +27,24 @@ for level in level_list:
         print('level:',level,'type:',type,'count:',len(book_id))
 
 # print(book_count)
+cover_null=[]
+cover_null_id=[]
+#获取没有封面的id
+for level in level_list:
+    data = {"level": level, "type": 2, "uid": UID}
+    rep_List1 = requests.post(url=url, json=data, headers=header)
+    rep_List2 = rep_List1.json()['data']['book_list']
+    for id in range(0, len(rep_List2) - 1):
+        idcoverbooknull = rep_List2[id]['classify_id']
+        idcoverbooknull_name = rep_List2[id]['name']
+        if rep_List2[id]['cover']=='':
+            print(rep_List2[id])
+            null_data=str(idcoverbooknull)+':'+str(idcoverbooknull_name)
+            cover_null.append(null_data)
+            cover_null_id.append(idcoverbooknull)
+print('封面为空classify_id>>',cover_null)
+print('封面为空classify_id>>',cover_null_id)
+
 
 
 
