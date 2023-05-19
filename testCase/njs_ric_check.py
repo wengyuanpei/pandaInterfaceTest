@@ -32,12 +32,18 @@ l5_video_id_list=requestss.json()["data"]['lesson_list'][4]['medias_obj']['audio
 # print("l5_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
 l6_video_id_list=requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio']
 # print("l6_video_id_list",requestss.json()["data"]['lesson_list'][5]['medias_obj']['audio'])
-list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_video_id_list,l6_video_id_list]
+l7_video_id_list=requestss.json()["data"]['lesson_list'][6]['medias_obj']['audio']
+l8_video_id_list=requestss.json()["data"]['lesson_list'][7]['medias_obj']['audio']
+l9_video_id_list=requestss.json()["data"]['lesson_list'][8]['medias_obj']['audio']
+
+list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_video_id_list,l6_video_id_list,l7_video_id_list,l8_video_id_list,l9_video_id_list]
 
 def HS_methd(req_sub_2):
     #传入请求统计行数（去除空行）
+
     txt = req_sub_2.text.splitlines(True)
-    HS = len([l for l in txt if l.strip(' \n') != '' and l.strip('\n') != '' and l.strip('\n ') != ''])
+    # txt=txt.encode('utf-8')
+    HS = len([l for l in txt if l.strip(' \n') != '' or l.strip('\n') != '' or l.strip('\n ') != ''])
     return HS
 
 
@@ -47,6 +53,9 @@ wrong_list=[]
 error_list=[]
 #播放地址空
 play_list_error=[]
+
+#error
+error_ric=[]
 #遍历音频
 for list_id in list:
     for L1video_id in list_id:
@@ -71,7 +80,6 @@ for list_id in list:
             # print('音频英文字幕',req_sub_1)
             #计算行数
             txt_hs1 = HS_methd(req_sub_1)
-
             # prob_res.encoding = 'gb2312'
             print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
 
@@ -80,6 +88,7 @@ for list_id in list:
             #音频中文字幕
             secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
             req_sub_2 = requests.get(secondaryFileUrl_video)
+
             # 计算行数
             txt_hs2=HS_methd(req_sub_2)
             print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
@@ -88,6 +97,8 @@ for list_id in list:
                 print(L1video_id,"音频通过")
             else:
                 error_list.append(L1video_id)
+                errorzm=str(req_sub_2.text)+":"+str(req_sub_1.text)
+                error_ric.append(errorzm)
                 print(L1video_id, "音频不通过")
 
 
@@ -97,7 +108,7 @@ for list_id in list:
 print('id错误list',wrong_list)
 print('字幕错误错误list',error_list)
 print('播放地址空',play_list_error)
-
+# print("错误字幕：",error_ric)
 
 
 
