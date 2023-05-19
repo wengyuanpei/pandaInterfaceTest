@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import chardet
 import requests
 from time import sleep
 
@@ -40,11 +41,14 @@ list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_vid
 
 def HS_methd(req_sub_2):
     #传入请求统计行数（去除空行）
+    # txt1=req_sub_2.text.encode('gbk')
+    txt = req_sub_2.text.encode('gbk').decode('gbk').splitlines(True)
 
-    txt = req_sub_2.text.splitlines(True)
-    # txt=txt.encode('utf-8')
     HS = len([l for l in txt if l.strip(' \n') != '' or l.strip('\n') != '' or l.strip('\n ') != ''])
     return HS
+def emcode_check(req):
+    encodde=chardet.detect(req.text)
+    print("返回的字幕的编码格式》》》》》》》》》",encodde)
 
 
 #id错误list
@@ -71,35 +75,37 @@ for list_id in list:
             if play_url=="":
                 play_list_error.append(L1video_id)
                 print('播放地址空',L1video_id)
-
-
-
-            # 音频英文字幕
-            subtitleFileUrl_video=req_get_video_info.json()['data']['subtitleFileUrl']
-            req_sub_1=requests.get(subtitleFileUrl_video)
-            # print('音频英文字幕',req_sub_1)
-            #计算行数
-            txt_hs1 = HS_methd(req_sub_1)
-            # prob_res.encoding = 'gb2312'
-            print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
-
-
-
-            #音频中文字幕
-            secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
-            req_sub_2 = requests.get(secondaryFileUrl_video)
-
-            # 计算行数
-            txt_hs2=HS_methd(req_sub_2)
-            print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
-
-            if txt_hs2==txt_hs1:
-                print(L1video_id,"音频通过")
             else:
-                error_list.append(L1video_id)
-                errorzm=str(req_sub_2.text)+":"+str(req_sub_1.text)
-                error_ric.append(errorzm)
-                print(L1video_id, "音频不通过")
+                # 音频英文字幕
+                subtitleFileUrl_video=req_get_video_info.json()['data']['subtitleFileUrl']
+                req_sub_1=requests.get(subtitleFileUrl_video)
+                # print('音频英文字幕',req_sub_1)
+                #计算行数
+                txt_hs1 = HS_methd(req_sub_1)
+                # prob_res.encoding = 'gb2312'
+                print('音频英文字幕', req_sub_1.text,"行数：",txt_hs1)
+
+
+
+                #音频中文字幕
+                secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
+                req_sub_2 = requests.get(secondaryFileUrl_video)
+
+
+                # 计算行数
+                txt_hs2=HS_methd(req_sub_2)
+                print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
+
+                # emcode_check(req_sub_2)
+
+
+                if txt_hs2==txt_hs1:
+                    print(L1video_id,"音频通过")
+                else:
+                    error_list.append(L1video_id)
+                    errorzm=str(req_sub_2.text)+":"+str(req_sub_1.text)
+                    error_ric.append(errorzm)
+                    print(L1video_id, "音频不通过")
 
 
         except:
