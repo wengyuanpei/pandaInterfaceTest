@@ -90,8 +90,6 @@ for list_id in list:
                 #音频中文字幕
                 secondaryFileUrl_video=req_get_video_info.json()['data']['secondaryFileUrl']
                 req_sub_2 = requests.get(secondaryFileUrl_video)
-
-
                 # 计算行数
                 txt_hs2=HS_methd(req_sub_2)
                 print('音频中文字幕', req_sub_2.text, "行数：", txt_hs2)
@@ -116,8 +114,13 @@ print('字幕错误错误list',error_list)
 print('播放地址空',play_list_error)
 # print("错误字幕：",error_ric)
 
-
-
+def listcheck(list):
+    list1 = []
+    for L1video_id in list:
+        if len(str(L1video_id)) > 4:
+            list1.append(L1video_id)
+            print('需要检查的id',list1)
+listcheck(wrong_list)
 
 
 
