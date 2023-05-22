@@ -46,9 +46,9 @@ def HS_methd(req_sub_2):
 
     HS = len([l for l in txt if l.strip(' \n') != '' or l.strip('\n') != '' or l.strip('\n ') != ''])
     return HS
-def emcode_check(req):
-    encodde=chardet.detect(req.text)
-    print("返回的字幕的编码格式》》》》》》》》》",encodde)
+# def emcode_check(req):
+#     encodde=chardet.detect(req.text)
+#     print("返回的字幕的编码格式》》》》》》》》》",encodde)
 
 
 #id错误list
@@ -101,8 +101,8 @@ for list_id in list:
                     print(L1video_id,"音频通过")
                 else:
                     error_list.append(L1video_id)
-                    errorzm=str(req_sub_2.text)+":"+str(req_sub_1.text)
-                    error_ric.append(errorzm)
+                    # errorzm=str(req_sub_2.text)+":"+str(req_sub_1.text)
+                    # error_ric.append(errorzm)
                     print(L1video_id, "音频不通过")
 
 
