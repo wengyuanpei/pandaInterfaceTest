@@ -70,3 +70,5 @@ for i in range(len(charslist_req.json()['data']['char_list'])):
         req4 = requests.post(url=pre_record_add, headers=header, json=data_write)
         print(req4.json())
         sleep(1)
+
+
