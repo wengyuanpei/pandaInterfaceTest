@@ -1,12 +1,8 @@
 
-
-#语文定级计划上报接口
 import requests
 from time import sleep
 
 # 英语部分
-
-
 UID=1640976882862985217
 header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTY5OTE0Nzk5NX0.FZsrcKVuT2fuhgUOI8dQRTrnnMAgUW1uviNDs5jf8LzsO9tv1g7MBxBm9fXNZpKRLuMKnncFf98uPDoTtWe_Sg"}
 en_url="https://hear.abctime.com/v1/study/finish-plan"
