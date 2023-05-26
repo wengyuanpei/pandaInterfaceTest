@@ -17,17 +17,17 @@ pre_record_add=" https://hear-pre.abctime.com/v1/record/add"
 
 
 #玩儿上报信息
-data_play={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":20,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":1640976882862985217}
+data_play={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":20,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":Uid_int}
 
 #学上报信息
-data_study={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":19,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":1640976882862985217}
+data_study={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":19,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":Uid_int}
 
 
 #读上报信息
-data_read={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":22,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":1640976882862985217}
+data_read={"category_id":10,"content":"","content_id":3,"cost_time":0,"event_id":22,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":0,"uid":Uid_int}
 
 #上报写信息
-data_write={"category_id":10,"content":"{\"video_urls\":[\"https://oaudios.abctime.com/tlj_oss_audio_1640976882862985217_1685010763502.wav\"]}","content_id":3,"cost_time":0,"event_id":21,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":100,"uid":1640976882862985217}
+data_write={"category_id":10,"content":"{\"video_urls\":[\"https://oaudios.abctime.com/tlj_oss_audio_1640976882862985217_1685010763502.wav\"]}","content_id":3,"cost_time":0,"event_id":21,"extra":"","is_init":1,"play_place":0,"proportion":0,"score":100,"uid":Uid_int}
 
 
 
@@ -42,21 +42,21 @@ for i in range(len(charslist_req.json()['data']['char_list'])):
 
         # 玩儿上报信息
         data_play = {"category_id": 10, "content": "", "content_id": charid, "cost_time": 0, "event_id": 20, "extra": "",
-                     "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": 1640976882862985217}
+                     "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": Uid_int}
 
         # 学上报信息
         data_study = {"category_id": 10, "content": "", "content_id": charid, "cost_time": 0, "event_id": 19, "extra": "",
-                      "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": 1640976882862985217}
+                      "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": Uid_int}
 
         # 读上报信息
         data_read = {"category_id": 10, "content": "", "content_id": charid, "cost_time": 0, "event_id": 22, "extra": "",
-                     "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": 1640976882862985217}
+                     "is_init": 1, "play_place": 0, "proportion": 0, "score": 0, "uid": Uid_int}
 
         # 上报写信息
         data_write = {"category_id": 10,
                       "content": "{\"video_urls\":[\"https://oaudios.abctime.com/tlj_oss_audio_1640976882862985217_1685010763502.wav\"]}",
                       "content_id": charid, "cost_time": 0, "event_id": 21, "extra": "", "is_init": 1, "play_place": 0,
-                      "proportion": 0, "score": 100, "uid": 1640976882862985217}
+                      "proportion": 0, "score": 100, "uid": Uid_int}
 
         req1=requests.post(url=pre_record_add,headers=header,json=data_play)
         print(req1.json())

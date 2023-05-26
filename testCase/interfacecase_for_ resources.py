@@ -1,8 +1,8 @@
 import unittest  # 单元测试模块
 import requests,json,time,os,time
 from ddt import ddt,data,unpack
-from pandaInterfaceTest.common.interfaceurl_web import *
-from pandaInterfaceTest.parameter.pdParameter import *
+from common.interfaceurl_web import *
+from parameter.pdParameter import *
 
 
 

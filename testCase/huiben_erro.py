@@ -1,5 +1,5 @@
-import  requests
-import  time,random
+import requests
+import time,random
 
 url="https://hear-pre.abctime.com/v1/book/book-list"
 data={"current":1,"lower_level":3,"size":50,"uid":1562629060075102209}
