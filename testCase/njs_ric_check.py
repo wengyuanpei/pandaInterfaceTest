@@ -42,7 +42,8 @@ list=[l1_video_id_list,l2_video_id_list,l3_video_id_list,l4_video_id_list,l5_vid
 def HS_methd(req_sub_2):
     #传入请求统计行数（去除空行）
     # txt1=req_sub_2.text.encode('gbk')
-    txt = req_sub_2.text.encode('gbk').decode('gbk').splitlines(True)
+    # txt = req_sub_2.text.encode('gbk').decode('gbk').splitlines(True)
+    txt = req_sub_2.text.splitlines(True)
 
     HS = len([l for l in txt if l.strip(' \n') != '' or l.strip('\n') != '' or l.strip('\n ') != ''])
     return HS
