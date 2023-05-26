@@ -2,7 +2,7 @@
 import chardet
 import requests
 from time import sleep
-
+from common.get_tlj_auth import tljlogIn
 
 dev_get_video_id_url='https://hear-dev.abctime.com/v1/record/lesson/list'
 
@@ -11,7 +11,10 @@ dev_get_video_info='https://hear-dev.abctime.com/v1/media/audio/'
 Uid="1547454324283875329"
 Kid="1547454324283875329"
 uid=1547454324283875329
-header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNTQ3NDU0MzI0MjgzODc1MzI5Iiwic3ViIjoie1wiaWRcIjoxNTQ3NDU0MzI0MjgzODc1MzI5LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NlwifSIsImV4cCI6MTY5OTMyNTc0OH0.E6hvhq2MCrptPgw6xX5zyuGqkbm4BQhVeHaUAMvbPCqlIwBEBpc0MQwqd94G3BURAiZQPw6MYvizssuP-EhmAQ",
+#获取dev 手机号token
+token=tljlogIn(17345043365)
+
+header={"Authorization":token,
         "User-Uid":Uid,
         "Kid-Uid":Kid }
 post_data={"resource_id":24,"uid":uid}
