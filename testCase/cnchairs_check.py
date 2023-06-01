@@ -6,7 +6,7 @@ Kid='1640976882862985217'
 Uid_int=1640976882862985217
 header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMDU2MTMxNX0.DVzMyDdL3LF3VH77JxuWHFp8bU1yOICMK8wTMYQF2OAlOzcXBaVonQi9eN74HyPBmeoyYy0yS8d3R8wQTMPL3g",
         "User-Uid":Uid,
-        "Kid-Uid":Kid }
+        "Kid-Uid":Kid}
 
 #请求汉字列表
 data={"resource_id":19,"uid":Uid_int}
