@@ -26,26 +26,41 @@ def getVideoInfo(lessonId):
 def getPlayUrlRsposeTime(videoId):
     playInfo='https://hear.abctime.com/v1/media/video/'+str(videoId)
     playInfoUrl=requests.get(headers=header,url=playInfo)
-    # print(playInfoUrl.json()['data'][ 'urls']['playUrls'][1]['playUrl'])
+    if len(playInfoUrl.json()['data']) <2:
 
-    end_url=str(playInfoUrl.json()['data'][ 'urls']['playUrls'][1]['playUrl'])
-    resposeTime=requests.get(url=end_url)
-    # 响应时间
+        return -1
+    # print(playInfoUrl.json()['data']['urls']['playUrls'][1]['playUrl'])
+    else:
+        end_url=str(playInfoUrl.json()['data']['urls']['playUrls'][1]['playUrl'])
+        resposeTime=requests.get(url=end_url)
+        # 响应时间
 
-    print("响应时间：",resposeTime.elapsed.total_seconds())
-    return resposeTime.elapsed.total_seconds()
+        print("响应时间：",resposeTime.elapsed.total_seconds())
+        print(int(resposeTime.elapsed.total_seconds()*10))
+        return int(resposeTime.elapsed.total_seconds()*10)
+
 
 
 # getPlayUrlRsposeTime(11699)
-lessonId=565
+lessonId=86
+
 errorList=[]
 
 for videoId in getVideoInfo(lessonId):
-    sleep(0.5)
+    sleep(1)
     timed=getPlayUrlRsposeTime(videoId)
-    if timed>3:
+    if timed <0:
+        print(videoId, "视频id不存在！")
+
+    elif timed > 30:
+
         errorList.append(videoId)
     else:
         print("视频id:",videoId,"响应时间：",timed)
 
 print("响应时间大于3秒，异常视频ID：",errorList)
+
+
+
+
+
