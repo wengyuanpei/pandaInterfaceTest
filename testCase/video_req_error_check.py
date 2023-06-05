@@ -19,7 +19,6 @@ def getVideoInfo(lessonId):
     for modeId in modeId:
         getModeInfoUrl=getVideoInfoUrl+str(modeId)
         ModeInfo=requests.get(headers=header,url=getModeInfoUrl)
-        # print(ModeInfo.json()['data']["medias_obj"]['video'])
         return ModeInfo.json()['data']["medias_obj"]['video']
 
 
@@ -27,21 +26,17 @@ def getPlayUrlRsposeTime(videoId):
     playInfo='https://hear.abctime.com/v1/media/video/'+str(videoId)
     playInfoUrl=requests.get(headers=header,url=playInfo)
     if len(playInfoUrl.json()['data']) <2:
-
         return -1
-    # print(playInfoUrl.json()['data']['urls']['playUrls'][1]['playUrl'])
     else:
         end_url=str(playInfoUrl.json()['data']['urls']['playUrls'][1]['playUrl'])
         resposeTime=requests.get(url=end_url)
-        # 响应时间
 
+        # 响应时间
         print("响应时间：",resposeTime.elapsed.total_seconds())
         print(int(resposeTime.elapsed.total_seconds()*10))
         return int(resposeTime.elapsed.total_seconds()*10)
 
 
-
-# getPlayUrlRsposeTime(11699)
 lessonId=86
 
 errorList=[]
