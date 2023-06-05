@@ -4,22 +4,22 @@ from time import sleep
 
 # 英语部分
 UID=1640976882862985217
-header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTY5OTE0Nzk5NX0.FZsrcKVuT2fuhgUOI8dQRTrnnMAgUW1uviNDs5jf8LzsO9tv1g7MBxBm9fXNZpKRLuMKnncFf98uPDoTtWe_Sg"}
+header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMTQ5NTY1NH0.Y_7I4onWlCEncBnq6wqHFzNlu49ct3_ejD-WvWrw_wo_rso-uWtVF4fgPZDQXUWLz9Yxz3FJlbCc5T205tg2kQ"}
 en_url="https://hear.abctime.com/v1/study/finish-plan"
 
 
 
 #dev
-dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
-
-header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTkxMzI1NzEwOTg3MzQ1OTIyIiwic3ViIjoie1wiaWRcIjoxMTkxMzI1NzEwOTg3MzQ1OTIyLFwibW9iaWxlXCI6XCIrODYxODg4ODg4ODg4OFwiLFwidXNlcm5hbWVcIjpcIkFha2FzaCDpmL_ljaHku4BcIn0iLCJleHAiOjE2OTc0NDU1ODl9.felcnqDtixPGVNaKNFDBGmOByUGGJI390GOYqsc_uwWzy0rq-ggf0XDB4-eIwoDbZXvibTENielLtM7kE7OJIQ"}
-
+# dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
+#
+# header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTkxMzI1NzEwOTg3MzQ1OTIyIiwic3ViIjoie1wiaWRcIjoxMTkxMzI1NzEwOTg3MzQ1OTIyLFwibW9iaWxlXCI6XCIrODYxODg4ODg4ODg4OFwiLFwidXNlcm5hbWVcIjpcIkFha2FzaCDpmL_ljaHku4BcIn0iLCJleHAiOjE2OTc0NDU1ODl9.felcnqDtixPGVNaKNFDBGmOByUGGJI390GOYqsc_uwWzy0rq-ggf0XDB4-eIwoDbZXvibTENielLtM7kE7OJIQ"}
+#
 
 plan_info_list_erro=[]
 day=1
 
-user_plan_id=19029081
-while user_plan_id <= 19029081+52:
+user_plan_id=21779416
+while user_plan_id <= 21779416+24:
 # while user_plan_id <= 15416864:
 
 
