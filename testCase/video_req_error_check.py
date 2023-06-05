@@ -48,4 +48,4 @@ for videoId in getVideoInfo(lessonId):
     else:
         print("视频id:",videoId,"响应时间：",timed)
 
-
+print("响应时间大于3秒，异常视频ID：",errorList)
