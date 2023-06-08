@@ -20,23 +20,24 @@ GetTcheBoxInfo=requests.post(url=GetTeacherBoxUrl,json=DataGetTcheBox,headers=he
 
 # print(GetTcheBoxInfo.json()["data"]['grade_list'][0])
 # print(GetTcheBoxInfo.json()["data"]['grade_list'][0]['textbook_list'])
+bookErrorList=[]
+
 
 for grade_id in range(5,19):
     # print(textbook_id)
     sleep(1)
-    for textbook_id in range(1,len(GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['textbook_list'])+1):
-        grade_name = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['grade_name']
+    for textbook_id in range(1,len(GetTcheBoxInfo.json()["data"]['grade_list'][grade_id-1]['textbook_list'])+1):
+        grade_name = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id-1]['grade_name']
         # print(grade_name)
         JX = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['textbook_list'][textbook_id-1]['textbook_name']
-        # print(JX)
-        # print('年级信息：',grade_name)
+        NJ=grade_id
         sleep(1)
-        # print(grade_id,textbook_id)# 年级&教材版本数据
         # 获取每本教材的单元
         GetRescourseUrl = "https://hear-pre.abctime.com/v1/dictation/rescourse"
         DataGetRescourse = {"grade_id": grade_id, "publisher_id": textbook_id, "uid": 1562629060075102209}
         GetDataGetRescourse = requests.post(headers=header, json=DataGetRescourse, url=GetRescourseUrl)
         # print("年级教材版本：",GetDataGetRescourse.json()['data'])
+
 
         try:
             for i in range(len(GetDataGetRescourse.json()['data']['resource_list'])):
@@ -44,7 +45,7 @@ for grade_id in range(5,19):
 
                     book_id=GetDataGetRescourse.json()['data']['resource_list'][i]['unit_id'] # 下个接口的bookid参数
 
-
+                    DY=book_id
                     publisher_idd=GetDataGetRescourse.json()['data']['resource_list'][i]['unit_id']
                     sleep(1)
                     # print('book_id',book_id)
@@ -87,4 +88,6 @@ for grade_id in range(5,19):
             print("异常请求",GetDataGetRescourse.json())
             print('年级：', grade_name, '教材：', JX)
             print("请求参数：",DataGetRescourse)
+            bookErrorList.append([grade_name,JX])
             continue
+print(bookErrorList)
