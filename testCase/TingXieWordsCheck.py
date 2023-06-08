@@ -23,11 +23,11 @@ GetTcheBoxInfo=requests.post(url=GetTeacherBoxUrl,json=DataGetTcheBox,headers=he
 bookErrorList=[]
 
 
-for grade_id in range(5,19):
+for grade_id in range(19):
     # print(textbook_id)
     sleep(1)
-    for textbook_id in range(1,len(GetTcheBoxInfo.json()["data"]['grade_list'][grade_id-1]['textbook_list'])+1):
-        grade_name = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id-1]['grade_name']
+    for textbook_id in range(1,len(GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['textbook_list'])+1):
+        grade_name = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['grade_name']
         # print(grade_name)
         JX = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['textbook_list'][textbook_id-1]['textbook_name']
         NJ=grade_id
