@@ -21,7 +21,7 @@ GetTcheBoxInfo=requests.post(url=GetTeacherBoxUrl,json=DataGetTcheBox,headers=he
 # print(GetTcheBoxInfo.json()["data"]['grade_list'][0])
 # print(GetTcheBoxInfo.json()["data"]['grade_list'][0]['textbook_list'])
 bookErrorList=[]
-
+worderror=[]
 
 for grade_id in range(19):
     # print(textbook_id)
@@ -84,6 +84,9 @@ for grade_id in range(19):
                         # print(deductionReq.json())
                     else:
                         print('年级：',grade_name, '教材：',JX, '单元：',book_id, '扣词异常!')
+                        print("选择单词",selctreq.json())
+                        worderror.append([grade_name,JX,book_id,[selctreq.json()]])
+
         except:
             print("异常请求",GetDataGetRescourse.json())
             print('年级：', grade_name, '教材：', JX)
