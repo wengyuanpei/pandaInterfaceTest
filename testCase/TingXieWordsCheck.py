@@ -30,11 +30,11 @@ for grade_id in range(19):
         grade_name = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['grade_name']
         # print(grade_name)
         JX = GetTcheBoxInfo.json()["data"]['grade_list'][grade_id]['textbook_list'][textbook_id-1]['textbook_name']
-        NJ=grade_id
+
         sleep(1)
         # 获取每本教材的单元
         GetRescourseUrl = "https://hear-pre.abctime.com/v1/dictation/rescourse"
-        DataGetRescourse = {"grade_id": grade_id, "publisher_id": textbook_id, "uid": 1562629060075102209}
+        DataGetRescourse = {"grade_id": grade_id+1, "publisher_id": textbook_id, "uid": 1562629060075102209}
         GetDataGetRescourse = requests.post(headers=header, json=DataGetRescourse, url=GetRescourseUrl)
         # print("年级教材版本：",GetDataGetRescourse.json()['data'])
 
@@ -81,9 +81,9 @@ for grade_id in range(19):
                     # Errorlist=[]
                     if deductionReq.json()['code']=="200" :
                         print('年级：',grade_name, '教材：',JX, '单元：',book_id, '正常!')
-                        print(deductionReq.json())
+                        # print(deductionReq.json())
                     else:
-                        print('年级：',grade_id, '教材：',JX, '单元：',book_id, '扣词异常!')
+                        print('年级：',grade_name, '教材：',JX, '单元：',book_id, '扣词异常!')
         except:
             print("异常请求",GetDataGetRescourse.json())
             print('年级：', grade_name, '教材：', JX)
