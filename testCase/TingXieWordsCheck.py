@@ -93,4 +93,5 @@ for grade_id in range(19):
             print("请求参数：",DataGetRescourse)
             bookErrorList.append([grade_name,JX])
             continue
-print(bookErrorList)
+print('教材无单词数据',bookErrorList)
+print("扣词异常",worderror)
