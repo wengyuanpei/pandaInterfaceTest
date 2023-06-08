@@ -43,7 +43,7 @@ for grade_id in range(19):
             for i in range(len(GetDataGetRescourse.json()['data']['resource_list'])):
                 # print(GetDataGetRescourse.json()['data']['resource_list'][i])
 
-                    book_id=GetDataGetRescourse.json()['data']['resource_list'][i]['unit_id'] # 下个接口的bookid参数
+                    book_id=GetDataGetRescourse.json()['data']['resource_list'][i]['unit_id']
 
                     DY=book_id
                     publisher_idd=GetDataGetRescourse.json()['data']['resource_list'][i]['unit_id']
@@ -95,3 +95,4 @@ for grade_id in range(19):
             continue
 print('教材无单词数据',bookErrorList)
 print("扣词异常",worderror)
+
