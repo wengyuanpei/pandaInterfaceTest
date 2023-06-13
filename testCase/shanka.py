@@ -2,7 +2,7 @@ import requests
 
 from common.get_tlj_auth import *
 import qrcode
-
+from PIL import ImageFont, ImageDraw, Image
 
 wordList=[[41532,'strawberry','aa'],
 [41533,'lunch','aa'],
@@ -436,9 +436,9 @@ url='https://hear-dev.abctime.com/v1/flashcard/get_word_info'
 
 
 
-def shankaTest():
+def shankaTest(id):
 
-    id = input("请输入闪卡，数字0-399：")
+    # id = input("请输入闪卡，数字0-399：")
 
     # id =id
     dataa=wordList[int(id)]
@@ -447,6 +447,37 @@ def shankaTest():
     levell=dataa[2]
     data = {"level": levell, "version_code": 20230601, "word": wordd, "word_id": idd, "uid": 1607331624148455426}
     qrdata={"cardType":1,"cardInfo":{"level":levell,"versionCode":20230601,"word":wordd,"wordId":idd}}
+    qr = qrcode.QRCode(version=2,
+                       error_correction=qrcode.constants.ERROR_CORRECT_H,
+                       )
+    qr.add_data(qrdata)
+    qr.make(fit=True)
+    Img=qr.make_image()
+    # print(Img)
+    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+
+
+    img = Image.open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+    # print(img)
+    draw = ImageDraw.Draw(img)
+    # print(draw)
+    ttfront = ImageFont.truetype('msyh.ttc', 40)  # 字体文件msyh.ttc，需要查找下载
+    content = wordd
+    print(content)
+    draw.text((200, 600), content, font=ttfront)  # 文字位置，正文内容，文字RGB颜色，字体
+    img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+
+    req=requests.post(url=url,json=data,headers=header)
+    print(req.json())
+
+
+for i in range(400):
+    shankaTest(i)
+    print("################################第"+str(i)+"张图片以生成########################################")
+
+
+def qrTest():
+    qrdata ={"level": 'levell', "version_code": 20230601, "word": 'wordd', "word_id": 25635, "uid": 1607331624148455426}
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -455,15 +486,10 @@ def shankaTest():
     )
     qr.add_data(qrdata)
     qr.make(fit=True)
-    Img=qr.make_image()
-    # print(Img)
-    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张.png")
-    req=requests.post(url=url,json=data,headers=header)
-    print(req.json())
+    Img = qr.make_image()
+    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\测试图片.png")
+    print('测试图片生成成功！！')
 
 
-# for i in range(400):
-#     shankaTest(i)
-#     print("################################第"+str(i)+"张图片以生成########################################")
-
-shankaTest()
+# shankaTest()
+# qrTest()
