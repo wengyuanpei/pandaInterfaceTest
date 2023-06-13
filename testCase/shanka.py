@@ -471,7 +471,7 @@ def shankaTest(id):
     print(req.json())
 
 
-for i in range(400):
+for i in range(0):
     shankaTest(i)
     print("################################第"+str(i)+"张图片以生成########################################")
 
@@ -491,5 +491,7 @@ def qrTest():
     print('测试图片生成成功！！')
 
 
+
 # shankaTest()
-# qrTest()
+qrTest()
+
