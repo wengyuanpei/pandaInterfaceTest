@@ -429,7 +429,7 @@ url='https://hear-dev.abctime.com/v1/flashcard/get_word_info'
 
 
 # data={"level":"aa","version_code":20230601,"word":"letter","word_id":41559,"uid":1607331624148455426}
-#
+
 
 
 
@@ -471,13 +471,20 @@ def shankaTest(id):
     print(req.json())
 
 
-for i in range(0):
-    shankaTest(i)
-    print("################################第"+str(i)+"张图片以生成########################################")
+# for i in range(0):
+#     shankaTest(i)
+#     print("################################第"+str(i)+"张图片以生成########################################")
+#
+#
+
+
+
+
+
 
 
 def qrTest():
-    qrdata ={"level": 'levell', "version_code": 20230601, "word": 'wordd', "word_id": 25635, "uid": 1607331624148455426}
+    qrdata ={"你好！"}
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -493,5 +500,39 @@ def qrTest():
 
 
 # shankaTest()
-qrTest()
+# qrTest()
+def check_mp3(id):
+    url_info='https://hear-dev.abctime.com/v1/flashcard/get_word_test'
+    dataa = wordList[int(id)]
+
+    idd = dataa[0]
+    wordd = dataa[1]
+    levell = dataa[2]
+    data = {"level":levell,"word_id":idd,"uid":1668498425131692033}
+
+    respose=requests.post(url=url_info,json=data,headers=header)
+    # print(respose.json()['data']['exercises'][0]['itemRespList'][0]['audioResource'])
+    resposes=respose.json()['data']['exercises']
+    return resposes,idd,wordd,levell
+
+errorList=[]
+for i in range(400):
+    data_response=check_mp3(i)[0]
+    print('单词：'+check_mp3(i)[2])
+    for ii in range(len(data_response)):
+        for iii in range(len(data_response[ii]['itemRespList'])):
+            mp3=data_response[ii]['itemRespList'][iii]['audioResource']
+            # print(mp3)
+
+            if mp3[-3:] == str(mp3):
+                print(mp3[-3:])
+                print('OK!')
+                continue
+            else:
+                errorList.append([check_mp3(i)[1],check_mp3(i)[2],check_mp3(i)[3]])
+print(errorList)
+
+
+
+
 

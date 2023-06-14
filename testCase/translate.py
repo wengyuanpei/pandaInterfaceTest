@@ -42,6 +42,6 @@ class trans(object):
 
 if __name__ == '__main__':
     Obj = trans()
-    text = " corn "
+    text = " chew "
     res = Obj.tran(text)
     print(res)
