@@ -1,8 +1,14 @@
+import os
+from time import sleep
+
 import requests
 
 from common.get_tlj_auth import *
 import qrcode
 from PIL import ImageFont, ImageDraw, Image
+import matplotlib.pyplot as plt # plt 用于显示图片
+from PIL import Image
+from testCase.translate import *
 
 wordList=[[41532,'strawberry','aa'],
 [41533,'lunch','aa'],
@@ -409,200 +415,99 @@ wordList=[[41532,'strawberry','aa'],
 
 
 
-#获取dev 手机号token
-token=tljlogIn(15444444444)
-
-UId=tljlogInUid(15444444444)
-
-Kid=Uid=str(UId)
-uid=Uid
 
 
+def imgshow(url, picname):
+    img1 = Image.open(url)
 
-header={"Authorization":token,
-        "User-Uid":Uid,
-        "Kid-Uid":Kid}
+    # 结果展示
+    plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
+    plt.subplot(111)
+    plt.imshow(img1)
+    plt.title(picname)
+    # 不显示坐标轴
+    plt.axis('off')
 
+    # 显示图像
+    plt.show()
+    plt.pause(2)  # 该句显示图片15秒
+    plt.ioff()  # 显示完后一定要配合使用plt.ioff()关闭交互模式，否则可能出奇怪的问题
 
-url='https://hear-dev.abctime.com/v1/flashcard/get_word_info'
+    plt.clf()  # 清空图片
+    plt.close()  # 清空窗口
 
-
-
-# data={"level":"aa","version_code":20230601,"word":"letter","word_id":41559,"uid":1607331624148455426}
-
-
-
-
-
-
-
-def shankaTest(id):
-
-    # id = input("请输入闪卡，数字0-399：")
-
-    id =id
-    dataa=wordList[int(id)]
-    idd=dataa[0]
-    wordd=dataa[1]
-    levell=dataa[2]
-    data = {"level": levell, "version_code": 20230601, "word": wordd, "word_id": idd, "uid": 1607331624148455426}
-    qrdata={"cardType":1,"cardInfo":{"level":levell,"versionCode":20230601,"word":wordd,"wordId":idd}}
-    qr = qrcode.QRCode(version=2,
-                       error_correction=qrcode.constants.ERROR_CORRECT_H,
-                       )
-    qr.add_data(qrdata)
-    qr.make(fit=True)
-    Img=qr.make_image()
-    # print(Img)
-    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
-
-
-    img = Image.open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
-    print(img.size)
-    draw = ImageDraw.Draw(img)
-    # print(draw)
-    ttfront = ImageFont.truetype('msyh.ttc', 40,0)  # 字体文件msyh.ttc，需要查找下载
-    content = wordd
-    width_w, height_h = ttfront.getsize(content)
-
-    # # font = ImageFont.truetype ('arial.ttf', font_size)
-    # ascent, descent = ttfront.getmetrics ()
-    # (width, baseline), (offset_x, offset_y) = ttfront.getsize(content)
-    # print((width, baseline), (offset_x, offset_y))
-
-    print(content)
-    draw.text(((650-width_w)/2, 600), content, font=ttfront)  # 文字位置，正文内容，文字RGB颜色，字体
-    img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
-
-    req=requests.post(url=url,json=data,headers=header)
-    print(req.json())
-
-# shankaTest()
-
-
-# for i in range(400):
-#     shankaTest(i)
-#     print("################################第"+str(i)+"张图片以生成########################################")
-#
-
-
-
-#手动输识别
-# shankaTest()
-
-
-
-
-
-
-def qrTest():
-    qrdata ={"level": 'C', "version_code": 20230601, "word": "wordd", "word_id": 55555, "uid": 1607331624148455426}
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=5,
-        border=4
-    )
-    qr.add_data(qrdata)
-    qr.make(fit=True)
-    Img = qr.make_image()
-    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\测试图片.png")
-    print('测试图片生成成功！！')
-
-
-
-# shankaTest()
-
-
-# qrTest()
-
-
-
-def check_mp3(id):
-    url_info='https://hear-dev.abctime.com/v1/flashcard/get_word_test'
-    dataa = wordList[int(id)]
-
-    idd = dataa[0]
-    wordd = dataa[1]
-    levell = dataa[2]
-    data = {"level":levell,"word_id":idd,"uid":1668498425131692033}
-
-    respose=requests.post(url=url_info,json=data,headers=header)
-    # print(respose.json()['data']['exercises'][2])
-    resposes=respose.json()['data']['exercises']
-    return resposes,idd,wordd,levell
-
-errorList=[]
-# for ai in range(50):
-#     for i in range(244,245):
-#             try:
-#                 data_response=check_mp3(i)[0]
-#                 print('单词：'+check_mp3(i)[2])
-#                 for ii in range(len(data_response)):
-#                     for iii in range(len(data_response[ii]['itemRespList'])):
-#                         mp3Info=data_response[ii]['itemRespList'][iii]['audioResource']
-#                         print(mp3Info)
-
-                        # if mp3Info[-3:] == "mp3":
-                        #     print(mp3Info[-3:])
-                        #     print('OK!')
-                        # else:
-                        #     errorList.append([check_mp3(i)[1],check_mp3(i)[2],check_mp3(i)[3]])
-                        #     continue
-            # except:
-            #     print(check_mp3(i)[0])
-
-# errorList=list(set(errorList))
-# print(errorList)
-
-
-# 查看异常单词的扣词问题
-# for i in range(50):
-#     # print(check_mp3(108))
-#     aa=check_mp3(244)[0][2]['contentResp']['content']
-#     if str(aa).find('_')!=4 and str(aa).find('_')!=8:
-#
-#         print(aa+"位置在"+str(str(aa).find('_')))
-#     else:
-#         print(aa+'扣位置错误！！！！！！！！！！！！！！！！')
-
-# ####################################pre 环境##################################################
-
+url='https://hear-pre.abctime.com/v1/flashcard/get_word_info'
 pre_header={"Authorization":'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMjI3NjU3MH0.e6CLa06064efURGTB9K0SmGdLMf1joGLrPhDGvUZt-SHBY9ZRTlWijLItbWrmrNP6TWovbAoXR8MW9Sfbk6VCA',
         "User-Uid":'1640976882862985217',
         "Kid-Uid":'1640976882862985217'}
-def check_mp3_pre(id):
-    url_info='https://hear-pre.abctime.com/v1/flashcard/get_word_test'
+
+
+
+def pic_del(id):
+
     dataa = wordList[int(id)]
 
     idd = dataa[0]
     wordd = dataa[1]
     levell = dataa[2]
-    data = {"level":levell,"word_id":idd,"uid":1640976882862985217}
 
-    respose=requests.post(url=url_info,json=data,headers=pre_header)
-    # print(respose.json()['data']['exercises'][2])
-    resposes=respose.json()['data']['exercises']
-    return resposes,idd,wordd,levell
+    dataa = {"level": levell, "version_code": 20230601, "word": wordd, "word_id": idd, "uid": 1640976882862985217}
+    picInfo=requests.post(url=url,json=dataa,headers=pre_header)
+    # print(picInfo.json()["data"]['picUrl'])
+    pic_url=picInfo.json()["data"]['picUrl']
+    print(pic_url)
+    pic_name=picInfo.json()["data"]['word']
 
-# errorList1=[]
+    #下载图片
+    picget=requests.get(pic_url)
+    picgetinfo=picget.content
+    path = r'C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\单词图片\%s.png' % (pic_name)
+    print(path)
+
+    with open(path, 'wb') as f:
+        f.write(picgetinfo)
+        f.close()
+
+    return wordd,path
+
+def getfiles():
+    filenames=os.listdir(r'C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\单词图片')
+    # print(type(filenames))
+    wordlist=[]
+
+    for i in range(len(filenames)):
+        word=filenames[i]
+        endword=word[:-4]
+        wordlist.append(endword)
+        # print(word[:-4])
+    print(wordlist)
+    print(filenames)
+    return  wordlist,filenames
+
+def runrun():
+    for i in range(400):
+        print("第%s张图片" % (i))
+        word=getfiles()[0][i]
+
+        url =r'C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\单词图片'+'\\'+getfiles()[1][i]
+
+        Obj = trans()
+        text = ' '+word+' '
+        res = Obj.tran(text)
+
+        end_word=word+res
+
+        imgshow(url, end_word)
+
+        sleep(1)
+
+# [1] 第一步下载所有图片&命名
 #
 # for i in range(400):
-#         try:
-#             data_response=check_mp3_pre(i)[0]
-#             print('单词：'+check_mp3(i)[2])
-#             for ii in range(len(data_response)):
-#                 for iii in range(len(data_response[ii]['itemRespList'])):
-#                     mp3Info=data_response[ii]['itemRespList'][iii]['audioResource']
-#                     print(mp3Info)
-#
-#                     if mp3Info[-3:] == "mp3":
-#                         # print(mp3Info[-3:])
-#                         print('OK!')
-#                     else:
-#                         errorList1.append([check_mp3(i)[1],check_mp3(i)[2],check_mp3(i)[3]])
-#                         continue
-#         except:
-#             print(check_mp3(i)[0])
-# print(errorList1)
+#     pic_del(i)
+#     print("第%s张图片" % (i))
 
+
+# 第二部查看图片
+
+runrun()
