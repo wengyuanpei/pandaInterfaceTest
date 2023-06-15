@@ -418,21 +418,18 @@ wordList=[[41532,'strawberry','aa'],
 
 
 def imgshow(url, picname):
-    img1 = Image.open(url)
 
-    # 结果展示
+    img1 = Image.open(url)
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
     plt.subplot(111)
     plt.imshow(img1)
     plt.title(picname)
     # 不显示坐标轴
     plt.axis('off')
-
     # 显示图像
     plt.show()
-    plt.pause(2)  # 该句显示图片15秒
+    plt.pause(2)  # 该句显示图片2秒
     plt.ioff()  # 显示完后一定要配合使用plt.ioff()关闭交互模式，否则可能出奇怪的问题
-
     plt.clf()  # 清空图片
     plt.close()  # 清空窗口
 
@@ -446,23 +443,21 @@ pre_header={"Authorization":'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODg
 def pic_del(id):
 
     dataa = wordList[int(id)]
-
     idd = dataa[0]
     wordd = dataa[1]
     levell = dataa[2]
-
     dataa = {"level": levell, "version_code": 20230601, "word": wordd, "word_id": idd, "uid": 1640976882862985217}
     picInfo=requests.post(url=url,json=dataa,headers=pre_header)
     # print(picInfo.json()["data"]['picUrl'])
     pic_url=picInfo.json()["data"]['picUrl']
-    print(pic_url)
+    # print(pic_url)
     pic_name=picInfo.json()["data"]['word']
 
     #下载图片
     picget=requests.get(pic_url)
     picgetinfo=picget.content
     path = r'C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\单词图片\%s.png' % (pic_name)
-    print(path)
+    # print(path)
 
     with open(path, 'wb') as f:
         f.write(picgetinfo)
@@ -480,8 +475,8 @@ def getfiles():
         endword=word[:-4]
         wordlist.append(endword)
         # print(word[:-4])
-    print(wordlist)
-    print(filenames)
+    # print(wordlist)
+    # print(filenames)
     return  wordlist,filenames
 
 def runrun():
@@ -509,5 +504,6 @@ def runrun():
 
 
 # 第二部查看图片
+if __name__ == "__main__":
+    runrun()
 
-runrun()
