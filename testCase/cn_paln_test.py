@@ -18,8 +18,8 @@ en_url="https://hear.abctime.com/v1/study/finish-plan"
 plan_info_list_erro=[]
 day=1
 
-user_plan_id=21779416
-while user_plan_id <= 21779416+24:
+user_plan_id=22953605
+while user_plan_id <= 22953605+2:
 # while user_plan_id <= 15416864:
 
 
