@@ -28,6 +28,7 @@ def get_list_api():
 def getapiinfo(id):
     urlgetapiinfo='http://yapi.txbapp.com/api/interface/get?id='+str(id)
     apiinfo=requests.get(url=urlgetapiinfo,cookies=login_yapi())
+
     return apiinfo.json()
 
 if __name__ == '__main__':
@@ -40,12 +41,16 @@ if __name__ == '__main__':
             # print(resposedata[i]['path'])
             path=resposedata[i]['path']
             method=resposedata[i]['method']
-            print('%s接口地址为【%s】>>请求方式%s' % (title, path, method))
-
+            # print('%s接口地址为【%s】>>请求方式%s' % (title, path, method))
+            baseinfo='%s接口地址为【%s】>>请求方式%s' % (title, path, method)
 
 
             id=resposedata[i]['_id']
-            apiinfo=getapiinfo(id)
+            apiinfo=getapiinfo(id)['data']
 
-            print(apiinfo['data'])
-            sleep(5)
+            print(apiinfo)
+
+            sleep(2)
+            with open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\api\api.txt", "a") as f:
+                f.write('\n'+str(baseinfo)+'\n'+str(apiinfo))  # 自带文件关闭功能，不需要再写
+        f.close()
