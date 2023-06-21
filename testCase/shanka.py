@@ -454,10 +454,10 @@ def shankaTest(id):
     qr.make(fit=True)
     Img=qr.make_image()
     # print(Img)
-    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+    Img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第%d张%s.png" %(id,wordd))
 
 
-    img = Image.open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+    img = Image.open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第%d张%s.png" %(id,wordd))
     print(img.size)
     draw = ImageDraw.Draw(img)
     # print(draw)
@@ -472,7 +472,7 @@ def shankaTest(id):
 
     print(content)
     draw.text(((650-width_w)/2, 600), content, font=ttfront)  # 文字位置，正文内容，文字RGB颜色，字体
-    img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第"+str(id)+"张"+wordd+".png")
+    img.save(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\闪卡图片\闪卡第%d张%s.png" %(id,wordd))
 
     req=requests.post(url=url,json=data,headers=header)
     print(req.json())
@@ -480,10 +480,10 @@ def shankaTest(id):
 # shankaTest()
 
 
-# for i in range(400):
-#     shankaTest(i)
-#     print("################################第"+str(i)+"张图片以生成########################################")
-#
+for i in range(1):
+    shankaTest(i)
+    print("################################第"+str(i)+"张图片以生成########################################")
+
 
 
 
