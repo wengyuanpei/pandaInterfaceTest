@@ -3,10 +3,13 @@ import requests
 
 def urlenverment(inta):
     if inta == 1:
+        print('dev环境！')
         return 'https://hear-dev.abctime.com/'
     elif inta == 2:
+        print('pre环境！')
         return 'https://hear-pre.abctime.com/'
     elif inta == 3:
+        print('prod环境！')
         return 'https://hear.abctime.com/'
     else:
         print('地址错误仅支持1（dev）/2（pre）/3(prod),请检查环境地址参数！')
