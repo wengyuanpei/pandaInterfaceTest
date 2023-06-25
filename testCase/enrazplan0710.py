@@ -13,16 +13,15 @@ def getplaninfo(nextt):
     url=baseurl+'v1/study/plan-info-new'
     data={"next":nextt,"uid":1607331624148455426}
     rep=requests.post(url=url,json=data,headers=header)
-    print(rep.json())
+
+    print('RAZ数据：' + str(rep.json()['data']['read_book']))
+    print('磨耳朵数据：'+str(rep.json()['data']['listen_info']))
+    print('AI对话数据：' + str(rep.json()['data']['oral_training']))
+
     planid=rep.json()['data']['user_plan_id']
-    if nextt==0:
-        print('当前计划ID为：%d' % planid)
-    if nextt==1:
-        print('下个计划ID为：%d' % planid)
-    return rep.json()['data']['user_plan_id']
+    lisen=rep.json()['data']['listen_info']['user_plan_id']
 
-
-
+    return planid,lisen
 
 
 
@@ -31,16 +30,36 @@ def getplaninfo(nextt):
 
 
 if __name__ == '__main__':
+    errorlist=[]
     uid=1607331624148455426
-    for i in range(1200):
+    initlisen=1192309
+    info=getplaninfo(1)
+    for i in range(180):
         if i==0:
 
-            planid=getplaninfo(0)
+            planid=info[0]
 
-            finish_plan(planid,baseurl,header,uid,1)
+            print('listen_info %d' % info[1])
+
+            req=finish_plan(planid,baseurl,header,uid,1)
+
+            if planid=="":
+                errorlist.append([planid,1])
         else:
-            planid = getplaninfo(1)
+            planid = info[0]
+            print('listen_info %d' % info[1])
+            if info[1]==initlisen:
+                print('生成的磨耳朵正常！')
 
-            finish_plan(planid, baseurl, header, uid, 1)
+            else:
+                print('生成的磨耳朵错误！')
+                errorlist.append([planid, 2])
 
+            req=finish_plan(planid, baseurl, header, uid, 1)
+
+            if planid=="":
+                errorlist.append([planid,1])
             sleep(1)
+    print(errorlist)
+
+
