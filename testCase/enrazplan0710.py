@@ -8,10 +8,10 @@ header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzMxNjI0MT
 baseurl=urlenverment(1)#dev环境
 
 #获取计划信息
-def getplaninfo(nextt):
+def getplaninfo(nextt,uid):
 
     url=baseurl+'v1/study/plan-info-new'
-    data={"next":nextt,"uid":1607331624148455426}
+    data={"next":nextt,"uid":uid}
     rep=requests.post(url=url,json=data,headers=header)
 
     print('RAZ数据：' + str(rep.json()['data']['read_book']))
@@ -31,23 +31,39 @@ def getplaninfo(nextt):
 
 if __name__ == '__main__':
     errorlist=[]
-    uid=1607331624148455426
-    initlisen=1192309
-    info=getplaninfo(1)
-    for i in range(180):
+    ####################################手动填写UID##############################################
+    uid=1672787492317540353
+    ######################################手动填写熏听ID#########################################
+    initlisen=1192312
+    ############################################手动填写第一天计划iD##########################################
+    firstdat = 1194724
+    ##############################################完成计划的天数###############################################
+    for i in range(45):
+
         if i==0:
+            info = getplaninfo(1,uid)
+            planid = info[0]
 
-            planid=info[0]
 
+            day = planid-firstdat
+            print('#####################################################计划的第%d天！#######################################################' % day)
             print('listen_info %d' % info[1])
 
             req=finish_plan(planid,baseurl,header,uid,1)
 
+
             if planid=="":
                 errorlist.append([planid,1])
         else:
+            info = getplaninfo(1,uid)
+
             planid = info[0]
+
+            day = planid-firstdat
+            print('#####################################################计划的第%d天！#######################################################' % day)
+
             print('listen_info %d' % info[1])
+
             if info[1]==initlisen:
                 print('生成的磨耳朵正常！')
 
@@ -56,6 +72,7 @@ if __name__ == '__main__':
                 errorlist.append([planid, 2])
 
             req=finish_plan(planid, baseurl, header, uid, 1)
+
 
             if planid=="":
                 errorlist.append([planid,1])
