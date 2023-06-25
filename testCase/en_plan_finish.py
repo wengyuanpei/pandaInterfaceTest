@@ -2,23 +2,23 @@
 
 import requests
 
-# 英语部分
-
-UID=1402908065974005762
-
 
 #dev
 dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
 
-header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNDAyOTA4MDY1OTc0MDA1NzYyIiwic3ViIjoie1wiaWRcIjoxNDAyOTA4MDY1OTc0MDA1NzYyLFwibW9iaWxlXCI6XCIrODYxNTg4ODg4ODg4OFwifSIsImV4cCI6MTY5Nzg3OTA1Mn0.p65JHIexy4KgysO2QDPZpUFlrdnulNHzXtivwSGDPI2Dp3qSVPvZQddBC8SG02XrrILhUtdNDQr2YDSbhyGj9A"}
+header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMzk5NjE3ODg0Njc2ODc0MjQxIiwic3ViIjoie1wiaWRcIjoxMzk5NjE3ODg0Njc2ODc0MjQxLFwibW9iaWxlXCI6XCIrODYxMzUwMDAwMDAwMVwifSIsImV4cCI6MTcwMzIzMzE2NH0.6XDLZAipvd4dnGE__4r_h2avlt6MVpWUsmJE3bAUJNvNYIMFQ1cSeX47FnxR647HccIz-5gt2z7NPxQpL7Jf1A"}
 
 plan_info_list_erro=[]
+# 英语部分
+#####################################手动添加###########
+UID=1512317348317544450
 
-day=2
-
-user_plan_id=1187616
-while day <= 1055:
-
+#####################################手动添加###########
+day=1
+#####################################手动添加###########
+user_plan_id=1195223
+#####################################手动添加###########
+while day <= 569:
     data_1 = {
                   "uid": UID,
                   "user_plan_id": user_plan_id,
