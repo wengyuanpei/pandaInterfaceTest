@@ -1075,8 +1075,9 @@ def checkreadunder(id):
 if __name__ == '__main__':
     errorlist=[]
     for i in bookidlist:
-        list = checkreadunder(id)[0]
-        bookid = checkreadunder(id)[1]
+        response=checkreadunder(i)
+        list = response[0]
+        bookid = response[1]
         if len(list)==0:
             errorlist.append(bookid)
             print('绘本id为%d的绘本阅读理解数据为空！' % bookid )
@@ -1084,3 +1085,4 @@ if __name__ == '__main__':
 
             print('绘本id为%d的绘本阅读理解数据正常！' % bookid )
             print(list)
+    print('阅读理解异常的绘本id'+str(errorlist))
