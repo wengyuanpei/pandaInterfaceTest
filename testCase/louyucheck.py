@@ -102,16 +102,23 @@ if __name__ == '__main__':
                 else:
                     print('ID为%d单词数据正常！' % scene_id )
             sentence=getsentenceinfo(scene_id)
-            print(sentence)
+            # print(sentence)
+
             for dialoguenum in range(len(sentence)):
-                sentence1=sentence[dialoguenum]['sentence_list']['role_id']
-                sentence2 = sentence[dialoguenum]['sentence_list']['content']
-                sentence3 = sentence[dialoguenum]['sentence_list']['content_audio']
+                sentence = sentence[dialoguenum]['sentence_list']
+                for i in  range(len(sentence)):
+                    sentenceend=sentence[i]
 
-                if sentence1=="" or sentence2=="" or sentence3=="" :
-                    worderrorlist.append([level,scene_id,'sentenc'])
+                    sentence1=sentenceend['role_id']
+                    sentence2 = sentenceend['content']
+                    sentence3 = sentenceend['content_audio']
+                    # print('对话数据:',sentence1,sentence2,sentence3)
+                    if sentence1=="" or sentence2=="" or sentence3=="" :
+                        worderrorlist.append([level,scene_id,'sentenc'])
+                        break
+                    else:
+                        print('ID为%d对话数据正常！' % scene_id)
 
-                else:
-                    print('ID为%d对话数据正常！' % scene_id )
+
     print(worderrorlist)
 
