@@ -11,14 +11,14 @@ header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMzk5NjE3ODg
 plan_info_list_erro=[]
 # 英语部分
 #####################################手动添加###########
-UID=1512317348317544450
+UID=1673962019339542530
 
 #####################################手动添加###########
 day=1
 #####################################手动添加###########
-user_plan_id=1195792
+user_plan_id=1197344
 #####################################手动添加###########
-while day <= 1:
+while day <= 20:
     data_1 = {
                   "uid": UID,
                   "user_plan_id": user_plan_id,
@@ -57,6 +57,7 @@ while day <= 1:
             plan_info_list_erro.append(user_plan_id)
 
         else:
+
             print("计划正常！code:", requestt_plan_info.json()['code'], '计划ID', requestt_plan_info.json()['data']['user_plan_id'])
             print('第', day, '天')
             print( requestt_plan_info.json())

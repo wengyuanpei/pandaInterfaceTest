@@ -33,13 +33,13 @@ def getplaninfo(nextt,uid):
 if __name__ == '__main__':
     errorlist=[]
     ####################################手动填写UID##############################################
-    uid=1227842810727649282
+    uid=1674375528984518657
     ######################################手动填写熏听ID#########################################
-    initlisen=1196049
+    # intlisen=1196900
     ############################################手动填写第一天计划iD##########################################
-    firstday = 1196052
+    firstday = 1197438
     ##############################################完成计划的天数###############################################
-    for i in range(20):
+    for i in range(16):
 
         if i==0:
             info = getplaninfo(1,uid)
@@ -65,19 +65,19 @@ if __name__ == '__main__':
 
             print('listen_info %d' % info[1])
 
-            if info[1]==initlisen:
-                print('生成的磨耳朵正常！')
-
-            else:
-                print('生成的磨耳朵错误！')
-                errorlist.append([planid, 2])
+            # if info[1]==intlisen:
+            #     print('生成的磨耳朵正常！')
+            #
+            # else:
+            #     print('生成的磨耳朵错误！')
+            #     errorlist.append([planid, 2])
 
             req=finish_plan(planid, baseurl, header, uid, 1)
 
 
             if planid=="":
                 errorlist.append([planid,1])
-            sleep(2)
+            sleep(0.5)
     print(errorlist)
 
 

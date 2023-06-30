@@ -1056,6 +1056,8 @@ bookidlist=[1876,
 2736,
 2742,]
 
+list223=[223]
+
 def checkreadunder(id):
     baseurl=urlenverment(1)
     url=baseurl+'v1/book/comprehension'
@@ -1068,21 +1070,41 @@ def checkreadunder(id):
         'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzMxNjI0MTQ4NDU1NDI2Iiwic3ViIjoie1wiaWRcIjoxNjA3MzMxNjI0MTQ4NDU1NDI2LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMzIwOTg5NX0.yoClbSQIELdjNKqMHwMK4eGrV-Wyecl06vU8FqDgX0iKloSpdQpZrlUNfr6vPjDwHfogD3K0fu-GAPx45b1QLQ'}
 
     req=requests.post(url=url,json=data,headers=header)
-    # print(req.json()['data']['comprehension_list'])
-    # print(type(req.json()['data']['comprehension_list']))
     readlist=req.json()['data']['comprehension_list']
+
     return readlist,id
 if __name__ == '__main__':
     errorlist=[]
-    for i in bookidlist:
-        response=checkreadunder(i)
-        list = response[0]
-        bookid = response[1]
-        if len(list)==0:
-            errorlist.append(bookid)
-            print('绘本id为%d的绘本阅读理解数据为空！' % bookid )
-        else:
+    lisenlist=[]
+    ################################接口返回题目数量不一致问题######################################
+    a=0
+    while a<200:
 
-            print('绘本id为%d的绘本阅读理解数据正常！' % bookid )
-            print(list)
-    print('阅读理解异常的绘本id'+str(errorlist))
+        timu=checkreadunder(1843)[0]
+        # print(timu)
+        timunum=len(timu)
+        print('返回了%d道题目！' % timunum)
+        if timunum <5:
+            print(timu)
+            break
+        a+=1
+    ################################查找听音选句题目######################################
+    # for bookid in bookidlist:
+    #     timu = checkreadunder(bookid)[0]
+    #     for ii in range(len(timu)):
+    #         title=timu[ii]['contentResp']['title']
+    #         if '选择听到的内容' in title:
+    #             lisenlist.append(bookid)
+    #             break
+    # print(lisenlist)
+    ################################验证题目顺序######################################
+    # for bookid in range(200):
+    #     timu = checkreadunder(1842)[0]
+    #     for ii in range(len(timu)):
+    #         title=timu[ii]['contentResp']['title']
+    #         print(timu[ii]['itemRespList'])
+
+
+
+
+
