@@ -1,7 +1,7 @@
 import requests
 from  common.finish_plan import *
 
-header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzMxNjI0MTQ4NDU1NDI2Iiwic3ViIjoie1wiaWRcIjoxNjA3MzMxNjI0MTQ4NDU1NDI2LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMzIwOTg5NX0.yoClbSQIELdjNKqMHwMK4eGrV-Wyecl06vU8FqDgX0iKloSpdQpZrlUNfr6vPjDwHfogD3K0fu-GAPx45b1QLQ'}
+header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzE0NjQ0NjU3OTUwNzIxIiwic3ViIjoie1wiaWRcIjoxNjA3MzE0NjQ0NjU3OTUwNzIxLFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwMzUwMDc3N30.mN98tokSAFBflTS27rRTwhf8AAcHWAlF76-bqhoJxMZz-eg0HwYrLGgHKriRBf0A2ySf83MN6JKN3gri493xpw'}
 baseurl=urlenverment(1)#dev环境
 
 def getplaninfo(nextt,uid):
@@ -98,15 +98,19 @@ if __name__ == '__main__':
                 word_info5 = word[wordnum]['word_audio']
                 if word_info1 =="" or word_info2 =="" or word_info3 =="" or word_info4 =="" or word_info5 =="":
                     worderrorlist.append([level,scene_id,'word'])
+
                     break
                 else:
                     print('ID为%d单词数据正常！' % scene_id )
-            sentence=getsentenceinfo(scene_id)
-            # print(sentence)
 
+
+
+
+
+            sentence=getsentenceinfo(scene_id)
             for dialoguenum in range(len(sentence)):
                 sentence = sentence[dialoguenum]['sentence_list']
-                for i in  range(len(sentence)):
+                for i in range(len(sentence)):
                     sentenceend=sentence[i]
 
                     sentence1=sentenceend['role_id']
@@ -115,9 +119,12 @@ if __name__ == '__main__':
                     # print('对话数据:',sentence1,sentence2,sentence3)
                     if sentence1=="" or sentence2=="" or sentence3=="" :
                         worderrorlist.append([level,scene_id,'sentenc'])
+
                         break
                     else:
                         print('ID为%d对话数据正常！' % scene_id)
+
+
 
 
     print(worderrorlist)
