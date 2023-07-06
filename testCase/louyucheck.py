@@ -76,20 +76,18 @@ def getsentenceinfo(scene_id):
 
 if __name__ == '__main__':
 
-    list=getlevelinfo()
+    listlevel=getlevelinfo()
 
     worderrorlist=[]
-    for num in  range(len(list)):
-        level=list[num]['level_id']
-        # print(list[num]['level_id'])
+    for num in range(len(listlevel)):
+        level=listlevel[num]['level_id']
+
         datalist=get_scene_id(level)
         for datanum in range(len(datalist)):
-            # print(datalist[datanum]['scene_id'])
+
             scene_id=datalist[datanum]['scene_id']
 
             word=getwordinfo(scene_id)
-            # print(word)
-
             for wordnum in range(len(word)):
                 word_info1 = word[wordnum]['word_id']
                 word_info2 = word[wordnum]['word']

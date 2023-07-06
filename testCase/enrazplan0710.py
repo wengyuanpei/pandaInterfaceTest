@@ -78,6 +78,6 @@ if __name__ == '__main__':
             if planid=="":
                 errorlist.append([planid,1])
             sleep(0.5)
-    print(errorlist)
+    print('异常计划数据：',errorlist)
 
 
