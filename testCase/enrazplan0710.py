@@ -4,8 +4,8 @@ import requests
 from common.finish_plan import *
 
 
-header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjA3MzMxNjI0MTQ4NDU1NDI2Iiwic3ViIjoie1wiaWRcIjoxNjA3MzMxNjI0MTQ4NDU1NDI2LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMzIwOTg5NX0.yoClbSQIELdjNKqMHwMK4eGrV-Wyecl06vU8FqDgX0iKloSpdQpZrlUNfr6vPjDwHfogD3K0fu-GAPx45b1QLQ'}
-baseurl=urlenverment(1)#dev环境
+header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNDE4MTY4Nn0.lj0hwmWyy_h5F4PSoE8ldC6na6xkFIoz4YLEiaIEOuosJCcvKWcFrYXZU8oWh4wRF514sBFdV9eFCYi8ZuB06Q'}
+baseurl=urlenverment(2)#dev环境
 
 #获取计划信息
 def getplaninfo(nextt,uid):
@@ -33,13 +33,13 @@ def getplaninfo(nextt,uid):
 if __name__ == '__main__':
     errorlist=[]
     ####################################手动填写UID##############################################
-    uid=1674375528984518657
+    uid=1640976882862985217
     ######################################手动填写熏听ID#########################################
     # intlisen=1196900
     ############################################手动填写第一天计划iD##########################################
     firstday = 1197438
     ##############################################完成计划的天数###############################################
-    for i in range(16):
+    for i in range(9):
 
         if i==0:
             info = getplaninfo(1,uid)

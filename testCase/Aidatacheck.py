@@ -40,7 +40,7 @@ def get_scene_id(levelid):
     url=baseurl+list_info
     data={
     "level_id": levelid,
-    "uid": 1399976013499392001
+    "uid": 1512326761208135681
 }
     get_scene_id_rp=requests.post(url=url,json=data,headers=header)
     scene_id_list=get_scene_id_rp.json()['data']['scene_list']
@@ -99,7 +99,7 @@ if __name__ == '__main__':
 
                     break
                 else:
-                    print('ID为%d单词数据正常！' % scene_id )
+                    print('ID为%d单词数据正常！' % scene_id,word_info2,word_info4 )
 
 
 
@@ -114,13 +114,14 @@ if __name__ == '__main__':
                     sentence1=sentenceend['role_id']
                     sentence2 = sentenceend['content']
                     sentence3 = sentenceend['content_audio']
+                    sentence4 = sentenceend['translation']
                     # print('对话数据:',sentence1,sentence2,sentence3)
-                    if sentence1=="" or sentence2=="" or sentence3=="" :
+                    if sentence1=="" or sentence2=="" or sentence3=="" or sentence4 =="":
                         worderrorlist.append([level,scene_id,'sentenc'])
 
                         break
                     else:
-                        print('ID为%d对话数据正常！' % scene_id)
+                        print('ID为%d对话数据正常！' % scene_id,sentence2,sentence4)
 
 
 
