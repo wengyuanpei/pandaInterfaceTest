@@ -5,7 +5,7 @@ from common.finish_plan import *
 
 
 header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNDE4MTY4Nn0.lj0hwmWyy_h5F4PSoE8ldC6na6xkFIoz4YLEiaIEOuosJCcvKWcFrYXZU8oWh4wRF514sBFdV9eFCYi8ZuB06Q'}
-baseurl=urlenverment(2)#dev环境
+baseurl=urlenverment(2) #dev环境
 
 #获取计划信息
 def getplaninfo(nextt,uid):
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     ############################################手动填写第一天计划iD##########################################
     firstday = 1197438
     ##############################################完成计划的天数###############################################
-    for i in range(9):
+    for i in range(203):
 
         if i==0:
             info = getplaninfo(1,uid)
@@ -79,5 +79,6 @@ if __name__ == '__main__':
                 errorlist.append([planid,1])
             sleep(0.5)
     print('异常计划数据：',errorlist)
+
 
 
