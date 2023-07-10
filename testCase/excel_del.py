@@ -39,19 +39,12 @@ for sm in cell2list:
         cell1list.remove(sm)
     else:
         errorlist.append(sm)
-
 wb=workbook['1.26新用户SN']
 start=2
-
 print(len(cell1list))
-
 print()
-
-
 for xin in cell1list:
     wb['C'+str(start)]=xin
     start+=1
-
-
 workbook.save("SN汇总统计.xlsx")
 

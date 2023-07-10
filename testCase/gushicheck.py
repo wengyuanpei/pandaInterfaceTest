@@ -12,7 +12,6 @@ def getgushitext(vid):
     url=baseurl+'v1/media/video/'+str(vid)
     req=requests.get(url=url,headers=header)
     caption=req.json()['data']
-    # print(req.json()['data'])
     return caption
 
 
@@ -20,11 +19,8 @@ def getgushitext(vid):
 
 if __name__ == '__main__':
     errorlist=[]
-
     videolist=[2189]
-
     for vid in videolist:
-
         gushi=getgushitext(vid)['caption']
         gushi=json.loads(gushi)
         title=gushi['title']
@@ -35,7 +31,6 @@ if __name__ == '__main__':
             print('错误古诗配置',gushi)
         else:
             print('古诗正确！详细信息为：\n')
-
             print(str(gushi)+'\n')
             # print('title:',title)
             #
