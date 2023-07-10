@@ -30,8 +30,8 @@ def main():
     client.loop_forever()  #长连接
 
 
-
-main()
+if __name__ == '__main__':
+    main()
 
 
 
