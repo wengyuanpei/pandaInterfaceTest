@@ -236,6 +236,7 @@ class tingTingPressure(TaskSet):
             else:
                 responsex.failure('Failed!')
 
+
     def on_stop(self):
         # teardown
         print('清除数据')

@@ -90,12 +90,8 @@ class WebSite(User):
 if __name__ == "__main__":
 
     import os
-    #
-    # os.system("locust -f locustForPanda.py --master")
-    # os.system("locust -f locustForPanda.py --worker")
-    # os.system("locust -f locustForPanda.py --worker")
-    # os.system("locust -f locustForPanda.py --worker")
-    # os.system("locust -f locustForPanda.py --worker")
+
 
     os.system("locust -f locustForEmqx.py --host=http://emqx-dev.xiongmaoboshi.com")
-#  locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
+    # locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
+    # os.system("locust -f locustForEmqx.py  --master --master-host =http://emqx-dev.xiongmaoboshi.com")
