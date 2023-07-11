@@ -10,7 +10,6 @@ mqttpara=getmqtttoeken()
 mqtttoeken=mqttpara[0]
 mqttsn=mqttpara[1]
 
-
 broker_url = 'emqx-dev.xiongmaoboshi.com'
 port = 1883
 client_id = mqttsn
@@ -31,9 +30,10 @@ def main():
 
 
 if __name__ == '__main__':
+
+
+
     main()
-
-
 
 
 
