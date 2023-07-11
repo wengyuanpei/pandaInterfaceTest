@@ -1,24 +1,24 @@
 
 
 import requests
-
-
+from common.finish_plan_urlenverment import *
+baseurl=urlenverment(2)
 #dev
-dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
-
-header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMzk5NjE3ODg0Njc2ODc0MjQxIiwic3ViIjoie1wiaWRcIjoxMzk5NjE3ODg0Njc2ODc0MjQxLFwibW9iaWxlXCI6XCIrODYxMzUwMDAwMDAwMVwifSIsImV4cCI6MTcwMzIzMzE2NH0.6XDLZAipvd4dnGE__4r_h2avlt6MVpWUsmJE3bAUJNvNYIMFQ1cSeX47FnxR647HccIz-5gt2z7NPxQpL7Jf1A"}
+dev_en_url=baseurl+"v1/study/finish-plan"
+plan_info =baseurl+ "v1/study/plan-info"
+header_dev={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNDU0MTE3OH0.mDacHgK7aBKkWpMKejwx9w2Mdg31CqVXz7wnPDQQ7cQ-2aAUKRsTpt50h271Z_DSQOonCEUsWmZrDFvTwEE42g"}
 
 plan_info_list_erro=[]
 # 英语部分
 #####################################手动添加###########
-UID=1673962019339542530
+UID=1640976882862985217
 
 #####################################手动添加###########
 day=1
 #####################################手动添加###########
 user_plan_id=1197344
 #####################################手动添加###########
-while day <= 20:
+while day <= 200:
     data_1 = {
                   "uid": UID,
                   "user_plan_id": user_plan_id,
@@ -40,7 +40,7 @@ while day <= 20:
     # sleep(0.5)
 
 #获取下一个计划接口
-    plan_info = "https://hear-dev.abctime.com/v1/study/plan-info"
+
 
     plan_info_data = {"next": 1, "uid": UID}
     requestt_plan_info = requests.post(url=plan_info, json=plan_info_data, headers=header_dev)
