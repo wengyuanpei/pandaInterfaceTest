@@ -10,7 +10,7 @@ mqttpara=getmqtttoeken()
 mqtttoeken=mqttpara[0]
 mqttsn=mqttpara[1]
 
-broker_url = 'emqx-dev.xiongmaoboshi.com'
+broker_url = '121.196.247.116'
 port = 1883
 client_id = mqttsn
 HOST = broker_url

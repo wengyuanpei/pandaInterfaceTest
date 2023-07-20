@@ -18,7 +18,7 @@ class My_task_set(TaskSet):
         self.mqtttoeken = mqttpara[0]
         self.mqttsn = mqttpara[1]
         self.clientID = self.mqttsn
-        self.broker_url = 'emqx-dev.xiongmaoboshi.com'
+        self.broker_url = '121.196.247.116'
         self.port = 1883
 
     @task(1)
