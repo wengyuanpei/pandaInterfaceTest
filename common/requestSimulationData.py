@@ -10,7 +10,7 @@ def user_agent():
 def phone_num():
     fake=Faker(locale='zh_CN') # 初始化，指定生成中文格式数据---电话号码
     phone = fake.phone_number()
-    return  phone
+    return phone
 
 
 def manname_num():

@@ -39,7 +39,7 @@ class My_task_set(TaskSet):
     def mqtt2(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
-            client.subscribe("chanel_01")
+            client.subscribe("chanel_02")
             print('mqtt2')
 
         client = mqtt.Client(self.clientID)
@@ -53,7 +53,7 @@ class My_task_set(TaskSet):
     def mqtt3(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
-            client.subscribe("chanel_01")
+            client.subscribe("chanel_03")
             print('mqtt3')
 
         client = mqtt.Client(self.clientID)
@@ -67,7 +67,7 @@ class My_task_set(TaskSet):
     def mqtt4(self):
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code :0 表示连接成功  其它表示失败，rc：" + str(rc))
-            client.subscribe("chanel_01")
+            client.subscribe("chanel_04")
             print('mqtt4')
 
         client = mqtt.Client(self.clientID)
@@ -92,6 +92,6 @@ if __name__ == "__main__":
     import os
 
 
-    os.system("locust -f locustForEmqx.py --host=http://emqx-dev.xiongmaoboshi.com")
+    os.system("locust -f locustForEmqx.py --host=121.196.247.116")
     # locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
     # os.system("locust -f locustForEmqx.py  --master --master-host =http://emqx-dev.xiongmaoboshi.com")
