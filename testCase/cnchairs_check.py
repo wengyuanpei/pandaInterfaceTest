@@ -1,5 +1,5 @@
-import  requests
-from  time import  sleep
+import requests
+from time import sleep
 
 Uid='1640976882862985217'
 Kid='1640976882862985217'
