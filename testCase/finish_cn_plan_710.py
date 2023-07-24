@@ -24,14 +24,16 @@ def finishplan(user_plan_id,week_day,uid):
 if __name__ == '__main__':
     #################################################################输入执行完成的计划信息############################################################
     uid=1640976882862985217
-    day=3
+    day=4
     #############################################################################################################################
 
     user_plan_id=cnplan(uid)['data']['user_plan_id']
     day_info=cnplan(uid)['data']['plan_list'][day-1]
     print('想要完成的任务信息：',day_info)
     sleep(2)
-    print('\n','开始执行完成周%d的计划！' %day)
+    print('\n','开始执行完成本周周%d的计划！' %day)
     finishplan(user_plan_id,day,uid)
     sleep(2)
     print('\n', '周%d的计划执行完成！' %day)
+    day_info_end = cnplan(uid)['data']['plan_list'][day - 1]
+    print('\n检查执行结果：',day_info_end)
