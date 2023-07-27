@@ -65,6 +65,7 @@ def check_video(vid):
         #         print('ÄÜ²¥·Å')
 
 
+
 if __name__ == '__main__':
 
     list=[10138,2158]

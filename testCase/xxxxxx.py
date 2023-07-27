@@ -1,48 +1,78 @@
-import chardet
-import requests
+# -*- coding: utf-8
 from time import sleep
 
+import requests
 
-def emcode_check(text):
-    encodde=chardet.detect(text)
-    print("返回的字幕的编码格式》》》》》》》》》",encodde)
-url='https://business.xiongmaoboshi.com/lighthouse/file/f2b5370635d26919815c25c277baf242.lrc'
-rep=requests.get(url)
-dev_get_video_info='https://hear-dev.abctime.com/v1/media/audio/'
-#
-# # aa=[236,33, 66734, 66735, 66736, 66740, 66741, 66745, 66746, 66747, 66752, 66753, 66754, 8256, 8257, 8258, 8259, 8260, 8261, 8262, 8263, 8264, 8265, 8266, 8267, 8268, 8269, 8270, 8271, 8272, 8273, 8274, 8275, 8276, 8277, 8278, 8279, 8280, 8281, 8282, 8283, 8284, 8285, 66755, 66756, 66757, 66758, 66759, 66760, 66761, 66762, 66763, 66764, 66765, 66766, 66769, 66773, 66782, 8286, 8287, 8288, 8289, 8290, 8291, 8292, 8293, 8294, 8295, 8297, 8298, 8299, 8300, 8301, 8302, 8303, 8304, 8305, 8306, 8307, 8308, 8309, 8310, 8311, 8312, 8313, 8314, 8315, 66784, 66786, 66787, 66788, 66789, 66791, 66793, 66794, 66796, 66797, 66801, 66803, 66804, 66805, 66806, 66807, 66808, 66809, 66810, 66811, 66812, 202043, 202044, 202045, 202046, 202047, 202055, 202056, 202057, 202058, 8316, 8317, 8318, 8319, 8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328, 8329, 8330, 8331, 8332, 8333, 8334, 8335, 8336, 8337, 8338, 8339, 66813, 66814, 66815, 66816, 66817, 66818, 66820, 66821, 66822, 66823, 66824, 66825, 66826, 66827, 66828, 66829, 66830, 66831, 66832, 66833, 66834, 66835, 66836, 66837, 66838, 66839, 202048, 202049, 202050, 8340, 8341, 8342, 66840, 66841, 66842, 66844, 66845, 66846, 66847, 66848, 66849, 66850, 66851, 66852, 66853, 66854, 66855, 66856, 66857, 66858, 66859, 66860, 66861, 66862, 66863, 66864, 202054, 8343, 8344, 8345, 8346, 8347, 8348, 8349, 8350, 8351, 8352, 8353, 8354, 8355, 8356, 8357, 66874, 66875, 66876, 66877, 66878, 66879, 66880, 66881, 66882, 66883, 66884, 66885, 66886, 66887, 66888, 66889, 66890, 66891, 66892, 8358, 8359, 8360, 8361, 8362, 8363, 8364, 8365, 8366, 8367, 8368, 8369, 8370, 8371, 8372, 8373, 8374, 8375, 8376, 8377, 8378, 8379, 8380, 66904, 66905, 66906, 66907, 66908, 66909, 66910, 66911, 66912, 66913, 66914, 66915, 202051, 202052, 202053]
-aa=[66672, 66679, 66681, 66687, 66701, 66702, 66707, 66720, 66722, 66723, 66725, 66726, 66727, 66729, 66730, 66733, 66734, 66735, 66736, 66740, 66741, 66745, 66746, 66747, 66752, 66753, 66754, 66755, 66756, 66757, 66758, 66759, 66760, 66761, 66762, 66763, 66764, 66765, 66766, 66769, 66773, 66782, 66806, 202043, 202044, 202045, 202046, 202047, 66813, 66820, 66831, 66832, 66833, 66834, 202048, 202049, 202050, 66842, 66860, 66862, 66863, 202054, 66882, 66883, 66884, 66885, 66887, 66889, 66891, 66892, 66904, 66906, 66908, 66911, 66912, 66913, 66915, 202051, 202052, 202053]
 
-header={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNTQ3NDU0MzI0MjgzODc1MzI5Iiwic3ViIjoie1wiaWRcIjoxNTQ3NDU0MzI0MjgzODc1MzI5LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NlwifSIsImV4cCI6MTY5OTMyNTc0OH0.E6hvhq2MCrptPgw6xX5zyuGqkbm4BQhVeHaUAMvbPCqlIwBEBpc0MQwqd94G3BURAiZQPw6MYvizssuP-EhmAQ"}
-list=[]
-for L1video_id in aa:
+# 接口登录
+def login_yapi():
+    logurl = 'http://yapi.txbapp.com/api/user/login'
+    data = {'email': "2829226204@qq.com", 'password': "guoguo250"}
+    heaher = {
+        'Accept': 'application/json, text/plain, */*',
+        'Host': 'yapi.txbapp.com',
+        'Origin': 'http://yapi.txbapp.com'
+    }
+    login = requests.post(url=logurl, json=data, headers=heaher)
+    print(login.status_code)
+    # print(login.cookies)
+    return login.cookies
 
-    if len(str(L1video_id))>4:
 
-        list.append(L1video_id)
+# 获取所有接口列表信息
+def get_list_api():
+    cookie = login_yapi()
 
-        dev_get_video_info1=dev_get_video_info+str(L1video_id)
+    url = 'http://yapi.txbapp.com/api/interface/list?page=1&limit=1000&project_id=46'
+    listt = requests.get(url=url, cookies=cookie)
+    # print(listt.json())
+    return listt.json()
 
-        dev_get_video_info2=requests.get(url=dev_get_video_info1,headers=header)
 
-        try:
-            play_url=dev_get_video_info2.json()['data']['urls']['playUrls'][0]['playUrl']
-            print(play_url)
-        except:
-            print("请求没有",dev_get_video_info2.json())
+# 获取接口详情
+def getapiinfo(id):
+    urlgetapiinfo = 'http://yapi.txbapp.com/api/interface/get?id=' + str(id)
+    apiinfo = requests.get(url=urlgetapiinfo, cookies=login_yapi())
 
-    else:
-        print('错误id',L1video_id)
-print(list)
-# print(rep.text.encode('gbk'))
-# aa=rep.text.encode('gbk').decode('gbk')
-# print(aa)
-#
-# emcode_check(rep.text.encode('gbk'))
+    return apiinfo.json()
 
-def listcheck(list):
-    list1 = []
-    for L1video_id in list:
-        if len(str(L1video_id)) > 4:
-            list1.append(L1video_id)
-            print('需要检查的id',list1)
+
+if __name__ == '__main__':
+    resposedata = get_list_api()['data']['list']
+    list = []
+
+    print(resposedata)
+    for i in range(len(resposedata)):
+        # print(resposedata[i]['title'])
+        title = resposedata[i]['title']
+
+
+        # print(resposedata[i]['path'])
+        path = resposedata[i]['path']
+
+
+        method = resposedata[i]['method']
+
+
+        # print('%s接口地址为【%s】>>请求方式%s' % (title, path, method))
+        baseinfo = '%s接口地址为【%s】>>请求方式%s' % (title, path, method)
+        list.append([[title], [path], [method]])
+
+        id = resposedata[i]['_id']
+        apiinfo = getapiinfo(id)['data']
+
+    print(list)
+    # list=[['上报学习记录', '/v1/record/add', 'POST'], ['绘本等级tab栏', '/v1/book/level-map', 'POST'], ['首页-第n屏', '/v1/page/index/{:id}', 'GET'], ['音视频列表(用户,暂不需对接)', '/v1/record/media/list', 'POST'], ['课包列表(用户)', '/v1/record/lesson/list', 'POST'], ['栏目下课包列表', '/v1/page/lesson-list', 'POST'], ['学习记录', '/v1/record/lesson/recents', 'POST'], ['定级上报', '/v1/study/set-level', 'POST'], ['定级测试题', '/v1/study/level-test', 'GET'], ['级别信息', '/v1/study/level-list', 'GET'], ['错词记录', '/v1/wrong/get-word', 'POST'], ['获取今日计划(英语)', '/v1/study/plan-info', 'POST'], ['完成计划上报(英语)', '/v1/study/finish-plan', 'POST'], ['学习计划历史(英语)', '/v1/study/history', 'POST'], ['重置学习等级', '/v1/study/reset-level', 'POST'], ['我的计划页面(英语)', '/v1/study/my-plan', 'POST'], ['学情报告（周）', '/v1/study/week-report', 'POST'], ['我的积分', '/v1/record/integral', 'POST'], ['跟读作品', '/v1/record/reading', 'POST'], ['作品分享', '/v1/study/work-share', 'POST'], ['获取今日计划(语文)', '/v1/study-cn/plan-info', 'POST'], ['完成计划上报(语文)', '/v1/study-cn/finish-plan', 'POST'], ['[无用]学习计划历史(语文)', '/v1/study-cn/history', 'POST'], ['语音助手技能', '/v1/study/skills', 'POST'], ['汉字列表(用户)', '/v1/record/char-list', 'POST'], ['汉字信息', '/v1/char/info', 'POST'], ['我的计划页面(语文)', '/v1/study-cn/my-plan', 'POST'], ['通过资源ID获取音视频列表', '/v1/resource/media-list', 'POST'], ['汉字信息(用户)', '/v1/record/char-info', 'POST'], ['学情报告（总）', '/v1/study/general-report', 'POST'], ['用户绑定孩子', '/v1/study/add-relationship', 'POST'], ['查询用户孩子', '/v1/study/get-relationship', 'POST'], ['鹦鹉阅读L0-L6', '/v1/highlights/level', 'POST'], ['绘本音频列表', '/v1/highlights/book/:id', 'GET'], ['听写-RAZ列表', '/v1/dictation/raz-list', 'POST'], ['聊天问答', '/v1/openapi/request', 'POST'], ['设置偏好', '/v1/study/set-preference', 'POST'], ['全局配置', '/v1/config/global', 'GET'], ['音频信息(后台使用)', '/hear-admin/v1/media/audio/{id}', 'GET'], ['视频信息(后台使用)', '/hear-admin/v1/media/video/{id}', 'GET'], ['文案', '/v1/config/clerical', 'POST'], ['获取每天学习时长', '/v1/record/watching', 'POST'], ['批量获取音频信息', '/v1/media/audio-list', 'POST'], ['批量获取视频信息', '/v1/media/video-list', 'POST'], ['获取分类id（配置）', '/v1/media/classify', 'GET'], ['获取带学习记录的音频列表', '/v1/highlights/book-record', 'POST'], ['获取牛津树音频歌词学习记录', '/v1/record/oxford-audio', 'POST'], ['获取口语训练列表', '/v1/ai-oral-training/get-list', 'POST'], ['重点词汇', '/v1/ai-oral-training/key-words', 'POST'], ['句子跟读/角色扮演', '/v1/ai-oral-training/sentence', 'POST'], ['阅读理解题', '/v1/book/comprehension', 'POST'], ['获取单词详情', '/v1/flashcard/get_word_info', 'POST'], ['获取单词测试题', '/v1/flashcard/get_word_test', 'POST'], ['获取等级列表', '/v1/ai-oral-training/get-level-list', 'GET'], ['新版今日计划页面', '/v1/study/plan-info-new', 'POST'], ['上报磨耳朵时长', '/v1/study/report-listen', 'POST'], ['获取磨耳朵音频列表', '/v1/study/listen-list', 'POST'], ['百度网盘存储', '/v1/record/store-baidu-disk', 'POST'], ['百度网盘获取', '/v1/record/list-baidu-disk', 'POST'], ['百度网盘删除', '/v1/record/delete-baidu-disk', 'POST'], ['新版语文学习计划', '/v1/study-cn/plan-info-new', 'POST'], ['新版语文计划历史学习记录', '/v1/study-cn/history-new', 'POST'], ['重设语文本周计划', '/v1/study-cn/reset-week-plan', 'POST'], ['上报新版语文计划', '/v1/study-cn/report-plan-new', 'POST'], ['获取语文资源详情', '/v1/study-cn/resource-detail', 'POST'], ['英语Raz绘本历史记录', '/v1/study/raz-history', 'POST'], ['绘本列表', '/v1/book/book-list', 'POST'], ['课包列表（暂不用对接）', '/v1/resource/{id}', 'GET'], ['错词本', '/v1/wrong/get', 'POST'], ['听写-教材列表', '/v1/dictation/textbook', 'POST'], ['绘本内容', '/v1/book/book-content', 'POST'], ['音视频列表', '/v1/lesson/{id}', 'GET'], ['上报错词记录', '/v1/wrong/add', 'POST'], ['听写-教材资源列表', '/v1/dictation/rescourse', 'POST'], ['单词列表', '/v1/book/words-list', 'POST'], ['音频信息', '/v1/media/audio/{id}', 'GET'], ['选词', '/v1/dictation/select', 'POST'], ['绘本详情', '/v1/book/book-detail', 'POST'], ['视频信息', '/v1/media/video/{id}', 'GET'], ['上报听写记录', '/v1/dictation/add-dictation', 'POST'], ['获取单词已学未学数量', '/v1/book/words-num', 'POST'], ['音频播放进度', '/v1/record/audio', 'POST'], ['听写记录', '/v1/dictation/dictation-record', 'POST'], ['视频播放进度', '/v1/record/video', 'POST'], ['绘本互动单词', '/v1/book/interactive-word', 'POST'], ['扣词', '/v1/dictation/deduction', 'POST'], ['课包上次播放集数', '/v1/record/lesson/last', 'POST'], ['根据纳米获取单词数据', '/v1/dictation/grade-textbook', 'POST']]
+
+    from common.excelreadwrite import *
+    excelname=r'C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\api\apiautotest.xlsx'
+    for i in range(len(list)-1):
+        print(i)
+        for ii in range(len(list[i])):
+
+            excel_write(list[i][0],2+i,'A',excelname,'Sheet1')
+            excel_write(list[i][1],2+i, 'B', excelname, 'Sheet1')
+            excel_write(list[i][2],2+i, 'C', excelname, 'Sheet1')
+
+
+

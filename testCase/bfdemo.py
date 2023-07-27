@@ -44,7 +44,7 @@ def demo2():
 
 def many_thread():
     threads = []
-    for _ in range(1):  # 循环创建1个线程
+    for _ in range(100):  # 循环创建1个线程
         t1 = threading.Thread(target=demo1)
         t2= threading.Thread(target=demo2)
         threads.append(t1)

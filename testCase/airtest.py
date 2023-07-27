@@ -1,8 +1,9 @@
 # -*- encoding=utf8 -*-
 
 
-from airtest.core.api import *
+from airtest.core import *
 from airtest.cli.parser import cli_setup
+from airtest.core.api import auto_setup
 
 if not cli_setup():
     auto_setup(__file__, logdir=True, devices=["android://127.0.0.1:5037/S1DEV005?cap_method=MINICAP&&ori_method=MINICAPORI&&touch_method=MINITOUCH",])
