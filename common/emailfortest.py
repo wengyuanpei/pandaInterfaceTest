@@ -44,7 +44,7 @@ def sendemail():
     attachment_1['content-Disposition']='attachment;filename="report.html"'
     msg.attach(attachment_1)
     # 添加正文
-    content2="['https://hear.abctime.com/v1/book/book-detail', [0.233711]]"
+    content2="%s线上环境接口请求检查！" % timenow
     attachment_2=MIMEText(content2, 'plain', 'utf-8')
     msg.attach(attachment_2)
 

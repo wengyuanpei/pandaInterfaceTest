@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 
 import requests
@@ -26,14 +27,9 @@ class ServeceIterfaceTestCase(unittest.TestCase):
         self.assertEqual(req.status_code, 200)
 
         self.responsetime_book_detail=req.elapsed.total_seconds()
-        # self.timersp.append(self.responsetime_book_detail)
+        self.timersp.append([url_book_detail+'请求响应时间（s）：'+str(self.responsetime_book_detail)])
 
-        # print([url_book_detail,self.timersp])
 
-    def ttime(self):
-        self.timersp.append(self.responsetime_book_detail)
-
-        return self.timersp.append
 
 
 if __name__ == '__main__':
