@@ -44,13 +44,13 @@ def sendemail():
     attachment_1['content-Disposition']='attachment;filename="report.html"'
     msg.attach(attachment_1)
     # 添加正文
-    content2='这里是正文内容本质执行用户数，用例执行详情，异常数统计'
+    content2="['https://hear.abctime.com/v1/book/book-detail', [0.233711]]"
     attachment_2=MIMEText(content2, 'plain', 'utf-8')
     msg.attach(attachment_2)
 
 
     #发送邮件
-    To=['v_wengyuanpei@tal.com']
+    To=['v_wengyuanpei@tal.com','v_fandong@tal.com']
     sd=server.sendmail(sendAddress,To,msg.as_string())
 
     print('邮件发生发送成功')
