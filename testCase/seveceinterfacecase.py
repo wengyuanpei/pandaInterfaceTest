@@ -4,7 +4,6 @@ import unittest
 class ServeceIterfaceTestCase(unittest.TestCase):
     def test_01(self):
         self.assertEqual(1, 1)
-
     def test_02(self):
         self.assertEqual(1, 11)
     def test_03(self):

@@ -50,7 +50,7 @@ def sendemail():
 
 
     #发送邮件
-    To=['v_wengyuanpei@tal.com','v_chenqi5@tal.com']
+    To=['v_wengyuanpei@tal.com']
     sd=server.sendmail(sendAddress,To,msg.as_string())
 
     print('邮件发生发送成功')
