@@ -15,7 +15,7 @@ def getvideoinfo(vid):
 
 
 if __name__ == '__main__':
-    listvideo=[15679]
+    listvideo=[15679,11601,11599,9868]
     listplay=['FD','LD','SD','HD','OD','HQ',]
     videoinfolist=[]
     for vid in listvideo:
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     print(videoinfolist)
     path=r'C:\Users\zhang\Desktop\pandaInterfaceTest\result\responsetime.txt'
-    with open(path, "a") as file:
+    with open(path, "w") as file:
         for iii in videoinfolist:
             file.write(str(iii))
             file.write('\n')
