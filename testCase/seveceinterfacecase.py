@@ -6,7 +6,7 @@ import requests
 from common.finish_plan_urlenverment import *
 
 class ServeceIterfaceTestCase(unittest.TestCase):
-    def setUp(self) :
+    def setUp(self):
 
         self.header={'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjc5NjkzMzAwNDE1NzcwNjI1Iiwic3ViIjoie1wiaWRcIjoxNjc5NjkzMzAwNDE1NzcwNjI1LFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwNDg3MjE4NH0.kR_S20qzXP7S0wNMoBEa98CgngD6qqxtTMoJo-sLMviphT8B80Wdnbpm-FM_hN2roPMrAsY2NtsSRue2OiD2eg'}
 

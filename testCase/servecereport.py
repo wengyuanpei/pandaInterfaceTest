@@ -17,4 +17,5 @@ def runcase():
     run.report(filename="report",description='该报告汇总所有的接口测试',report_dir=r'C:\Users\zhang\Desktop\pandaInterfaceTest\result')
 
 
-
+if __name__ == '__main__':
+    runcase()

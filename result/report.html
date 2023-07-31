@@ -7159,25 +7159,53 @@ body.skin-3 {
 
 
     var resultData = {
-    "testPass": 1,
+    "testPass": 0,
     "testResult": [
         {
             "className": "ServeceIterfaceTestCase",
             "methodName": "test_book_detail",
             "description": null,
-            "spendTime": "0.248 s",
-            "status": "成功",
+            "spendTime": "60.1 s",
+            "status": "错误",
             "log": [
-                "prod环境！",
-                ""
+                "prod环境！\n",
+                "Traceback (most recent call last):\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\connectionpool.py\", line 700, in urlopen\n    self._prepare_proxy(conn)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\connectionpool.py\", line 994, in _prepare_proxy\n    conn.connect()\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\connection.py\", line 364, in connect\n    self.sock = conn = self._connect_tls_proxy(hostname, conn)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\connection.py\", line 499, in _connect_tls_proxy\n    socket = ssl_wrap_socket(\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\util\\ssl_.py\", line 453, in ssl_wrap_socket\n    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\util\\ssl_.py\", line 495, in _ssl_wrap_socket_impl\n    return ssl_context.wrap_socket(sock)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ssl.py\", line 500, in wrap_socket\n    return self.sslsocket_class._create(\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ssl.py\", line 1040, in _create\n    self.do_handshake()\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ssl.py\", line 1309, in do_handshake\n    self._sslobj.do_handshake()\n",
+                "ssl.SSLError: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1125)\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\adapters.py\", line 486, in send\n    resp = conn.urlopen(\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\connectionpool.py\", line 785, in urlopen\n    retries = retries.increment(\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\urllib3\\util\\retry.py\", line 592, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\n",
+                "urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hear.abctime.com', port=443): Max retries exceeded with url: /v1/book/book-detail (Caused by ProxyError('Your proxy appears to only use HTTP and not HTTPS, try changing your proxy URL to be HTTP. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#https-proxy-error-http-proxy', SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1125)'))))\n",
+                "\nDuring handling of the above exception, another exception occurred:\n\n",
+                "Traceback (most recent call last):\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 60, in testPartExecutor\n    yield\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 676, in run\n    self._callTestMethod(testMethod)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 633, in _callTestMethod\n    method()\n",
+                "  File \"C:\\Users\\zhang\\Desktop\\pandaInterfaceTest\\testCase\\seveceinterfacecase.py\", line 25, in test_book_detail\n    req=requests.post(url=url_book_detail,headers=self.header,json=databookdetail)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n",
+                "  File \"C:\\Users\\zhang\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\requests\\adapters.py\", line 513, in send\n    raise ProxyError(e, request=request)\n",
+                "requests.exceptions.ProxyError: HTTPSConnectionPool(host='hear.abctime.com', port=443): Max retries exceeded with url: /v1/book/book-detail (Caused by ProxyError('Your proxy appears to only use HTTP and not HTTPS, try changing your proxy URL to be HTTP. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#https-proxy-error-http-proxy', SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1125)'))))\n"
             ]
         }
     ],
     "testName": "该报告汇总所有的接口测试",
     "testAll": 1,
-    "testFail": 0,
-    "beginTime": "2023-07-28 17:22:12",
-    "totalTime": "1s",
+    "testFail": 1,
+    "beginTime": "2023-07-28 18:08:57",
+    "totalTime": "60s",
     "testSkip": 0,
     "testError": 0
 };
