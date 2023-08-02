@@ -3,11 +3,12 @@ import requests
 from time import sleep
 from common.finish_plan_urlenverment import *
 
-basurl=urlenverment(1)
+basurl=urlenverment(2)
 
 authdev='Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjgxMTA3NjgwMTg0MzQwNDgxIiwic3ViIjoie1wiaWRcIjoxNjgxMTA3NjgwMTg0MzQwNDgxLFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNjMzODIwMH0.w-BB1Zay0mzfo9rig2Qx1mdipEGvdhOXeNSHSbi02EceeWcXkxQv9blYqIu7vu7yPDCm5WWLGhes2m77-fQwPw'
 # print(authdev)
 
+anthpre='Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjg2NjM5NTA0NTgwMTkwMjEwIiwic3ViIjoie1wiaWRcIjoxNjg2NjM5NTA0NTgwMTkwMjEwLFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwNjUxMzE2OX0.c8ch4WBbE6raEe8PKSkMcf5-GcO-TNis81sAcrE6RveVntoxUtVB076l8lhfA1IqshgF1u7msB9Q9uUlmIVhRw'
 
 listvideo=[15812,
 15814,
@@ -366,7 +367,7 @@ listvideo=[15812,
 def getinfo(vid):
 
     url=basurl+'v1/media/video/'+str(vid)
-    header={'Authorization':authdev}
+    header={'Authorization':anthpre}
     req=requests.get(url=url,headers=header)
     return req.json()
 

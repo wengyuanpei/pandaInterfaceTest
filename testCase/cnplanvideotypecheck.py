@@ -6,7 +6,7 @@ from time import sleep
 basurl=urlenverment(2)
 authdev='Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjgxMTA3NjgwMTg0MzQwNDgxIiwic3ViIjoie1wiaWRcIjoxNjgxMTA3NjgwMTg0MzQwNDgxLFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNjMzODIwMH0.w-BB1Zay0mzfo9rig2Qx1mdipEGvdhOXeNSHSbi02EceeWcXkxQv9blYqIu7vu7yPDCm5WWLGhes2m77-fQwPw'
 # print(authdev)
-anthpre='Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjc5NjkzMzAwNDE1NzcwNjI1Iiwic3ViIjoie1wiaWRcIjoxNjc5NjkzMzAwNDE1NzcwNjI1LFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwNDg3MjE4NH0.kR_S20qzXP7S0wNMoBEa98CgngD6qqxtTMoJo-sLMviphT8B80Wdnbpm-FM_hN2roPMrAsY2NtsSRue2OiD2eg'
+anthpre='Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjg2NjM5NTA0NTgwMTkwMjEwIiwic3ViIjoie1wiaWRcIjoxNjg2NjM5NTA0NTgwMTkwMjEwLFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwNjUxMzE2OX0.c8ch4WBbE6raEe8PKSkMcf5-GcO-TNis81sAcrE6RveVntoxUtVB076l8lhfA1IqshgF1u7msB9Q9uUlmIVhRw'
 def getvideoinfo(vid):
     url=basurl+'v1/study-cn/resource-detail'
     header={'Authorization':anthpre}
@@ -378,10 +378,10 @@ if __name__ == '__main__':
     listplay=['FD','LD','SD','HD','OD','HQ',]
     videoinfolist=[]
     otherlist=[]
-    for vid in otherlisttt:
+    for vid in listvideo:
         info=getvideoinfo(vid)
         sleep(0.2)
-        # print(info)
+        print(info)
         try:
             play_url=info['data']['video_list'][0]['video_play']['urls']['playUrls']
             # print(play_url)
