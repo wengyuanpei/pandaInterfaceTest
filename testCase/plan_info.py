@@ -1,6 +1,7 @@
+# coding:utf-8
 import requests
 from common.finish_plan_urlenverment import *
-from time import  sleep
+from time import sleep
 
 uidlist=[1111231209041,
 1673521949928181761,
@@ -188,6 +189,7 @@ uidlist=[1111231209041,
 1678254000309248001,
 1684875450870304770,
 1683090548302712834]
+
 def checkuerplaninfo(uid):
     baseurl=urlenverment(2)
     url=baseurl+'v1/study/my-plan'
@@ -208,13 +210,13 @@ if __name__ == '__main__':
     for uid in uidlist:
 
         info=checkuerplaninfo(1676844684280958978)['data']
-        sleep(0.5)
+        sleep(1.5)
         # print(info)
         if info['level'] == '' or info['week_plan'] == None or info['study_time'] == '':
             errorlist.append(uid)
-            print('uid£º%s£¬ÓÃ»§Òì³£!' %uid)
+            print('uidï¼š%sï¼Œç”¨æˆ·å¼‚å¸¸!' %uid)
         else:
-            print('Õý³£ÓÃ»§ÐÅÏ¢>>>>>>>>>',info)
+            print('æ­£å¸¸ç”¨æˆ·ä¿¡æ¯>>>>>>>>>',info)
 
-    print('Òì³£ÓÃ»§ÁÐ±í£º',errorlist)
+    print('å¼‚å¸¸ç”¨æˆ·åˆ—è¡¨ï¼š',errorlist)
 
