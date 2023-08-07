@@ -18,6 +18,7 @@ def chatGpt(answers):
 }
 
     req=requests.post(url=url,json=dataa,headers=header)
+    print('请求响应时间(s)：',req.elapsed.total_seconds())
     return req
 
 def find_all_positions(string, substring):
@@ -31,35 +32,39 @@ def find_all_positions(string, substring):
         start = position + 1
     return positions
 
+def GPT(yourquestion):
+    an = yourquestion
 
-if __name__ == '__main__':
-    an='中国和美国开战最后谁能赢的战争'
-
-    info=chatGpt(an).text
-    subinfo='"content":"'
+    info = chatGpt(an).text
+    subinfo = '"content":"'
     # print(info)
-    positions =find_all_positions(info,subinfo)
+    positions = find_all_positions(info, subinfo)
 
-    subinfoend='"},"finish_reason"'
+    subinfoend = '"},"finish_reason"'
     positionsend = find_all_positions(info, subinfoend)
     del positionsend[0]
 
-
-    positionsstart=[]
+    positionsstart = []
     for i in positions:
-        pos=i+11
+        pos = i + 11
         positionsstart.append(pos)
 
-    lengg=[]
+    lengg = []
     for strr in range(len(positionsend)):
-        poss=positionsend[strr]-positionsstart[strr]
+        poss = positionsend[strr] - positionsstart[strr]
         lengg.append(poss)
-    # print(lengg)
 
-    endd=[]
+    endd = []
     for answerpos in range(len(positionsstart)):
-        answer=info[positionsstart[answerpos]:positionsstart[answerpos]+lengg[answerpos]]
+        answer = info[positionsstart[answerpos]:positionsstart[answerpos] + lengg[answerpos]]
         endd.append(answer)
-    strrrrend=''
-    print('GPT的问题：',an)
-    print('GPT的答案：',strrrrend.join(endd))
+    strrrrend = ''
+    print('GPT的问题：', an)
+    print('GPT的答案：', strrrrend.join(endd))
+
+
+
+
+if __name__ == '__main__':
+    yourquestion='如何快速发财'
+    GPT(yourquestion)
