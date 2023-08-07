@@ -21,6 +21,7 @@ def chatGpt(answers):
     print('请求响应时间(s)：',req.elapsed.total_seconds())
     return req
 
+
 def find_all_positions(string, substring):
     positions = []
     start = 0
@@ -31,6 +32,7 @@ def find_all_positions(string, substring):
         positions.append(position)
         start = position + 1
     return positions
+
 
 def GPT(yourquestion):
     an = yourquestion
@@ -66,5 +68,5 @@ def GPT(yourquestion):
 
 
 if __name__ == '__main__':
-    yourquestion='如何快速发财'
+    yourquestion='如何测试安卓手机自动重启问题'
     GPT(yourquestion)
