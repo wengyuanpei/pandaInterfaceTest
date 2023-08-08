@@ -3,8 +3,8 @@ from time import sleep
 import requests
 from common.finish_plan_urlenverment import *
 
-
-header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNDE4MTY4Nn0.lj0hwmWyy_h5F4PSoE8ldC6na6xkFIoz4YLEiaIEOuosJCcvKWcFrYXZU8oWh4wRF514sBFdV9eFCYi8ZuB06Q'}
+headerpre={'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNjk1NTI1NH0.nqZPvW2jPY3gdOoLmNDYseT8-SRp3UEsAq9btLqmVNku0VVwX7m1QRLtA4XOGG7Z2Rl1A6yEhRMegyKSobpfZg'}
+header={'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjgxMTA3NjgwMTg0MzQwNDgxIiwic3ViIjoie1wiaWRcIjoxNjgxMTA3NjgwMTg0MzQwNDgxLFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNTM4ODg5NH0.cUg8Umb3DkhuRl4UGa90Y1KbeeIpBRyyQzp8bJc4GCQWg4po9-tsLxNom1Lj_V1Cv18cd-KmOPZ5TC1o5nvLoQ'}
 baseurl=urlenverment(2)
 
 #获取计划信息
@@ -12,7 +12,7 @@ def getplaninfo(nextt,uid):
 
     url=baseurl+'v1/study/plan-info-new'
     data={"next":nextt,"uid":uid}
-    rep=requests.post(url=url,json=data,headers=header)
+    rep=requests.post(url=url,json=data,headers=headerpre)
 
     print('RAZ数据：' + str(rep.json()['data']['read_book']))
     print('磨耳朵数据：'+str(rep.json()['data']['listen_info']))
@@ -28,7 +28,7 @@ def getplaninfo(nextt,uid):
 if __name__ == '__main__':
     errorlist=[]
     ####################################手动填写UID##############################################
-    uid=1686639504580190210
+    uid=1640976882862985217
     ######################################手动填写熏听ID#########################################
     # intlisen=1196900
     ############################################手动填写第一天计划iD##########################################
