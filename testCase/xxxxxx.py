@@ -1,23 +1,32 @@
+import json
 
-# encoding:utf-8
+def create_nested_json():
+    # 创建一个空字典
+    nested_json = {}
 
-import requests
-import base64
+    # 添加第一层键值对
+    nested_json['key1'] = 'value1'
+    nested_json['key2'] = 'value2'
 
-'''
-植物识别
-'''
+    # 创建一个嵌套的字典
+    nested_dict = {}
+    nested_dict['nested_key1'] = 'nested_value1'
+    nested_dict['nested_key2'] = 'nested_value2'
 
-request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/plant"
-# 二进制方式打开图片文件
-f = open(r'C:\Users\zhang\Desktop\VCG21gic20072684.jpg', 'rb')
-img = base64.b64encode(f.read())
-print(img)
-params = {"image":img}
-access_token = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjg2NjM5NTA0NTgwMTkwMjEwIiwic3ViIjoie1wiaWRcIjoxNjg2NjM5NTA0NTgwMTkwMjEwLFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwNjUxMzE2OX0.c8ch4WBbE6raEe8PKSkMcf5-GcO-TNis81sAcrE6RveVntoxUtVB076l8lhfA1IqshgF1u7msB9Q9uUlmIVhRw'
+    # 将嵌套字典添加到第一层字典中
+    nested_json['nested_dict'] = nested_dict
 
-request_url = request_url + "?access_token=" + access_token
-headers = {'content-type': 'application/x-www-form-urlencoded'}
-response = requests.post(request_url, data=params, headers=headers)
-if response:
-    print (response.json())
+    # 创建一个嵌套的列表
+    nested_list = ['item1', 'item2', 'item3']
+
+    # 将嵌套列表添加到第一层字典中
+    nested_json['nested_list'] = nested_list
+
+    # 将字典转换为 JSON 字符串
+    json_str = json.dumps(nested_json, indent=4)
+
+    return json_str
+
+# 调用函数生成多层 JSON 结构
+nested_json_str = create_nested_json()
+print(nested_json_str)
