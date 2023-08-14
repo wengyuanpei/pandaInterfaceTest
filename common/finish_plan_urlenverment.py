@@ -33,4 +33,6 @@ def finish_plan(planid, urlbase, header, uid, event_id):
 
 
 if __name__ == '__main__':
-    print(urlenverment(3))
+    bse=urlenverment(3)
+    heder={'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwNzI5OTQwNH0.AVC4vgok2cQ8Ni9za3Najs-1mk9pOxuCUY6YYvgk5V5xlDlHRGPSOdbZECKS5HKV6vIwfpz-C5G6_-2iYsDLyg'}
+    finish_plan(24977310,bse,heder,1640976882862985217,1)

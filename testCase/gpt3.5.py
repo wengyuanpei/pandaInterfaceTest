@@ -66,7 +66,6 @@ def GPT(yourquestion):
 
 
 
-
 if __name__ == '__main__':
-    yourquestion='如何测试安卓手机自动重启问题'
+    yourquestion='赞美中国的文章'
     GPT(yourquestion)
