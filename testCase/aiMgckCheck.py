@@ -26,8 +26,8 @@ if __name__ == '__main__':
         print(inff)
         sleep(1)
         if inff['code']=="4666" or '托托不太明白你在说什么' in inff['message'] :
-            print('过来的敏感词%s，过滤成功' %mgc)
+            print('过来的敏感词【%s】，过滤成功' %mgc)
         else:
-            print('过来的敏感词%s，过滤失败' %mgc)
+            print('过来的敏感词【%s】，过滤失败' %mgc)
             errorlist.append(mgc)
     print('过滤失败列表',errorlist)
