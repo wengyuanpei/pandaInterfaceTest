@@ -62,10 +62,11 @@ def GPT(yourquestion):
         endd.append(answer)
     strrrrend = ''
     print('GPT的问题：', an)
-    print('GPT的答案：', strrrrend.join(endd))
-
+    # print('GPT的答案：', strrrrend.join(endd))
+    return strrrrend.join(endd)
 
 
 if __name__ == '__main__':
-    yourquestion='赞美中国的文章'
-    GPT(yourquestion)
+    yourquestion='生成一个关于钓鱼佬的故事'
+    infoo=GPT(yourquestion)
+    print('答案：',infoo)
