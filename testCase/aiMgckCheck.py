@@ -21,13 +21,28 @@ if __name__ == '__main__':
     errorlist=[]
     mgckpath=r'C:\Users\zhang\Desktop\敏感词库\mgck.xlsx'
     mgcklist=excel_read(mgckpath,'A1:A19339')
+    a=1
     for mgc in mgcklist:
-        inff= aicheck(mgc)
-        print(inff)
-        sleep(1)
-        if inff['code']=="4666" or '托托不太明白你在说什么' in inff['message'] :
-            print('过来的敏感词【%s】，过滤成功' %mgc)
-        else:
-            print('过来的敏感词【%s】，过滤失败' %mgc)
-            errorlist.append(mgc)
+
+        print('第%d个敏感词！' %a)
+        try:
+            inff= aicheck(mgc)
+            print(inff)
+            sleep(0.5)
+            if inff['code']=="4666" or '托托不太明白你在说什么' in inff['message'] :
+                print('过滤成功')
+            else:
+                print('过滤失败')
+                errorlist.append(mgc)
+        except:
+            sleep(30)
+            inff = aicheck(mgc)
+            print(inff)
+            sleep(1)
+            if inff['code'] == "4666" or '托托不太明白你在说什么' in inff['message']:
+                print('过滤成功')
+            else:
+                print('过滤失败')
+                errorlist.append(mgc)
+        a += 1
     print('过滤失败列表',errorlist)
