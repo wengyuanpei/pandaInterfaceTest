@@ -67,6 +67,6 @@ def GPT(yourquestion):
 
 
 if __name__ == '__main__':
-    yourquestion='生成一个关于钓鱼佬的故事'
+    yourquestion='写一个修真小说'
     infoo=GPT(yourquestion)
     print('答案：',infoo)
