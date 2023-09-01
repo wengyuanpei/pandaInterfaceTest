@@ -20,13 +20,14 @@ if __name__ == '__main__':
     from time import sleep
     errorlist=[]
     mgckpath=r'C:\Users\zhang\Desktop\敏感词库\mgck.xlsx'
-    mgcklist=excel_read(mgckpath,'A1:A19339')
-    a=1
+    mgcklist=excel_read(mgckpath,'A8853:A19339')
+    a=8853
     for mgc in mgcklist:
+        print('敏感词>>',mgc)
 
         print('第%d个敏感词！' %a)
         try:
-            inff= aicheck(mgc)
+            inff= aicheck(str(mgc))
             print(inff)
             sleep(0.5)
             if inff['code']=="4666" or '托托不太明白你在说什么' in inff['message'] :

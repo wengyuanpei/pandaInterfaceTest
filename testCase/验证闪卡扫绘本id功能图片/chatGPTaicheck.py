@@ -520,7 +520,7 @@ if __name__ == '__main__':
     for ci in listt:
         infoo=ci[1]
         typpe=ci[0]
-        # print(ci)
+        print(ci)
         try :
             sleep(1)
             innfo = aicheck(infoo, typpe)
