@@ -5,7 +5,16 @@ from datetime import datetime
 from time import *
 
 def execute(cmd):
-    os.system(cmd)
+    result = os.popen(cmd)
+    # 返回的结果是一个<class 'os._wrap_close'>对象，需要读取后才能处理
+    context = result.read()
+    infoooo=[]
+    for line in context.splitlines():
+        infoooo.append(line)
+        print(infoooo)
+    result.close()
+
+    return infoooo
 
 
 
@@ -23,8 +32,8 @@ if __name__ == '__main__':
     # 执行动作亮屏-解锁-锁定-解锁 循环
     ip='192.168.1.106'
     a=1
-
-    while True:
+    runadb=execute(get_ip)
+    while len(runadb) ==1:
         #设备1
         print('a第%d次执行！' % a)
         print(datetime.now().strftime('%Y-%m-%d  %H:%M:%S'))
