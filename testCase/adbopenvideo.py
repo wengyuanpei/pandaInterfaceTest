@@ -1,31 +1,61 @@
 #coding:utf-8
 import os
-from time import sleep
+import time
+from datetime import datetime
+from time import *
 
 def execute(cmd):
-    os.system(cmd)
+    result = os.popen(cmd)
+    context = result.read()
+    infoooo=[]
+    for line in context.splitlines():
+        infoooo.append(line)
+        print(infoooo)
+    result.close()
+
+    return infoooo
 
 if __name__ == '__main__':
+    ip = '192.168.1.119'
+    #连接adb
+    tcpip_set='adb -s %s tcpip 9997' % ip
+    get_ip='adb -s %s shell ifconfig|findstr Bcast' % ip
+    connect_adb='adb  -s %s connect 192.168.1.106:9997' % ip
 
-    #模拟打开加载视频后返回
+    # execute(tcpip_set)
+    # execute(get_ip)
+    # execute(connect_adb)
+
+    # 执行动作亮屏-解锁-锁定-解锁 循环
+
     a=1
-    while True:
+    runadb=execute(get_ip)
+
+    while len(runadb) ==1:
 
         print('a第%d次执行！' % a)
-        #点击
-        click='adb -s 192.168.1.131 shell input tap 316.5 544.5'
 
+        print(datetime.now().strftime('%Y-%m-%d  %H:%M:%S'))
+        #点击视频加载
+        # click='adb -s %s shell input tap 316.5 544.5' % ip
+
+        #￥点击全屏播放
+        click_window = 'adb -s %s shell input tap 603 448' % ip
+
+        sleep(0.5)
+
+        click_open = 'adb -s %s shell input tap 603 448' % ip
+
+        sleep(0.5)
         #返回
-        back='adb  -s 192.168.1.131 shell input keyevent 4'
+        back='adb  -s %s shell input keyevent 4' % ip
 
         #继续播放
-        cmmd = 'adb -s 192.168.1.131 shell input tap 222 683'
+        # cmmd = 'adb -s %s shell input tap 222 683' % ip
 
-        execute(click)
-
-
-        execute(cmmd)
-
+        execute(click_window)
+        execute(click_open)
+        # execute(cmmd)
         execute(back)
         a+=1
 

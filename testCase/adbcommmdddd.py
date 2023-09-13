@@ -17,13 +17,14 @@ def execute(cmd):
 
 if __name__ == '__main__':
     ip = '192.168.1.116'
+    port='9997'
     #连接adb
-    tcpip_set='adb -s %s tcpip 9999' % ip
+    tcpip_set='adb -s S01D1042310600005 tcpip '
     get_ip='adb -s %s shell ifconfig|findstr Bcast' % ip
-    connect_adb='adb  -s %s connect 192.168.1.106:9999' % ip
+    connect_adb='adb  -s S01D1042310600005 connect 192.168.1.106:9999'
 
     # execute(tcpip_set)
-    # execute(get_ip)
+    execute(get_ip)
     # execute(connect_adb)
 
     # 执行动作亮屏-解锁-锁定-解锁 循环
@@ -47,4 +48,4 @@ if __name__ == '__main__':
 
         sleep(2)
         a+=1
-
+        runadb=execute(get_ip)
