@@ -55,3 +55,5 @@ if __name__ == '__main__':
             with open(r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\api\api.txt", "a") as f:
                 f.write('\n'+str(baseinfo)+'\n'+str(apiinfo))  # 自带文件关闭功能，不需要再写
         f.close()
+
+
