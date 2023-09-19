@@ -1,32 +1,32 @@
+#coding:utf-8
+from common.finish_plan_urlenverment import *
 import json
+from common.excelreadwrite import *
+from time import *
+baseurl=urlenverment(3)
 
-def create_nested_json():
-    # 创建一个空字典
-    nested_json = {}
 
-    # 添加第一层键值对
-    nested_json['key1'] = 'value1'
-    nested_json['key2'] = 'value2'
+def get_package_videoinfo(package_id):
+    baseurl = urlenverment(3)
+    url=baseurl+'v1/lesson/'+str(package_id)
+    heder={'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjk5NzEwMDQ1OTY1MDcwMzM3Iiwic3ViIjoie1wiaWRcIjoxNjk5NzEwMDQ1OTY1MDcwMzM3LFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwOTYyOTQyOH0.y39gNrr7xY3aA5PLxHYMV6Q2jnYYtJBeGlM5m7iJegjPV4wG8V-kj7cbL0B8IacqpiAzeXUY16CQpsc2JRHmmg'}
+    get_video=requests.get(url=url,headers=heder)
+    # print(get_video.json()['data'])
+    get_video_info=get_video.json()['data']['medias']
+    get_video_info1=eval(get_video_info)
+    #判断音视频
+    check=get_video_info1.keys()
+    # print(check)
+    if 'video' in check:
 
-    # 创建一个嵌套的字典
-    nested_dict = {}
-    nested_dict['nested_key1'] = 'nested_value1'
-    nested_dict['nested_key2'] = 'nested_value2'
+        get_video_info=json.loads(get_video_info)
 
-    # 将嵌套字典添加到第一层字典中
-    nested_json['nested_dict'] = nested_dict
+        return get_video_info['video']
+    else:
+        print(package_id,'音频课包！')
+        return 'audio'
 
-    # 创建一个嵌套的列表
-    nested_list = ['item1', 'item2', 'item3']
 
-    # 将嵌套列表添加到第一层字典中
-    nested_json['nested_list'] = nested_list
-
-    # 将字典转换为 JSON 字符串
-    json_str = json.dumps(nested_json, indent=4)
-
-    return json_str
-
-# 调用函数生成多层 JSON 结构
-nested_json_str = create_nested_json()
-print(nested_json_str)
+if __name__ == '__main__':
+    aa= get_package_videoinfo(108)
+    print(aa)
