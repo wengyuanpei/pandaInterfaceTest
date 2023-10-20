@@ -56,11 +56,55 @@ def getTagInfo(mid):
     print(req.json())
     return req.json()
 
-
+def getTags(mid):
+    url='http://api-dev.abctime.com/v2/member/tag/is-in-tags'
+    data={
+    "member_id": mid,
+    "tag_ids": [
+        249,
+        248,
+        33,
+        247]
+    }
+    req=requests.post(url=url,json=data)
+    return req.json()["data"]["in_tag_ids"]
 if __name__ == '__main__':
 
-    idlist=[55012]
-
+    idlist=[60729,
+60730,
+60731,
+60733,
+60734,
+60735,
+60736,
+60737,
+60739,
+60740,
+60741,
+60711,
+60712,
+60713,
+60714,
+60715,
+60716,
+60717,
+60718,
+60719,
+60720,
+60721,
+60722,
+60723,
+60724,
+60725,
+60638,]
+# print(tag[247])
+    taglisttt=[]
     for id in idlist:
 
-        reqinfo=getTagInfo(id)['data']['app_tags_ids']
+        reqinfo=getTags(id)
+
+        for a in reqinfo:
+                tagi=tag[a]
+                print('用户【%d】是【%s】用户' %(id,tagi))
+                taglisttt.append([id,tagi])
+    print(taglisttt)
