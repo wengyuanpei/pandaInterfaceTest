@@ -1,32 +1,23 @@
 #coding:utf-8
-from common.finish_plan_urlenverment import *
-import json
+
 from common.excelreadwrite import *
-from time import *
-baseurl=urlenverment(3)
+import json
+base=r'C:\Users\zhang\Desktop\听力机资源'
 
+dateill=r'\plan_detail.xlsx'
 
-def get_package_videoinfo(package_id):
-    baseurl = urlenverment(3)
-    url=baseurl+'v1/lesson/'+str(package_id)
-    heder={'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjk5NzEwMDQ1OTY1MDcwMzM3Iiwic3ViIjoie1wiaWRcIjoxNjk5NzEwMDQ1OTY1MDcwMzM3LFwibW9iaWxlXCI6XCIrODYxODM4NDI1MzUwNlwifSIsImV4cCI6MTcwOTYyOTQyOH0.y39gNrr7xY3aA5PLxHYMV6Q2jnYYtJBeGlM5m7iJegjPV4wG8V-kj7cbL0B8IacqpiAzeXUY16CQpsc2JRHmmg'}
-    get_video=requests.get(url=url,headers=heder)
-    # print(get_video.json()['data'])
-    get_video_info=get_video.json()['data']['medias']
-    get_video_info1=eval(get_video_info)
-    #判断音视频
-    check=get_video_info1.keys()
-    # print(check)
-    if 'video' in check:
+idss=r'\plan_ids.xlsx'
 
-        get_video_info=json.loads(get_video_info)
+dateail_ids=base+dateill
+#计划表
+detail1=excel_read(dateail_ids,'A2:A1056')
+# print(detail1)
 
-        return get_video_info['video']
-    else:
-        print(package_id,'音频课包！')
-        return 'audio'
+#配置excel
+plan_idss=base+idss
+detail2=excel_read(plan_idss,'A1:A1055')
 
-
-if __name__ == '__main__':
-    aa= get_package_videoinfo(108)
-    print(aa)
+for detailstr,idsss in zip(detail1,detail2):
+    # print(type(detailstr))
+    # detailstr=detailstr['audio_book_ids']+detailstr['audio_ids']
+    print(detailstr,"####",idsss)
