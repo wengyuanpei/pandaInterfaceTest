@@ -170,8 +170,8 @@ map1={
 		}]}
 
 
-list=map1['list']
+listt=map1['list']
 aaa=0
-for i in list:
+for i in listt:
     aaa+=i["bookNum"]
 print(aaa)
