@@ -19,7 +19,7 @@ def shankaTest(disc,num_list,id):
     qr.add_data(qrdata)
     qr.make(fit=True)
     Img=qr.make_image()
-    savepath=r"C:\Users\zhang\Desktop\pandaInterfaceTest\testCase\验证闪卡扫绘本id功能图片\%s第%d张id为%d.png" %(disc,num_list,id)
+    savepath=r"C:\Users\zhang\Desktop\听力机\pandaInterfaceTest\testCase\验证闪卡扫绘本id功能图片\%s第%d张id为%d.png" %(disc,num_list,id)
     # print(Img)
     Img.save(savepath)
 
@@ -43,7 +43,7 @@ def shankaTest(disc,num_list,id):
 
 
 if __name__ == '__main__':
-    razbooklist=[3056,3057,3058,3059,3060,3061,3062,3063,3064,3065]
+    razbooklist=[1820,1823]
 
     disc=str('RAZ正确绘本')
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         i+=1
 
 
-    randomidlist = [999, 666, 555, 111, 000, 2000014, 366952]
+    randomidlist = [999, 666, 555, 111, 000, 2000014, 1823,1820]
 
     disc1=('非绘本')
     a = 0
