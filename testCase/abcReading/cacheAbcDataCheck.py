@@ -133,36 +133,36 @@ if __name__ == '__main__':
     # print('数据对比异常的绘本id>>>',errodlist)
 
     #单词判断
-    # errodlistwords=[]
-    # wordslist = []
-    # words = getAbcWordInfo()
-    # # print(words)
-    # print('单词数量%d个' % len(words))
-    # for wods in words:
-    #     # print(wods)
-    #     wds=wods['wordId']
-    #     wordslist.append(wds)
-    # print(wordslist)
-    # for wordslistid in wordslist:
-    #     for abcWods in words:
-    #         # print(abcWods)
-    #         if abcWods['wordId'] == int(wordslistid):
-    #             abcwordId=abcWods['wordId']
-    #             abcword=abcWods['word']
-    #             abcwordLabelId=abcWods['wordLabelId']
-    #             abclowerLevelList=abcWods['lowerLevelList']
-    #             print('ABC数据：abcwordId：%s  abcword：%s abcwordLabelId:%s abclowerLevelList:%s' % (abcwordId, abcword, abcwordLabelId, abclowerLevelList))
-    #
-    #             lightwordddd=getLightWordsinfo(wordslistid)
-    #             lightwordId=lightwordddd['wordId']
-    #             lightword=lightwordddd['word']
-    #             lightwordLabelId=lightwordddd['wordLabelId']
-    #             lightlowerLevelList=lightwordddd['lowerLevelList']
-    #             print('灯塔数据：lightword：%d  lightword：%s lightwordLabelId:%s lightlowerLevelList:%s' % (lightwordId, lightword, lightwordLabelId, lightlowerLevelList))
-    #             if abcwordId==lightwordId and abcword==lightword and abcwordLabelId == lightwordLabelId and abclowerLevelList==lightlowerLevelList:
-    #                 print('绘本%d对比灯塔数据正常！' %wordslistid )
-    #             else:
-    #                         errodlistwords.append(wordslistid)
-    #                         print('绘本%d数据对比异常' %wordslistid)
-    # print('数据对比异常的单词id>>>', errodlistwords)
+    errodlistwords=[]
+    wordslist = []
+    words = getAbcWordInfo()
+    # print(words)
+    print('单词数量%d个' % len(words))
+    for wods in words:
+        # print(wods)
+        wds=wods['wordId']
+        wordslist.append(wds)
+    print(wordslist)
+    for wordslistid in wordslist:
+        for abcWods in words:
+            # print(abcWods)
+            if abcWods['wordId'] == int(wordslistid):
+                abcwordId=abcWods['wordId']
+                abcword=abcWods['word']
+                abcwordLabelId=abcWods['wordLabelId']
+                abclowerLevelList=abcWods['lowerLevelList']
+                print('ABC数据：abcwordId：%s  abcword：%s abcwordLabelId:%s abclowerLevelList:%s' % (abcwordId, abcword, abcwordLabelId, abclowerLevelList))
+
+                lightwordddd=getLightWordsinfo(wordslistid)
+                lightwordId=lightwordddd['wordId']
+                lightword=lightwordddd['word']
+                lightwordLabelId=lightwordddd['wordLabelId']
+                lightlowerLevelList=lightwordddd['lowerLevelList']
+                print('灯塔数据：lightword：%d  lightword：%s lightwordLabelId:%s lightlowerLevelList:%s' % (lightwordId, lightword, lightwordLabelId, lightlowerLevelList))
+                if abcwordId==lightwordId and abcword==lightword and abcwordLabelId == lightwordLabelId and abclowerLevelList==lightlowerLevelList:
+                    print('绘本%d对比灯塔数据正常！' %wordslistid )
+                else:
+                            errodlistwords.append(wordslistid)
+                            print('绘本%d数据对比异常' %wordslistid)
+    print('数据对比异常的单词id>>>', errodlistwords)
     print('数据对比异常的绘本id>>>', errodlist)
