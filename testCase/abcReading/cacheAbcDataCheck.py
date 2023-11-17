@@ -13,10 +13,10 @@ import requests
 更改绘本里面的数据，更新绘本后去灯塔取改绘本和去ABC去取改绘本的数据查看数据是否一致
 '''
 
-UID = '60623'
-TOKEN = '655590d449b1d'
+UID = '61445'
+TOKEN = '6557215a9463e'
 
-uidreq=60623
+uidreq=61445
 
 def getLighitBookData(BookId):
     url='http://lighthouse-api-dev.xiongmaoboshi.com/ns/dp/lighthouse/open-api/resource/picture/book/all/info/list/cache'

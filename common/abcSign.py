@@ -12,7 +12,7 @@ def generate_sha256_hashCode(plainText):
     encryptor = sha256()
     encryptor.update(plainTextBytes)
     hashCode = encryptor.hexdigest()
-    print(hashCode)
+    # print(hashCode)
     return hashCode
 
 def signABC():
@@ -40,9 +40,9 @@ def get_json_map(jsonnn):
                 aa += str(ii)
             else:
                 posision=len(aa)
-                print('当前的位置：',posision)
+                # print('当前的位置：',posision)
                 result1 = sorted(ii.items())
-                print(result1)
+                # print(result1)
 
                 for k in result1:
                     for kk in k:
@@ -50,7 +50,7 @@ def get_json_map(jsonnn):
                             bb += str(kk)
 
     textend0=str_insert(aa, posision, bb)
-    print(textend0)
+    # print(textend0)
 
     endaa = textend0.replace("[", "")
     endaa = endaa.replace("]", "")
@@ -73,14 +73,10 @@ def getSignEnd(requestData):
 
 
 if __name__ == '__main__':
-    js={
-            "ab_non_vip": 2,
-            "book_id": 1820,
-            "scan": 0,
-            "uid": 56898
+    js={"uid": 56898}
 
-        }
     a=getSignEnd(js)
     #验证签名
     b='5ebfcfe9d4cfc4a647ec94a1505aea3ac95360a96e498b7d3a228a97c129c7d7'
     print(a)
+    uuid='761f7ad0b3ece7ca'
