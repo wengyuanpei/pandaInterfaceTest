@@ -59,14 +59,14 @@ def get_json_map(jsonnn):
     return endText
 #
 def getSignEnd(requestData):
-    print('这个方法自动生成签名！')
+
     text1 = get_json_map(requestData)
     text2 = signABC()
     tend = text1 + text2
     sign = generate_sha256_hashCode(tend)
 
     requestData.update({'sign':sign})
-
+    print('生成签名成功！')
     return requestData
 
 
