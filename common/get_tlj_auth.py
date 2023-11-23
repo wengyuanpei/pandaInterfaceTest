@@ -23,7 +23,7 @@ def getauth():
 
     return auth_beare_token,tal_auth,phone_num_1,uid
 
-getauth()
+
 
 
 def tljlogIn(phone_num_1):
