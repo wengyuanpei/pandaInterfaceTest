@@ -20,8 +20,8 @@ curl -H 'Host: api-dev.abctime.com' -H 'User-Agent: UnityPlayer/2021.3.16f1c1 (U
 }' --compressed 'http://api-dev.abctime.com/v5/words-remember-planet/report-words'
 
 """
-headers = {'PANDA-TOKEN': '65643908d052c', 'PANDA-UID': '60623'}
-uidd=60623
+headers = {'PANDA-TOKEN': '65645ede8f5c5', 'PANDA-UID': '60642'}
+uidd=60642
 def getWords():
     url='http://api-dev.abctime.com/v5/words-remember-planet/get-words-sub-v2'
     header=headers
@@ -55,9 +55,9 @@ if __name__ == '__main__':
     #上报多少个单词学习
     wordslisttt=[]
 
-    reportNum=20
+    reportNum=10
 
-    rid=int(reportNum/5+1)
+    rid=int(reportNum/3+1)
 
     for i in range(1,rid):
         print('第%d轮！' %i)
@@ -76,4 +76,4 @@ if __name__ == '__main__':
                 wordslisttt.append(wid)
             else:
                 print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>单词获取重复！，重复的id是：',str(wid))
-            print(wordslisttt)
+    print(wordslisttt)
