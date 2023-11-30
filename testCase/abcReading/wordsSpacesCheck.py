@@ -1,3 +1,5 @@
+import random
+
 import requests
 from common.abcSign import getSignEnd
 
@@ -44,7 +46,69 @@ def getAllWords(UID,TOKEN,uid):
             wordsList.append([wordId,word,wordlenth])
     return wordsList
 
+def kouci(words):
+    if len(words) >= 7:
+        print('命中7')
+        for cici in lenth34:
+            if cici in words:
+                wen = words.replace(cici, '___')
+                print(wen)
 
+                break
+            elif 4 <= len(words) < 7:
+                print('命中46')
+                for cici in lenth2:
+                    if cici in words:
+                        wen = words.replace(cici, '__')
+                        print(wen)
+                        break
+            elif len(words) < 4:
+                print('命中13')
+                for cici in lenth1:
+                    if cici in words:
+                        wen = words.replace(cici, '_')
+                        print(wen)
+                        break
+            else:
+                print('随机1个')
+                a = words[random.randint(1, len(words) - 1)]
+                wen = words.replace(a, '_')
+                print(wen)
+                break
+
+    elif 4 <= len(words) < 7:
+        print('命中46')
+        for cici in lenth2:
+            if cici in words:
+                wen = words.replace(cici, '__')
+                print(wen)
+                break
+            elif len(words) < 4:
+                print('命中13')
+                for cici in lenth1:
+                    if cici in words:
+                        wen = words.replace(cici, '_')
+                        print(wen)
+                        break
+            else:
+                print('随机1个')
+                a = words[random.randint(1, len(words) - 1)]
+                wen = words.replace(a, '_')
+                print(wen)
+                break
+    elif len(words) < 4:
+        print('命中13')
+        for cici in lenth1:
+            if cici in words:
+                wen = words.replace(cici, '_')
+                print(wen)
+                break
+            else:
+                print('随机1个')
+                a = words[random.randint(1, len(words) - 1)]
+                wen = words.replace(a, '_')
+                print(wen)
+                break
 
 if __name__ == '__main__':
         checkWordsList=['ame',
@@ -159,24 +223,17 @@ if __name__ == '__main__':
             if i not in new_info:
                 new_info.append(i)
 
-        lenth4=[]
-        lenth46=[]
-        lenth7=[]
+        lenth34 = []
+        lenth2 = []
+        lenth1 = []
+        for i in checkWordsList:
+            if len(i) > 2:
+                lenth34.append(i)
+            if len(i) == 2:
+                lenth2.append(i)
+            if len(i) == 1:
+                lenth1.append(i)
 
-        for lenth in new_info:
-            if lenth[2] <4:
-                lenth4.append(lenth)
-            if 4<=lenth[2]<=6:
-                lenth46.append(lenth)
-            if lenth[2]>7:
-                lenth7.append(lenth)
 
-        print('小于4的单词有%d个' %len(lenth4))
-        print(lenth4)
 
-        print('4-6长度的单词有%d个' % len(lenth46))
-        print(lenth46)
-
-        print('大于7的单词有%d个' % len(lenth7))
-        print(lenth7)
 
