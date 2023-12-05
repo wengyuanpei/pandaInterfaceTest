@@ -1,5 +1,8 @@
-from time import sleep
 
+# 学习流上报绘本学习
+
+
+from time import sleep
 import requests
 from common.abcSign import *
 
@@ -153,7 +156,7 @@ if __name__ == '__main__':
     uidd = 135
     uuid = '135'
     token = '656ee831ec8ef'
-    cid = 7  #abc 等级字段
+    cid = 7  #abc 绘本等级字段
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
