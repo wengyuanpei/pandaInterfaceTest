@@ -1,25 +1,7 @@
 import requests
 from common.abcSign import *
 from time import *
-"""
-获取单词接口
 
-curl -H 'Host: api-dev.abctime.com' -H 'User-Agent: UnityPlayer/2021.3.16f1c1 (UnityWebRequest/1.0, libcurl/7.84.0-DEV)' 
--H 'Accept: */*' -H 'Content-Type: application/json' -H 'PANDA-TOKEN: 655ec9e44c453' -H 'PANDA-UID: 60642' -H 'versionCode: 353'
- -H 'xh-debug: 1' -H 'PANDA-USE-NEW-VERSION: 2' -H 'X-Unity-Version: 2021.3.16f1c1' --data-binary '{
-  "uid": 60642,
-  "sign": "024b2f18d5a8c422d5a67e002312610c27267351171bb09e5cd5005a5279b641"
-}' --compressed 'http://api-dev.abctime.com/v5/words-remember-planet/get-words-sub-v2'
-
-上报完成学习接口
-curl -H 'Host: api-dev.abctime.com' -H 'User-Agent: UnityPlayer/2021.3.16f1c1 (UnityWebRequest/1.0, libcurl/7.84.0-DEV)' -H 'Accept: */*' -H 'Content-Type: application/json' -H 'PANDA-TOKEN: 655ec9e44c453' -H 'PANDA-UID: 60642' -H 'versionCode: 353' -H 'xh-debug: 1' -H 'PANDA-USE-NEW-VERSION: 2' -H 'X-Unity-Version: 2021.3.16f1c1' --data-binary '{
-  "uid": 60642,
-  "action": 2,
-  "words_id": 45208,
-  "sign": "f4246d64ca7dbecf9c466147415100723e9f5cfe4b89ff93c89a5ab5e4086c35"
-}' --compressed 'http://api-dev.abctime.com/v5/words-remember-planet/report-words'
-
-"""
 headers = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
 uidd=136
 def getWords():
