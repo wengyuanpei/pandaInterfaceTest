@@ -13,7 +13,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
         }
     dataEND=getSignEnd(data)
 
-    header  = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
 
     req=requests.post(url=url,json=dataEND,headers=header).json()['data']['challenges']
 
@@ -23,7 +23,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
     # print(type(req))
     for bookInfo in req:
         bookId=bookInfo['bookId']
-        # if bookId != 0:
+
         bookList.append(bookId)
         challengId=bookInfo['id']
         challengesList.append(challengId)
@@ -47,8 +47,8 @@ def reportBookLising(uidd:int,uuid,token:str,bookId):
             }
     dataEnd=getSignEnd(data2)
 
-    code2 = requests.post(url=url, json=dataEnd, headers=header).json()['code']
-    print(code2)
+    code2 = requests.post(url=url, json=dataEnd, headers=header)
+    print('上报听绘本：',code2.status_code)
 
 def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
     url = 'http://api-dev.abctime.com/v5/challenges/done'
@@ -75,8 +75,8 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
 }
     dataEnd = getSignEnd(data2)
 
-    code2 = requests.post(url=url, json=dataEnd, headers=header).json()['code']
-    print(code2)
+    code2 = requests.post(url=url, json=dataEnd, headers=header)
+    print('上报听绘本Done：',code2.status_code)
 
 
 '''
@@ -144,8 +144,8 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
     dataEnd = getSignEnd(data2)
 
-    code2 = requests.post(url=url, json=dataEnd, headers=header).json()['code']
-    print(code2)
+    code2 = requests.post(url=url, json=dataEnd, headers=header)
+    print('上报读绘本：',code2.status_code)
 
 
 if __name__ == '__main__':
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     uidd = 135
     uuid = '135'
     token = '656ee831ec8ef'
-    cid = 20  #abc 等级字段
+    cid = 7  #abc 等级字段
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
@@ -161,14 +161,15 @@ if __name__ == '__main__':
     challendid = dataInfo[1]
     for bookId,challendid in zip(bookId,challendid):
         if bookId!=0:
-            print(bookId,challendid)
-
+            print('上报绘本id:',bookId,'关卡id:',challendid)
+            sleep(1)
             #上报绘本听
             reportBookLising(uidd, uuid, token, bookId)
             reportBookLisingDone(uidd,uuid,token,challendid)
-
+            sleep(1)
             #上报单词读
             reportWords(uidd, uuid, token, bookId)
-
+            sleep(1)
             #绘本跟读
             reportBookread(uidd, uuid, token, bookId)
+    print('##########################用户%d等级%d,学习流完成学习！！！###############################' %(uidd,cid))
