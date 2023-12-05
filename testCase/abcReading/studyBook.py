@@ -30,7 +30,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
 
     return [bookList,challengesList]
 
-def reportBookRead(uidd:int,uuid,token:str,bookId):
+def reportBookLising(uidd:int,uuid,token:str,bookId):
     url = 'http://api-dev.abctime.com/v5/study/report_book'
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     data2={
@@ -50,7 +50,7 @@ def reportBookRead(uidd:int,uuid,token:str,bookId):
     code2 = requests.post(url=url, json=dataEnd, headers=header).json()['code']
     print(code2)
 
-def reportBookReadDone(uidd:int,uuid:str,token:str,challenges_id):
+def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
     url = 'http://api-dev.abctime.com/v5/challenges/done'
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     data2 = {
@@ -126,9 +126,49 @@ def reportWords(uidd:int,uuid,token:str,bookId):
     rep=requests.post(url=url,json=dataEnd,headers=header)
     print('单词上报',rep.status_code)
 
+
+def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
+    url = 'http://api-dev.abctime.com/v5/study/report_book'
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    data2 = {
+
+            "content_id": bookId,
+            "cost_time": 28730,
+            "event_id": 10,
+            "open_num": 4,
+            "score": 49,
+            "score_list": [43, 54, 41, 57],
+            "uid": uidd,
+            "video_urls": ["oss_audio_135_1701767890776.wav", "oss_audio_135_1701767890784.wav", "oss_audio_135_1701767890785.wav", "oss_audio_135_1701767890786.wav"]
+        }
+
+    dataEnd = getSignEnd(data2)
+
+    code2 = requests.post(url=url, json=dataEnd, headers=header).json()['code']
+    print(code2)
+
+
 if __name__ == '__main__':
+
     uidd = 135
     uuid = '135'
     token = '656ee831ec8ef'
-    cid = 3
-    getBookIdChallengId(uidd,uuid,token,cid)
+    cid = 20  #abc 等级字段
+
+
+    dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
+    bookId=dataInfo[0]
+    challendid = dataInfo[1]
+    for bookId,challendid in zip(bookId,challendid):
+        if bookId!=0:
+            print(bookId,challendid)
+
+            #上报绘本听
+            reportBookLising(uidd, uuid, token, bookId)
+            reportBookLisingDone(uidd,uuid,token,challendid)
+
+            #上报单词读
+            reportWords(uidd, uuid, token, bookId)
+
+            #绘本跟读
+            reportBookread(uidd, uuid, token, bookId)
