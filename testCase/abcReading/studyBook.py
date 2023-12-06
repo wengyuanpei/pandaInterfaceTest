@@ -153,17 +153,19 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
 if __name__ == '__main__':
 
-    uidd = 135
-    uuid = '135'
-    token = '656ee831ec8ef'
-    cid = 7  #abc 绘本等级字段
+    uidd = 61359
+    uuid = '61359'
+    token = '656eee51b836f'
+    cid = 3  #abc 绘本等级字段
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
     bookId=dataInfo[0]
     challendid = dataInfo[1]
+    times=1
     for bookId,challendid in zip(bookId,challendid):
         if bookId!=0:
+            print('##################################上报第%d本绘本##############################' %times)
             print('上报绘本id:',bookId,'关卡id:',challendid)
             sleep(1)
             #上报绘本听
@@ -175,4 +177,8 @@ if __name__ == '__main__':
             sleep(1)
             #绘本跟读
             reportBookread(uidd, uuid, token, bookId)
+
+            times+=1
+
+
     print('##########################用户%d等级%d,学习流完成学习！！！###############################' %(uidd,cid))
