@@ -16,8 +16,9 @@ def generate_sha256_hashCode(plainText):
     return hashCode
 
 def signABC():
-    sign='GriE93gIGp$5bDjQ4rc20FzxWGghTIau'
-    return sign
+    sign_dev='GriE93gIGp$5bDjQ4rc20FzxWGghTIau'
+    sign_live_pre='hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy'
+    return sign_dev,sign_live_pre
 
 # str_origin：源字符串  pos：插入位置  str_add：待插入的字符串
 
@@ -58,25 +59,38 @@ def get_json_map(jsonnn):
 
     return endText
 #
-def getSignEnd(requestData):
+def getSignEnd(requestData,env:str):
+    if env=='dev':
+        text1 = get_json_map(requestData)
+        text2 = signABC()[0]
+        tend = text1 + text2
+        sign = generate_sha256_hashCode(tend)
 
-    text1 = get_json_map(requestData)
-    text2 = signABC()
-    tend = text1 + text2
-    sign = generate_sha256_hashCode(tend)
+        requestData.update({'sign':sign})
+        print('生成签名成功！')
 
-    requestData.update({'sign':sign})
-    print('生成签名成功！')
-    return requestData
+    if env=='pre' or env=='live':
+        text1 = get_json_map(requestData)
+        text2 = signABC()[1]
+        tend = text1 + text2
+        sign = generate_sha256_hashCode(tend)
 
+        requestData.update({'sign': sign})
+        print('生成签名成功！')
 
-
+        return requestData
 
 if __name__ == '__main__':
-    js={"uid": 56898}
+    js={"ab_non_vip": 2,
+        "cid": 3,
+        "member_id": 11940857}
 
-    a=getSignEnd(js)
+    a=getSignEnd(js,'pre')
     #验证签名
-    b='5ebfcfe9d4cfc4a647ec94a1505aea3ac95360a96e498b7d3a228a97c129c7d7'
+    b={
+	"ab_non_vip": 2,
+	"cid": 3,
+	"member_id": 11940857,
+	"sign": "9f3a2d98afe43c0db2c032ef89b2bf3e1f882c4afd82c31f365e3a6cb20c65d4"
+}
     print(a)
-    uuid='761f7ad0b3ece7ca'

@@ -2,11 +2,23 @@ import requests
 from common.abcSign import *
 from time import *
 
-headers = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
-uidd=136
+
+'''
+curl -H 'PANDA-USE-NEW-VERSION': 2' -H 'PANDA-UID': '11940857' -H 'PANDA-TOKEN': '65728ba9eda34' -H 'channel: 2' -H 'versionCode: 353' -H 'versionName: 6.5.3' -H 'Host: pre-api.abctime.com' -H 'User-Agent: okhttp/4.8.0' --data-binary "" --compressed 'https://pre-api.abctime.com/v5/task/get_reward_num'
+
+'''
+
+
+headers_dev = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
+baseurl_dev='http://api-dev.abctime.com'
+
+baseurl_pre='https://pre-api.abctime.com'
+headers_pre={'PANDA-USE-NEW-VERSION': 2,'PANDA-UID': '11940857','PANDA-TOKEN': '65728ba9eda34','channel': 2,'versionCode': 353,'versionName': '6.5.3','User-Agent': 'okhttp/4.8.0'}
+
+uidd=11940857
 def getWords():
-    url='http://api-dev.abctime.com/v5/words-remember-planet/get-words-sub-v2'
-    header=headers
+    url=headers_pre+'/v5/words-remember-planet/get-words-sub-v2'
+    header=baseurl_pre
     data1={"uid": uidd}
     data=getSignEnd(data1)
 
@@ -15,20 +27,20 @@ def getWords():
     return wordidList
 
 def reportStudyWords(words_id):
-    url = 'http://api-dev.abctime.com/v5/words-remember-planet/report-words'
-    header =headers
+    url = baseurl_pre+'/v5/words-remember-planet/report-words'
+    header =headers_pre
     data1 = {"uid":uidd,"action": 1,"words_id": words_id}
     data = getSignEnd(data1)
     req=requests.post(url=url,json=data,headers=header)
     return req.status_code
 
 def coleectionWords(words_id):
-    url='http://api-dev.abctime.com/v5/words-remember/collect-words'
+    url=baseurl_pre+'/v5/words-remember/collect-words'
     data1={"words_id": words_id,
         "action": 1,
         "uid":uidd}
     data=getSignEnd(data1)
-    header = headers
+    header = headers_pre
     req = requests.post(url=url, json=data, headers=header)
     return req.status_code
 
