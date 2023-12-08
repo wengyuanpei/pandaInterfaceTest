@@ -52,10 +52,7 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
         wid=widd['wordId']
         # print(wid)
         score=random.randint(50,100)
-        dicttt={
-                "score": score,
-                "video_url": "",
-                "words_id": 7727}
+        dicttt= {"score": score,"video_url": "","words_id": 7727}
         dicttt['words_id']=wid
         # print(dicttt)
         dictW.append(dicttt)
