@@ -66,7 +66,7 @@ if __name__ == '__main__':
         wids=getWords()
         for wid in wids:
 
-            sleep(2.5)
+            sleep(3.5)
             code=reportStudyWords(wid)
             print(code,'上报单词id：',wid)
             if str(code) != '200':
