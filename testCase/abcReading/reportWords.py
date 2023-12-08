@@ -13,14 +13,21 @@ headers_dev = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
 baseurl_dev='http://api-dev.abctime.com'
 
 baseurl_pre='https://pre-api.abctime.com'
-headers_pre={'PANDA-USE-NEW-VERSION': 2,'PANDA-UID': '11940857','PANDA-TOKEN': '65728ba9eda34','channel': 2,'versionCode': 353,'versionName': '6.5.3','User-Agent': 'okhttp/4.8.0'}
+headers_pre={'PANDA-UID': '11940857','PANDA-TOKEN': '65728ba9eda34',
+             'Content-Type':'application/json; charset=utf-8',
+             'PANDA-USE-NEW-VERSION':'2',
+             'versionCode':'653',
+             'Host':'pre-api.abctime.com'}
 
 uidd=11940857
+
+enverment='pre'
+
 def getWords():
-    url=headers_pre+'/v5/words-remember-planet/get-words-sub-v2'
-    header=baseurl_pre
+    url=baseurl_pre + '/v5/words-remember-planet/get-words-sub-v2'
+    header=headers_pre
     data1={"uid": uidd}
-    data=getSignEnd(data1)
+    data=getSignEnd(data1,enverment)
 
     wordidList=requests.post(url=url,json=data,headers=header).json()['data']['study_words_ids']
     # print(requests.post(url=url,json=data,headers=header).json()['data'])
@@ -30,8 +37,8 @@ def reportStudyWords(words_id):
     url = baseurl_pre+'/v5/words-remember-planet/report-words'
     header =headers_pre
     data1 = {"uid":uidd,"action": 1,"words_id": words_id}
-    data = getSignEnd(data1)
-    req=requests.post(url=url,json=data,headers=header)
+    data = getSignEnd(data1,enverment)
+    req=requests.post(url=url,json=data,headers=header,verify=False)
     return req.status_code
 
 def coleectionWords(words_id):
@@ -39,9 +46,9 @@ def coleectionWords(words_id):
     data1={"words_id": words_id,
         "action": 1,
         "uid":uidd}
-    data=getSignEnd(data1)
+    data=getSignEnd(data1,enverment)
     header = headers_pre
-    req = requests.post(url=url, json=data, headers=header)
+    req = requests.post(url=url, json=data, headers=header,verify=False)
     return req.status_code
 
 
@@ -49,7 +56,7 @@ if __name__ == '__main__':
     #上报多少个单词学习
     wordslisttt=[]
 
-    reportNum=220
+    reportNum=120
 
 
     rid=int(reportNum/5+1)
