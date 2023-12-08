@@ -5,7 +5,7 @@ from time import sleep
 import requests
 from common.abcSign import *
 
-
+enverment='dev'
 def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
     url='http://api-dev.abctime.com/v5/challenges/getChallengeListByCid'
     data={
@@ -13,7 +13,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
         "cid": cid,
         "member_id": uidd
         }
-    dataEND=getSignEnd(data)
+    dataEND=getSignEnd(data,enverment)
 
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
 
@@ -43,7 +43,7 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
                 "scan": 0,
                 "uid": uidd
             }
-    detailData=getSignEnd(detailDat)
+    detailData=getSignEnd(detailDat,enverment)
     url='http://api-dev.abctime.com/v5/book/detail'
     req=requests.post(url=url,headers=header,json=detailData).json()['data']['wordsList']
     # print(req)
@@ -80,7 +80,7 @@ def reportBookLising(uidd:int,uuid,token:str,bookId):
         "uid": uidd,
 
             }
-    dataEnd=getSignEnd(data2)
+    dataEnd=getSignEnd(data2,enverment)
 
     code2 = requests.post(url=url, json=dataEnd, headers=header)
     print('上报听绘本：',code2.status_code)
@@ -107,7 +107,7 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
             "true_proportion": 0,
             "uid": uidd,
             "video_urls": []}
-    dataEnd = getSignEnd(data2)
+    dataEnd = getSignEnd(data2,enverment)
 
     code2 = requests.post(url=url, json=dataEnd, headers=header)
     print('上报听绘本Done：',code2.status_code)
@@ -124,7 +124,7 @@ def reportWords(uidd:int,uuid,token:str,bookId):
             "cost_time": 1,
             "uid": uidd,
             "words_list": wordData}
-    dataEnd=getSignEnd(data)
+    dataEnd=getSignEnd(data,enverment)
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     rep=requests.post(url=url,json=dataEnd,headers=header)
     print('单词上报',rep.status_code)
@@ -145,7 +145,7 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
             "video_urls": ["oss_audio_135_1701767890776.wav", "oss_audio_135_1701767890784.wav", "oss_audio_135_1701767890785.wav", "oss_audio_135_1701767890786.wav"]
         }
 
-    dataEnd = getSignEnd(data2)
+    dataEnd = getSignEnd(data2,enverment)
 
     code2 = requests.post(url=url, json=dataEnd, headers=header)
     print('上报读绘本：',code2.status_code)
