@@ -4,10 +4,15 @@ import random
 from time import sleep
 import requests
 from common.abcSign import *
+from  common.abcReqHeader import *
 
 enverment='dev'
+baseurl=abcBaseUrl("dev")
+
+
+
 def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
-    url='http://api-dev.abctime.com/v5/challenges/getChallengeListByCid'
+    url=baseurl+'/v5/challenges/getChallengeListByCid'
     data={
         "ab_non_vip": 2,
         "cid": cid,
@@ -44,7 +49,7 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
                 "uid": uidd
             }
     detailData=getSignEnd(detailDat,enverment)
-    url='http://api-dev.abctime.com/v5/book/detail'
+    url=baseurl+'/v5/book/detail'
     req=requests.post(url=url,headers=header,json=detailData).json()['data']['wordsList']
     # print(req)
     dictW=[]
@@ -63,7 +68,7 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
 
 
 def reportBookLising(uidd:int,uuid,token:str,bookId):
-    url = 'http://api-dev.abctime.com/v5/study/report_book'
+    url =baseurl+ '/v5/study/report_book'
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     data2={
         "coin_num": 0,
@@ -83,7 +88,7 @@ def reportBookLising(uidd:int,uuid,token:str,bookId):
     print('上报听绘本：',code2.status_code)
 
 def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
-    url = 'http://api-dev.abctime.com/v5/challenges/done'
+    url = baseurl+'/v5/challenges/done'
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     data2 = {
             "again_coin": 5,
@@ -115,7 +120,7 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
 '''
 def reportWords(uidd:int,uuid,token:str,bookId):
     wordData=wordsRequestData(uidd, uuid, token,bookId)
-    url='http://api-dev.abctime.com/v5/study/report_words'
+    url=baseurl+'/v5/study/report_words'
     data={
             "book_id": bookId,
             "cost_time": 1,
@@ -128,7 +133,7 @@ def reportWords(uidd:int,uuid,token:str,bookId):
 
 
 def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
-    url = 'http://api-dev.abctime.com/v5/study/report_book'
+    url = baseurl+'/v5/study/report_book'
     header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     data2 = {
 

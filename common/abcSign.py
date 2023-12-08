@@ -68,7 +68,7 @@ def getSignEnd(requestData,env:str):
 
         requestData.update({'sign':sign})
         print('生成签名成功！')
-
+        print('当前签名是dev')
     if env=='pre' or env=='live':
         text1 = get_json_map(requestData)
         text2 = signABC()[1]
@@ -77,8 +77,8 @@ def getSignEnd(requestData,env:str):
 
         requestData.update({'sign': sign})
         print('生成签名成功！')
-
-        return requestData
+        print('当前签名是pre')
+    return requestData
 
 if __name__ == '__main__':
     js={"ab_non_vip": 2,
