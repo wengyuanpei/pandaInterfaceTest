@@ -1,4 +1,6 @@
 import requests
+
+from common.abcReqHeader import abcBaseUrl
 from common.abcSign import *
 from time import *
 
@@ -12,19 +14,28 @@ curl -H 'PANDA-USE-NEW-VERSION': 2' -H 'PANDA-UID': '11940857' -H 'PANDA-TOKEN':
 headers_dev = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
 baseurl_dev='http://api-dev.abctime.com'
 
-baseurl_pre='https://pre-api.abctime.com'
-headers_pre={'PANDA-UID': '11940857','PANDA-TOKEN': '65728ba9eda34',
+
+
+
+
+uidd=11940857
+UID='11940857'
+token='657686604a648'
+enverment='pre'
+baseurl=abcBaseUrl("pre")
+
+
+headers_pre={'PANDA-UID': UID,'PANDA-TOKEN': token,
              'Content-Type':'application/json; charset=utf-8',
              'PANDA-USE-NEW-VERSION':'2',
              'versionCode':'653',
              'Host':'pre-api.abctime.com'}
 
-uidd=11940857
 
-enverment='pre'
+
 
 def getWords():
-    url=baseurl_pre + '/v5/words-remember-planet/get-words-sub-v2'
+    url=baseurl + '/v5/words-remember-planet/get-words-sub-v2'
     header=headers_pre
     data1={"uid": uidd}
     data=getSignEnd(data1,enverment)
@@ -34,7 +45,7 @@ def getWords():
     return wordidList
 
 def reportStudyWords(words_id):
-    url = baseurl_pre+'/v5/words-remember-planet/report-words'
+    url = baseurl+'/v5/words-remember-planet/report-words'
     header =headers_pre
     data1 = {"uid":uidd,"action": 1,"words_id": words_id}
     data = getSignEnd(data1,enverment)
@@ -42,7 +53,7 @@ def reportStudyWords(words_id):
     return req.status_code
 
 def coleectionWords(words_id):
-    url=baseurl_pre+'/v5/words-remember/collect-words'
+    url=baseurl+'/v5/words-remember/collect-words'
     data1={"words_id": words_id,
         "action": 1,
         "uid":uidd}
@@ -66,7 +77,7 @@ if __name__ == '__main__':
         wids=getWords()
         for wid in wids:
 
-            sleep(3.5)
+            sleep(1.5)
             code=reportStudyWords(wid)
             print(code,'上报单词id：',wid)
             if str(code) != '200':
@@ -79,5 +90,5 @@ if __name__ == '__main__':
             else:
                 print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>单词获取重复！，重复的id是：',str(wid))
 
-            sleep(1.5)
+            sleep(3.5)
     print(wordslisttt)
