@@ -6,8 +6,8 @@ import requests
 from common.abcSign import *
 from  common.abcReqHeader import *
 
-enverment='dev'
-baseurl=abcBaseUrl("dev")
+enverment='pre'
+baseurl=abcBaseUrl("pre")
 
 
 
@@ -61,7 +61,7 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
         dicttt['words_id']=wid
         # print(dicttt)
         dictW.append(dicttt)
-    print('单词请求数据',dictW)
+    # print('单词请求数据',dictW)
     return dictW
 
 
@@ -155,10 +155,10 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
 if __name__ == '__main__':
 
-    uidd = 135
-    uuid = '135'
-    token = '656ee831ec8ef'
-    cid = 8  #abc 绘本等级字段
+    uidd = 11940857
+    uuid = '11940857'
+    token = '657670f121157'
+    cid = 4  #abc 绘本等级字段
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
@@ -169,14 +169,14 @@ if __name__ == '__main__':
         if bookId!=0:
             print('##################################上报第%d本绘本##############################' %times)
             print('上报绘本id:',bookId,'关卡id:',challendid)
-            sleep(1)
+            sleep(6)
             #上报绘本听
             reportBookLising(uidd, uuid, token, bookId)
             reportBookLisingDone(uidd,uuid,token,challendid)
-            sleep(1)
+            sleep(4)
             #上报单词读
             reportWords(uidd, uuid, token, bookId)
-            sleep(1)
+            sleep(2)
             #绘本跟读
             reportBookread(uidd, uuid, token, bookId)
 
