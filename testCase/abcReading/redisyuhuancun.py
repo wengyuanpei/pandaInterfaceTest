@@ -66,7 +66,7 @@ if __name__ == '__main__':
     errorlist=[]
     for bookid in listt:
 
-        sleep(1)
+        sleep(0.5)
         req=get_book_detaile(uuid, uid, token, bookid)
         if req['data']['id'] != "":
             print('#####################绘本详情获取成功！##################')
@@ -76,7 +76,7 @@ if __name__ == '__main__':
         wordids=req['data']['wordsList']
 
         for bookl in wordids:
-            sleep(1)
+            sleep(0.5)
             wordid=bookl['wordId']
             winfo=get_words_detail(uuid, uid, token, wordid)
             if winfo['data']!= '':
