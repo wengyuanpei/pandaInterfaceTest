@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
         for bookl in wordids:
             sleep(1)
-            wordid=bookl['id']
+            wordid=bookl['wordId']
             winfo=get_words_detail(uuid, uid, token, wordid)
             if winfo['data']!= '':
                 print('%d单词详情获取成功'%wordid)
