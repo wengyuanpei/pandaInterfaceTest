@@ -28,8 +28,8 @@ baseurl=abcBaseUrl("pre")
 headers_pre={'PANDA-UID': UID,'PANDA-TOKEN': token,
              'Content-Type':'application/json; charset=utf-8',
              'PANDA-USE-NEW-VERSION':'2',
-             'versionCode':'653',
-             'Host':'pre-api.abctime.com'}
+             'versionCode':'653'
+             }
 
 
 
