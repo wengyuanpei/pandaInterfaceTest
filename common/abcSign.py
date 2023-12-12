@@ -67,8 +67,8 @@ def getSignEnd(requestData,env:str):
         sign = generate_sha256_hashCode(tend)
 
         requestData.update({'sign':sign})
-        print('生成签名成功！')
-        print('当前签名是dev')
+        # print('生成签名成功！')
+        print('生成签名成功！当前签名是dev')
     if env=='pre' or env=='live':
         text1 = get_json_map(requestData)
         text2 = signABC()[1]
@@ -76,8 +76,8 @@ def getSignEnd(requestData,env:str):
         sign = generate_sha256_hashCode(tend)
 
         requestData.update({'sign': sign})
-        print('生成签名成功！')
-        print('当前签名是pre')
+        # print('生成签名成功！')
+        print('生成签名成功！当前签名是pre')
     return requestData
 
 if __name__ == '__main__':
