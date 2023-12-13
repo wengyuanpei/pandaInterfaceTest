@@ -18,9 +18,9 @@ baseurl_dev='http://api-dev.abctime.com'
 
 
 
-uidd=11940857
-UID='11940857'
-token='657686604a648'
+uidd=18324628
+UID='18324628'
+token='657815137fddb'
 enverment='pre'
 baseurl=abcBaseUrl("pre")
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     #上报多少个单词学习
     wordslisttt=[]
 
-    reportNum=120
+    reportNum=400
 
 
     rid=int(reportNum/5+1)
