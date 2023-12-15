@@ -24,5 +24,6 @@ if __name__ == '__main__':
     uid=11940857
     uids='11940857'
     token='657ab77776f68'
+    #发放金币数量
     coinnum=1000
     coincoin(uid,uids,token,coinnum)
