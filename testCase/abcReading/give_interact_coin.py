@@ -1,5 +1,4 @@
 import requests
-
 from common.abcSign import *
 from common.abcReqHeader import *
 
