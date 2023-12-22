@@ -5,30 +5,27 @@ from common.abcSign import *
 from time import *
 
 
-'''
-curl -H 'PANDA-USE-NEW-VERSION': 2' -H 'PANDA-UID': '11940857' -H 'PANDA-TOKEN': '65728ba9eda34' -H 'channel: 2' -H 'versionCode: 353' -H 'versionName: 6.5.3' -H 'Host: pre-api.abctime.com' -H 'User-Agent: okhttp/4.8.0' --data-binary "" --compressed 'https://pre-api.abctime.com/v5/task/get_reward_num'
-
-'''
 
 
-headers_dev = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136'}
+
+headers_dev = {'PANDA-TOKEN': '6568046886ee1', 'PANDA-UID': '136','versionCode':'660'}
 baseurl_dev='http://api-dev.abctime.com'
 
 
 
 
 
-uidd=18324628
-UID='18324628'
-token='657815137fddb'
-enverment='pre'
-baseurl=abcBaseUrl("pre")
+uidd=60623
+UID='60623'
+token='6584fab6758db'
+enverment='dev'
+baseurl=abcBaseUrl("dev")
 
 
 headers_pre={'PANDA-UID': UID,'PANDA-TOKEN': token,
              'Content-Type':'application/json; charset=utf-8',
              'PANDA-USE-NEW-VERSION':'2',
-             'versionCode':'653'
+             'versionCode':'660'
              }
 
 
@@ -67,7 +64,7 @@ if __name__ == '__main__':
     #上报多少个单词学习
     wordslisttt=[]
 
-    reportNum=400
+    reportNum=460
 
 
     rid=int(reportNum/5+1)
@@ -76,8 +73,7 @@ if __name__ == '__main__':
         print('第%d轮！' %i)
         wids=getWords()
         for wid in wids:
-
-            sleep(1.5)
+            sleep(1)
             code=reportStudyWords(wid)
             print(code,'上报单词id：',wid)
             if str(code) != '200':
@@ -90,5 +86,5 @@ if __name__ == '__main__':
             else:
                 print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>单词获取重复！，重复的id是：',str(wid))
 
-            sleep(3.5)
-    print(wordslisttt)
+            sleep(1)
+    print('所有单词>>>',wordslisttt)
