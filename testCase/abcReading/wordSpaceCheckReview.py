@@ -8,9 +8,9 @@ from common.abcSign import *
 from time import sleep
 
 
-uidd=60642
-UID='60642'
-token='658417a363f0f'
+uidd=63312
+UID='63312'
+token='658542c55cc70'
 enverment='dev'
 baseurl=abcBaseUrl("dev")
 version='660'
@@ -45,12 +45,16 @@ def reportViweWords(uid,wordid):
 
 if __name__ == '__main__':
 
-    #复习单词个数输入
+
     allword=[]
 
+    ####################################
+    uid=63312
 
-    uid=60642
-    viewNum=800
+    # 复习单词个数输入
+
+    ######################################
+    viewNum=500
 
     num=viewNum/8+1
     for i in range(1,int(num)):
@@ -62,3 +66,5 @@ if __name__ == '__main__':
             sleep(3)
     print('全部复习单词：',allword)
     print('总共复习次数',len(allword))
+
+
