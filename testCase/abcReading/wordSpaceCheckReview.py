@@ -59,5 +59,6 @@ if __name__ == '__main__':
         print('第',str(i),'轮复习的单词是',wordlist)
         for wid in wordlist:
             reportViweWords(uid, wid)
-            sleep(1)
+            sleep(3)
     print('全部复习单词：',allword)
+    print('总共复习次数',len(allword))
