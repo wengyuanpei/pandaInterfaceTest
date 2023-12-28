@@ -2,7 +2,7 @@ import requests
 from common.abcSign import *
 from common.abcReqHeader import *
 
-envermen='pre'
+envermen='dev'
 
 baseurl=abcBaseUrl(envermen)
 
@@ -21,9 +21,9 @@ def coincoin(uid:int,uids:str,token:str,coinnum:int):
 
 
 if __name__ == '__main__':
-    uid=11940857
-    uids='11940857'
-    token='657ab77776f68'
+    uid=63567
+    uids='63567'
+    token='658b9a7d9686c'
     #发放金币数量
-    coinnum=1000
+    coinnum=1000000
     coincoin(uid,uids,token,coinnum)

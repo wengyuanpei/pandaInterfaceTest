@@ -3,6 +3,7 @@ from common.abcSign import getSignEnd
 from common.abcReqHeader import abcBaseUrl
 
 enverment='dev'
+
 abcBaseUrl=abcBaseUrl(enverment)
 
 def setPlan(uid:int,uuid:str,token:str,cid:int):
