@@ -6,6 +6,7 @@
 #Pyinstaller -F -i C:\Users\zhang\Desktop\捕获.PNG  xmindToTestlink.py
 
 import os
+import xmind2testlink
 
 
 pathData=input("请输入文件的绝对路径如 C:data/a.xmind : ")
