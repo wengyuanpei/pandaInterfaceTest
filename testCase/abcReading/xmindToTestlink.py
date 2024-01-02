@@ -3,7 +3,7 @@
 #xmind 格式转xmind
 #文件打包命令 -i 使用图标
 
-#Pyinstaller -F -i C:\Users\zhang\Desktop\捕获.PNG  xmindToTestlink.py
+#Pyinstaller -F -i C:\Users\zhang\Desktop\icon_sy.png  xmindToTestlink.py
 
 import os
 import xmind2testlink
