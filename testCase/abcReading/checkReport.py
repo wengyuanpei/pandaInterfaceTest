@@ -33,7 +33,7 @@ if __name__ == '__main__':
         oldNUm=getOldReport(uid)
         newNUM=getNueReport(uid)
         print('老版本阅读绘本数据%d,新版本阅读绘本数%d'%(oldNUm,newNUM))
-        if oldNUm >newNUM:
+        if oldNUm >=newNUM:
             print('异常账号'+str(uid))
             errorlist.append(uid)
     print(errorlist)
