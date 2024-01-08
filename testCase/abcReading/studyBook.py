@@ -20,8 +20,8 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
         }
     dataEND=getSignEnd(data,enverment)
 
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
 
     req=requests.post(url=url,json=dataEND,headers=header).json()['data']['challenges']
 
@@ -42,8 +42,8 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
 
 def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ####################################################################################
     detailDat={
                 "ab_non_vip": 2,
@@ -73,8 +73,8 @@ def wordsRequestData(uidd:int,uuid:str,token:str,book_id)->list:
 def reportBookLising(uidd:int,uuid,token:str,bookId):
     url =baseurl+ '/v5/study/report_book'
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data2={
             "content_id": bookId,
@@ -91,8 +91,8 @@ def reportBookLising(uidd:int,uuid,token:str,bookId):
 def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl+'/v5/challenges/done'
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data2 = {
             "again_coin": 5,
@@ -125,8 +125,8 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
 def giveChallegeAad(uidd:int,uuid:str,token:str,challenges_id):
     url=baseurl+'/v5/challenges/give_challenges_award'
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data={
             "uid": uidd,
@@ -139,8 +139,8 @@ def giveChallegeAad(uidd:int,uuid:str,token:str,challenges_id):
 def reportWords(uidd:int,uuid,token:str,bookId):
     wordData=wordsRequestData(uidd, uuid, token,bookId)
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     url=baseurl+'/v5/study/report_words'
     data={
@@ -159,8 +159,8 @@ def reportWords(uidd:int,uuid,token:str,bookId):
 def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl + '/v5/challenges/done'
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data={
             "again_coin": 5,
@@ -191,8 +191,8 @@ def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
 def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
     url = baseurl+'/v5/study/report_book'
     ###################################################################################
-    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
-    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data2 = {
 
@@ -214,9 +214,9 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
 if __name__ == '__main__':
 
-    uidd = 63330
-    uuid = '63330 '
-    token = '658544bfa4fb3'
+    uidd = 64139
+    uuid = '64139 '
+    token = "6597ad90d1a81"
     # abc 绘本等级字段
     cid = 4
 
