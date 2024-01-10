@@ -1852,11 +1852,13 @@ if __name__ == '__main__':
 
     errorlist=[]
     for uid in litt:
-        sleep(3)
+
         oldNUm=getOldReport(uid)
+        sleep(1.5)
         newNUM=getNueReport(uid)
+        sleep(1.5)
         print('用户%d老版本阅读绘本数据%d,新版本阅读绘本数%d' %(uid,oldNUm,newNUM))
-        if oldNUm - newNUM >1:
+        if oldNUm >newNUM and newNUM != 0:
             print('############################异常账号'+str(uid)+'################################')
             errorlist.append(uid)
     print(errorlist)
