@@ -214,13 +214,11 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
 if __name__ == '__main__':
 
-
-    uidd = 64361
-    uuid = '64361'
-    token = "65a8ddced2cb8"
+    uidd = 60646
+    uuid = '60646'
+    token = "65a4d8acd071e"
     # abc 绘本等级字段
     cid =3
-
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
