@@ -81,16 +81,12 @@ def getSignEnd(requestData,env:str):
     return requestData
 
 if __name__ == '__main__':
-    js={"ab_non_vip": 2,
-        "cid": 3,
-        "member_id": 11940857}
+    js={
+        "ab_group": 1,
+        "uid": 64299
+    }
 
-    a=getSignEnd(js,'pre')
+    a=getSignEnd(js,'dev')
     #验证签名
-    b={
-            "ab_non_vip": 2,
-            "cid": 3,
-            "member_id": 11940857,
-            "sign": "9f3a2d98afe43c0db2c032ef89b2bf3e1f882c4afd82c31f365e3a6cb20c65d4"
-        }
+
     print(a)
