@@ -215,9 +215,9 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 64533
-    uuid = '64533'
-    token = "65bb3f1a368fc"
+    uidd = 64472
+    uuid = '64472'
+    token = "65bb3d4e31226"
     # abc 绘本等级字段
     cid =3
 
