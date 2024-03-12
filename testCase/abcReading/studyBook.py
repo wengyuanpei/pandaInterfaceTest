@@ -102,7 +102,7 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
             "cost_time": 16859,
             "extra": "{\"allCount\":0,\"correctCount\":0,\"currentCorrectCount\":0,\"maxCorrentCount\":0,\"maxScore\":0,\"openCount\":0}",
             "false_num": 0,
-            "is_again": 'false',
+            "is_again": bool(0),
             "proportion": 100,
             "repair_date": 0,
             "score": 0,
@@ -170,7 +170,7 @@ def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
             "cost_time": 271031,
             "extra": "{\"allCount\":0,\"correctCount\":0,\"currentCorrectCount\":2,\"maxCorrentCount\":7,\"maxScore\":100,\"openCount\":19}",
             "false_num": 3,
-            "is_again": 'false',
+            "is_again": bool(0),
             "proportion": 66,
             "repair_date": 0,
             "score": 93,
@@ -215,11 +215,11 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 65185
-    uuid = '65185'
-    token = "65eede2824896"
+    uidd = 53017
+    uuid = '53017'
+    token = "65efbaf3e8194"
     # abc 绘本等级字段
-    cid =5
+    cid =10
 
 
 
