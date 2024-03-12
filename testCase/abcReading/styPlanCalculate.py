@@ -63,11 +63,16 @@ if __name__ == '__main__':
 
     allbooknum=int(cuntnow[0]+cuntaim[0])
     allwordsnum=int(cuntaim[1]+cuntnow[1])
-
+    print('共计学习绘本数%d,共计学习单词数%d' %(allbooknum,allwordsnum))
     #计算学习平均每天学习绘本数
-    bookStudy=float(allbooknum/int(weekDay)/52/int(yeartoaim))
-    # bookStudy=round(bookStudy,2)
+    bookStudy=float(allbooknum/float(weekDay)/52/float(yeartoaim))
 
-    wordsStudy=float(allwordsnum/int(weekDay)/52/int(yeartoaim))
-    # wordsStudy=round(wordsStudy,2)
-    print('每天学习绘本数%d，每天学习单词数%d' %(bookStudy,wordsStudy))
+    bookStudy=round(bookStudy,1)
+
+    wordsStudy=float(allwordsnum/float(weekDay)/52/float(yeartoaim))
+    wordsStudy=round(wordsStudy,1)
+    print('每天学习绘本数%s          每天学习单词数%s' %(str(bookStudy),str(wordsStudy)))
+
+
+    words =round(allwordsnum /365/int(yeartoaim),1)
+    print('按照365天进行单词数学习计算，每天学习单词为%s' %(str(words)))

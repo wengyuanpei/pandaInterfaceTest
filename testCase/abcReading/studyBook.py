@@ -4,7 +4,7 @@ import random
 from time import sleep
 import requests
 from common.abcSign import *
-from  common.abcReqHeader import *
+from common.abcReqHeader import *
 
 enverment='dev'
 baseurl=abcBaseUrl(enverment)
@@ -215,11 +215,11 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 64533
-    uuid = '64533'
-    token = "65bb3f1a368fc"
+    uidd = 65185
+    uuid = '65185'
+    token = "65eede2824896"
     # abc 绘本等级字段
-    cid =3
+    cid =5
 
 
 
