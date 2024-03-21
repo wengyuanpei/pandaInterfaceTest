@@ -27,8 +27,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
 
     bookList=[]
     challengesList=[]
-    # print(req)
-    # print(type(req))
+
     for bookInfo in req:
         bookId=bookInfo['bookId']
 
@@ -215,11 +214,13 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 53017
-    uuid = '53017'
-    token = "65efbaf3e8194"
+    uidd = 65327
+    uuid = '65327'
+    token = "65f8173c23638"
     # abc 绘本等级字段
-    cid =10
+    cid =3
+
+
 
 
 

@@ -4,7 +4,7 @@ import random
 from time import sleep
 import requests
 from common.abcSign import *
-from  common.abcReqHeader import *
+from common.abcReqHeader import *
 
 enverment='dev'
 baseurl=abcBaseUrl(enverment)
@@ -102,7 +102,7 @@ def reportBookLisingDone(uidd:int,uuid:str,token:str,challenges_id):
             "cost_time": 16859,
             "extra": "{\"allCount\":0,\"correctCount\":0,\"currentCorrectCount\":0,\"maxCorrentCount\":0,\"maxScore\":0,\"openCount\":0}",
             "false_num": 0,
-            "is_again": 'false',
+            "is_again": bool(0),
             "proportion": 100,
             "repair_date": 0,
             "score": 0,
@@ -170,7 +170,7 @@ def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
             "cost_time": 271031,
             "extra": "{\"allCount\":0,\"correctCount\":0,\"currentCorrectCount\":2,\"maxCorrentCount\":7,\"maxScore\":100,\"openCount\":19}",
             "false_num": 3,
-            "is_again": 'false',
+            "is_again": bool(0),
             "proportion": 66,
             "repair_date": 0,
             "score": 93,
@@ -214,11 +214,13 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 
 if __name__ == '__main__':
 
-    uidd = 60646
-    uuid = '60646'
-    token = "65a4d8acd071e"
+
+    uidd = 65324
+    uuid = '65324'
+    token = "65f7b05954dec"
     # abc 绘本等级字段
-    cid =3
+    cid =5
+
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
