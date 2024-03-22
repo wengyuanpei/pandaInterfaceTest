@@ -152,9 +152,37 @@ def reportWords(uidd:int,uuid,token:str,bookId):
 
 
 
-
-    rep=requests.post(url=url,json=dataEnd,headers=header)
-    print('单词上报',rep.status_code)
+def reportWordReadDone(uidd:int,uuid:str,token:str,challenges_id):
+    url = baseurl + '/v5/challenges/done'
+    ###################################################################################
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    ###################################################################################
+    data={
+            "true_num": 7,
+            "proportion": 40,
+            "score": 96,
+            "cost_time": 0,
+            "continue_true_num": 8,
+            "again_coin": 100,
+            "challenges_id": 56,
+            "video_urls": [],
+            "source": "2",
+            "stage_num": 5,
+            "is_again": bool(0),
+            "false_num": -6,
+            "stage_type": 4,
+            "stage": 2,
+            "content": "[{\"audioUrl\":\"\",\"recordCount\":2,\"answer\":[1,93]}]",
+            "version": "400",
+            "timestamp": "1711101497",
+            "extra": "{\"correctCount\":7,\"maxScore\":100,\"maxCorrentCount\":8,\"currentCorrectCount\":8,\"openCount\":9,\"allCount\":16}",
+            "true_proportion": 700,
+            "uid": uidd
+        }
+    dataend=getSignEnd(data,enverment)
+    req=requests.post(url=url,json=dataend,headers=header)
+    print('上报：',req.status_code)
 
 def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl + '/v5/challenges/done'
@@ -218,6 +246,7 @@ if __name__ == '__main__':
     uidd = 65324
     uuid = '65324'
     token = "65f7b05954dec"
+    version=400
     # abc 绘本等级字段
     cid =5
 

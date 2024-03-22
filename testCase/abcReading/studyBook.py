@@ -155,6 +155,45 @@ def reportWords(uidd:int,uuid,token:str,bookId):
     rep=requests.post(url=url,json=dataEnd,headers=header)
     print('单词上报',rep.status_code)
 
+
+
+
+def reportWordReadDone(uidd:int,uuid:str,token:str,challenges_id):
+    url = baseurl + '/v5/challenges/done'
+    ###################################################################################
+    header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid,'versionCode':'360'}
+    # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
+    ###################################################################################
+    data={
+                "uuid": "Y2E4MTZhNTljZWRkYWM5MTIyNjQ2ODc5MjhmM2UyYTU=",
+                "cost_time": 26560,
+                "true_num": 6,
+                "proportion": 40,
+                "extra": "{\"currentCorrectCount\":6,\"maxCorrentCount\":6,\"openCount\":6,\"maxScore\":100,\"allCount\":11,\"correctCount\":6}",
+                "challenges_id": challenges_id,
+                "token": "65fd4f5985791",
+                "version": "400",
+                "stage_num": 5,
+                "content": "[{\"answer\":[100],\"recordCount\":1,\"audioUrl\":\"\"}]",
+                "false_num": -5,
+                "again_coin": 1,
+                "stage_type": 4,
+                "uid": uidd,
+                "sign": "bcc6d289af4b039d61b9749185401384c5c6c5ef1d4911739272d1290e2b5b38",
+                "is_again": bool(0),
+                "video_urls": [],
+                "timestamp": "1711102224",
+                "member_id": uidd,
+                "score": 86,
+                "continue_true_num": 6,
+                "source": "2",
+                "stage": 2,
+                "true_proportion": 600
+            }
+    dataend=getSignEnd(data,enverment)
+    req=requests.post(url=url,json=dataend,headers=header)
+    print('上报学单词：',req.status_code)
+
 def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl + '/v5/challenges/done'
     ###################################################################################
@@ -214,9 +253,9 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 65327
-    uuid = '65327'
-    token = "65f8173c23638"
+    uidd = 63099
+    uuid = '63099'
+    token = "65fd4f5985791"
     # abc 绘本等级字段
     cid =3
 
@@ -243,6 +282,7 @@ if __name__ == '__main__':
             sleep(0.1)
             reportWords(uidd, uuid, token, bookId)
             sleep(0.1)
+            reportWordReadDone(uidd, uuid, token, challendid)
             #绘本跟读
             reportBookread(uidd, uuid, token, bookId)
             sleep(0.1)
