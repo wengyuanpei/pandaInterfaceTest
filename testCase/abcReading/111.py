@@ -27,8 +27,7 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
 
     bookList=[]
     challengesList=[]
-    # print(req)
-    # print(type(req))
+
     for bookInfo in req:
         bookId=bookInfo['bookId']
 
@@ -152,6 +151,13 @@ def reportWords(uidd:int,uuid,token:str,bookId):
 
 
 
+
+    rep=requests.post(url=url,json=dataEnd,headers=header)
+    print('单词上报',rep.status_code)
+
+
+
+
 def reportWordReadDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl + '/v5/challenges/done'
     ###################################################################################
@@ -159,30 +165,34 @@ def reportWordReadDone(uidd:int,uuid:str,token:str,challenges_id):
     # header = {'PANDA-TOKEN': token, 'PANDA-UID': uuid}
     ###################################################################################
     data={
-            "true_num": 7,
-            "proportion": 40,
-            "score": 96,
-            "cost_time": 0,
-            "continue_true_num": 8,
-            "again_coin": 100,
-            "challenges_id": 56,
-            "video_urls": [],
-            "source": "2",
-            "stage_num": 5,
-            "is_again": bool(0),
-            "false_num": -6,
-            "stage_type": 4,
-            "stage": 2,
-            "content": "[{\"audioUrl\":\"\",\"recordCount\":2,\"answer\":[1,93]}]",
-            "version": "400",
-            "timestamp": "1711101497",
-            "extra": "{\"correctCount\":7,\"maxScore\":100,\"maxCorrentCount\":8,\"currentCorrectCount\":8,\"openCount\":9,\"allCount\":16}",
-            "true_proportion": 700,
-            "uid": uidd
-        }
+                "uuid": "Y2E4MTZhNTljZWRkYWM5MTIyNjQ2ODc5MjhmM2UyYTU=",
+                "cost_time": 26560,
+                "true_num": 6,
+                "proportion": 40,
+                "extra": "{\"currentCorrectCount\":6,\"maxCorrentCount\":6,\"openCount\":6,\"maxScore\":100,\"allCount\":11,\"correctCount\":6}",
+                "challenges_id": challenges_id,
+                "token": "65fd4f5985791",
+                "version": "400",
+                "stage_num": 5,
+                "content": "[{\"answer\":[100],\"recordCount\":1,\"audioUrl\":\"\"}]",
+                "false_num": -5,
+                "again_coin": 1,
+                "stage_type": 4,
+                "uid": uidd,
+                "sign": "bcc6d289af4b039d61b9749185401384c5c6c5ef1d4911739272d1290e2b5b38",
+                "is_again": bool(0),
+                "video_urls": [],
+                "timestamp": "1711102224",
+                "member_id": uidd,
+                "score": 86,
+                "continue_true_num": 6,
+                "source": "2",
+                "stage": 2,
+                "true_proportion": 600
+            }
     dataend=getSignEnd(data,enverment)
     req=requests.post(url=url,json=dataend,headers=header)
-    print('上报：',req.status_code)
+    print('上报学单词：',req.status_code)
 
 def reportBookreadDone(uidd:int,uuid:str,token:str,challenges_id):
     url = baseurl + '/v5/challenges/done'
@@ -243,13 +253,11 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 65324
-    uuid = '65324'
-    token = "65f7b05954dec"
-    version=400
+    uidd = 65560
+    uuid = '65560'
+    token = "6600d67a53f67"
     # abc 绘本等级字段
-    cid =5
-
+    cid =3
 
 
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
@@ -271,6 +279,7 @@ if __name__ == '__main__':
             sleep(0.1)
             reportWords(uidd, uuid, token, bookId)
             sleep(0.1)
+            reportWordReadDone(uidd, uuid, token, challendid)
             #绘本跟读
             reportBookread(uidd, uuid, token, bookId)
             sleep(0.1)

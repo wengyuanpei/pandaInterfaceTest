@@ -82,23 +82,31 @@ def getSignEnd(requestData,env:str):
 
 if __name__ == '__main__':
     js={
-
-
-    "score": 96,
-    "sign": "7aea2c933f37c6b8cf1af525667272877194746f1a986c9f5bf95ab235f71ec4",
-    "again_coin": 1,
-    "challenges_id": 56,
+    "stage_num": 5,
     "is_again": bool(0),
-    "false_num": -6,
-    "stage_type": 4,
-    "stage": 2,
-    "content": "[{\"audioUrl\":\"\",\"recordCount\":2,\"answer\":[1,93]}]",
+    "cost_time": 61430,
+    "timestamp": "1711357187",
+    "true_proportion": 88,
+    "proportion": 100,
+    "uuid": "Y2E4MTZhNTljZWRkYWM5MTIyNjQ2ODc5MjhmM2UyYTU=",
+    "token": "660133ed33d6c",
+    "extra": "{\"currentCorrectCount\":5,\"allCount\":23,\"maxScore\":100,\"challengeRate\":4,\"openCount\":17,\"correctCount\":15,\"maxCorrentCount\":6}",
+    "stage": 4,
+    "challenges_id": 9,
+    "uid": 63080,
+    "source": "2",
+    "open_num": 4,
+    "score": 81,
+    "continue_true_num": 6,
+    "video_urls": [],
+    "stage_type": 3,
+    "false_num": 1,
+    "again_coin": 0,
+    "true_num": 8,
     "version": "400",
-    "timestamp": "1711101497",
-    "extra": "{\"correctCount\":7,\"maxScore\":100,\"maxCorrentCount\":8,\"currentCorrectCount\":8,\"openCount\":9,\"allCount\":16}",
-    "uid": 63099
+    "member_id": 63080,
+    "answer_num": 9
 }
-
     a=getSignEnd(js,'dev')
     #验证签名
 

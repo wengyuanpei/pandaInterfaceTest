@@ -29,11 +29,15 @@ def getBookIdChallengId(uidd:int,uuid,token:str,cid:int)->list:
     challengesList=[]
 
     for bookInfo in req:
-        bookId=bookInfo['bookId']
 
+        bookId=bookInfo['bookId']
         bookList.append(bookId)
+
+
+
         challengId=bookInfo['id']
         challengesList.append(challengId)
+
 
     return [bookList,challengesList]
 
@@ -253,11 +257,11 @@ def reportBookread(uidd:int,uuid:str,token:str,bookId:int):
 if __name__ == '__main__':
 
 
-    uidd = 63099
-    uuid = '63099'
-    token = "65fd4f5985791"
+    uidd = 63080
+    uuid = '63080'
+    token = "66015210b7f3c"
     # abc 绘本等级字段
-    cid =3
+    cid =4
 
 
 
@@ -266,6 +270,12 @@ if __name__ == '__main__':
     dataInfo=getBookIdChallengId(uidd,uuid,token,cid)
     bookId=dataInfo[0]
     challendid = dataInfo[1]
+
+    #切片不取最后一个
+    bookId = bookId[:-1]
+    challendid=challendid[:-1]
+
+
     times=1
     for bookId,challendid in zip(bookId,challendid):
         if bookId!=0:

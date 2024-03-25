@@ -21,9 +21,10 @@ def coincoin(uid:int,uids:str,token:str,coinnum:int):
 
 
 if __name__ == '__main__':
-    uid=64460
-    uids='64460'
-    token='65b8db31bba7e'
+    uid=65560
+    uids='65560'
+    token='6600d67a53f67'
     #发放金币数量
-    coinnum=10000
+    coinnum=60
+
     coincoin(uid,uids,token,coinnum)
