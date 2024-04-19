@@ -261,7 +261,8 @@ if __name__ == '__main__':
     uuid = '63080'
     token = "66015210b7f3c"
     # abc 绘本等级字段
-    cid =4
+    cid =3
+
 
 
 
