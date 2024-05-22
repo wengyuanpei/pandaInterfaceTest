@@ -56,6 +56,8 @@ if __name__ == '__main__':
     ip = '94a3ad11'
     get_ip = 'adb -s %s shell ifconfig|findstr Bcast' % ip
     # 执行操作点击绘本-扉页双击左下角-三次点击分数-关闭窗口-返回-弹窗选择首页-循环
+
+
     a=1
     runadb=execute(get_ip)
     while len(runadb) ==1:
