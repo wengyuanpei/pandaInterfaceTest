@@ -5,14 +5,7 @@ from datetime import datetime
 from time import *
 
 
-# adb截取手机屏幕
-# adb shell screencap -p *.png
-#
-# 点击屏幕指定位置
-# adb shell input tap <x> <y>
-#
-# 从屏幕的一点滑动到另一点
-# adb shell input swipe x1 y1 x2 y2
+
 
 
 def execute(cmd):
@@ -27,37 +20,77 @@ def execute(cmd):
 
     return infoooo
 
+# adb截取手机屏幕
+# adb shell screencap -p *.png
+#
+# 点击屏幕指定位置
+# adb shell input tap <x> <y>
+#
+# 从屏幕的一点滑动到另一点
+# adb shell input swipe x1 y1 x2 y2
+
+
 
 
 if __name__ == '__main__':
-    ip = '192.168.1.106'
-    #连接adb
-    tcpip_set='adb -s %s tcpip 9998' % ip
-    get_ip='adb -s %s shell ifconfig|findstr Bcast' % ip
-    connect_adb='adb -s %s connect 192.168.1.106:9999' % ip
 
-    # execute(tcpip_set)
-    # execute(get_ip)
-    # execute(connect_adb)
+    #首页绘本坐标
+    bookSetX=1480
+    bookSetY=600
+    #工具入口坐标
+    toolSetX=66
+    toolSetY=1011
+    #完成分数坐标
+    doneSetX=1300
+    doneSetY=970
+    #关闭工具坐标
+    closeSetX=2270
+    closeSetY=81
+    #绘本返回坐标
+    backSetX=100
+    backSetY=100
+    #绘本弹窗选择首页坐标
+    homeSetX=920
+    homeSetY=830
 
-    # 执行动作亮屏-解锁-锁定-解锁 循环
-
+    ip = '94a3ad11'
+    get_ip = 'adb -s %s shell ifconfig|findstr Bcast' % ip
+    # 执行操作点击绘本-扉页双击左下角-三次点击分数-关闭窗口-返回-弹窗选择首页-循环
     a=1
     runadb=execute(get_ip)
     while len(runadb) ==1:
         #设备1
         print('a第%d次执行！' % a)
         print(datetime.now().strftime('%Y-%m-%d  %H:%M:%S'))
-        com="adb -s %s shell input keyevent 26" % ip
-        execute(com)
-        #解锁
-        open='adb -s %s shell input swipe 148 1015 563 1046' % ip
-        execute(open)
-        sleep(0.5)
-        execute(com)
-        execute(com)
-        execute(com)
 
-        sleep(2)
+        #点击绘本进入扉页
+        clickbook="adb -s %s shell input tap %d %d" % (ip,bookSetX,bookSetY)
+        execute(clickbook)
+        sleep(0.5)
+        print("手动打开工具！")
+        #双击打开工具
+        # adb shell input tap 600 1300; input tap 600 1300;  双击操作
+        # dbclicktool="adb -s %s shell input tap 66 1011;sleep 0.0001; input tap 66 1011;sleep 0.01; input tap 66 1011" % ip
+        # execute(dbclicktool)
+        sleep(3)
+        #点击完成分数按钮
+        clickDone="adb -s %s shell input tap %d %d" % (ip,doneSetX,doneSetY)
+        execute(clickDone)
+        sleep(0.5)
+        #点击关闭工具窗口
+        clickDone = "adb -s %s shell input tap %d %d" % (ip, closeSetX, closeSetY)
+        execute(clickDone)
+        sleep(0.5)
+        #点击绘本返回
+        clickDone = "adb -s %s shell input tap %d %d" % (ip, backSetX, backSetY)
+        execute(clickDone)
+        sleep(0.5)
+        #返回首页
+        clickDone = "adb -s %s shell input tap %d %d" % (ip, homeSetX, homeSetY)
+        execute(clickDone)
+
+        sleep(1)
         a+=1
+        if a==85:
+            break
 
