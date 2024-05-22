@@ -82,30 +82,7 @@ def getSignEnd(requestData,env:str):
 
 if __name__ == '__main__':
     js={
-    "stage_num": 5,
-    "is_again": bool(0),
-    "cost_time": 61430,
-    "timestamp": "1711357187",
-    "true_proportion": 88,
-    "proportion": 100,
-    "uuid": "Y2E4MTZhNTljZWRkYWM5MTIyNjQ2ODc5MjhmM2UyYTU=",
-    "token": "660133ed33d6c",
-    "extra": "{\"currentCorrectCount\":5,\"allCount\":23,\"maxScore\":100,\"challengeRate\":4,\"openCount\":17,\"correctCount\":15,\"maxCorrentCount\":6}",
-    "stage": 4,
-    "challenges_id": 9,
-    "uid": 63080,
-    "source": "2",
-    "open_num": 4,
-    "score": 81,
-    "continue_true_num": 6,
-    "video_urls": [],
-    "stage_type": 3,
-    "false_num": 1,
-    "again_coin": 0,
-    "true_num": 8,
-    "version": "400",
-    "member_id": 63080,
-    "answer_num": 9
+        "uid":60645,"event_id":63,"content_id":1284
 }
     a=getSignEnd(js,'dev')
     #验证签名
