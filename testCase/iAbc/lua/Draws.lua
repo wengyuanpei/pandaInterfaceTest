@@ -43695,21 +43695,3 @@ local draws_ = {
 
 return draws_
 
-
-import lupa
-import json
-
-# 创建Lua环境
-lua = lupa.LuaRuntime()
-
-
-
-
-# 在Lua环境中执行Lua代码，获取返回值
-lua_function = lua.execute(draws_)
-lua_data = lua_function()
-
-# 将Lua数据转换为JSON格式
-json_data = json.dumps(lua_data)
-
-print(json_data)
