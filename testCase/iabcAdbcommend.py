@@ -72,7 +72,7 @@ if __name__ == '__main__':
         print("手动打开工具！")
         #双击打开工具
         # adb shell input tap 600 1300; input tap 600 1300;  双击操作
-        # dbclicktool="adb -s %s shell input tap 66 1011;sleep 0.0001; input tap 66 1011;sleep 0.01; input tap 66 1011" % ip
+        # dbclicktool="adb -s %s shell input tap 66 1011;sleep 0.00000001; input tap 66 1011;sleep 0.01; input tap 66 1011" % ip
         # execute(dbclicktool)
         sleep(3)
         #点击完成分数按钮

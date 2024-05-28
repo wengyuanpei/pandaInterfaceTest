@@ -66,16 +66,12 @@ if __name__ == '__main__':
         print("手动打开工具！")
         #双击打开工具
         # adb shell input tap 600 1300; input tap 600 1300;  双击操作
-        # dbclicktool="adb -s %s shell input tap 66 1011;sleep 0.0001; input tap 66 1011;sleep 0.0001; input tap 66 1011" % ip
-        # execute(dbclicktool)
-        # sleep(0.5)
+        dbclicktool="adb -s %s shell input tap 66 1011 ;input tap 66 1011;" % ip
+        execute(dbclicktool)
+        sleep(0.5)
         #点击完成分数按钮
 
-        dbclicktool = "adb -s %s shell input tap 66 1011" % ip
-        execute(dbclicktool)
-        sleep(0.015)
-        dbclicktool = "adb -s %s shell input tap 66 1011" % ip
-        execute(dbclicktool)
+
         sleep(1)
         a+=1
         if a==2:
