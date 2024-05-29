@@ -30,7 +30,6 @@ if __name__ == '__main__':
     for id,name in zip(matches_id,matches_name):
         listBook.append([id,name])
     # print(listBook)
-
     #根据id输出绘本名字
     id='3205'
     for i in listBook:
