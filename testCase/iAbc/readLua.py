@@ -1,29 +1,38 @@
-import lua_decoder
-import json
+import re
 
 
-# 解析Lua文件的函数
-def parse_lua_file(lua_file_path):
-    with open(lua_file_path, 'r') as file:
-        lua_code = file.read()
-
-    # 使用lua_decoder解析Lua代码
-    lua_data = lua_decoder.decode(lua_code)
-    return lua_data
+def lua_reader(filepath):
+    with open(filepath, 'r', encoding='utf-8') as file:
+        data = file.read()
+    return data
 
 
-# 将解析的Lua数据转换为JSON字符串的函数
-def lua_to_json(lua_data):
-    return json.dumps(lua_data, ensure_ascii=False)
+# 使用例子
+if __name__ == '__main__':
+    filepath = r'C:\Users\zhang\Desktop\听力机\pandaInterfaceTest\testCase\iAbc\lua\Draws.lua'  # Lua文件路径
+    lua_data = lua_reader(filepath)
+    # print(lua_data)
+    # 绘本id匹配
+    pattern = r"\[([^\]]+)\]"
+    matches_id = re.findall(pattern, lua_data)
+    # print(matches_id)
+    #匹配绘本名
+    start='name_ ='
+    end='resCover_'
+    #匹配绘本名称
+    pattern_name=rf"{start}\s*(.+?)\s*{end}"
+    matches_name = re.findall(pattern_name, lua_data)
+    # print(matches_name)
 
 
-# Lua文件路径
-lua_file_path = 'example.lua'
+    #绘本ID 匹配
+    listBook=[]
+    for id,name in zip(matches_id,matches_name):
+        listBook.append([id,name])
+    # print(listBook)
 
-# 解析Lua文件
-lua_data = parse_lua_file(lua_file_path)
-
-# 转换为JSON
-json_data = lua_to_json(lua_data)
-
-print(json_data)
+    #根据id输出绘本名字
+    id='4256'
+    for i in listBook:
+        if id in i:
+            print("id是%s的绘是" % id,i[1])
