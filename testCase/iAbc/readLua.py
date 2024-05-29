@@ -7,7 +7,7 @@ def lua_reader(filepath):
     return data
 
 
-# 使用例子
+# 文件地址自行修改
 if __name__ == '__main__':
     filepath = r'C:\Users\zhang\Desktop\听力机\pandaInterfaceTest\testCase\iAbc\lua\Draws.lua'  # Lua文件路径
     lua_data = lua_reader(filepath)
