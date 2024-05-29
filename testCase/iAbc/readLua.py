@@ -32,7 +32,7 @@ if __name__ == '__main__':
     # print(listBook)
 
     #根据id输出绘本名字
-    id='4256'
+    id='3205'
     for i in listBook:
         if id in i:
             print("id是%s的绘是" % id,i[1])
