@@ -30,8 +30,9 @@ if __name__ == '__main__':
     for id,name in zip(matches_id,matches_name):
         listBook.append([id,name])
     # print(listBook)
+
     #根据id输出绘本名字
-    id='3205'
+    id='3256'
     for i in listBook:
         if id in i:
             print("id是%s的绘是" % id,i[1])
