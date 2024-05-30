@@ -11,6 +11,7 @@ def lua_reader(filepath):
 if __name__ == '__main__':
     filepath = r'C:\Users\zhang\Desktop\听力机\pandaInterfaceTest\testCase\iAbc\lua\Draws.lua'  # Lua文件路径
     lua_data = lua_reader(filepath)
+    lua_data=re.sub(r'\n+', '', lua_data)
     # print(lua_data)
     # 绘本id匹配
     pattern = r"\[([^\]]+)\]"
@@ -18,7 +19,7 @@ if __name__ == '__main__':
     # print(matches_id)
     #匹配绘本名
     start='name_ = "'
-    end='resCover_'
+    end='",		resCover_'
     #匹配绘本名称
     pattern_name=rf"{start}\s*(.*?)\s*{end}"
     matches_name = re.findall(pattern_name, lua_data)
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     # print(listBook)
 
     #根据id输出绘本名字
-    id='3285'
+    id='3265'
     for i in listBook:
         if id in i:
             print("id是%s的绘是" % id,i[1])
