@@ -17,13 +17,12 @@ if __name__ == '__main__':
     matches_id = re.findall(pattern, lua_data)
     # print(matches_id)
     #匹配绘本名
-    start='name_ ='
+    start='name_ = "'
     end='resCover_'
     #匹配绘本名称
-    pattern_name=rf"{start}\s*(.+?)\s*{end}"
+    pattern_name=rf"{start}\s*(.*?)\s*{end}"
     matches_name = re.findall(pattern_name, lua_data)
     # print(matches_name)
-
 
     #绘本ID 匹配
     listBook=[]
@@ -32,7 +31,7 @@ if __name__ == '__main__':
     # print(listBook)
 
     #根据id输出绘本名字
-    id='3256'
+    id='3285'
     for i in listBook:
         if id in i:
             print("id是%s的绘是" % id,i[1])
