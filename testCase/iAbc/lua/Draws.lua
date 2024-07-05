@@ -2,6 +2,8 @@
 -- Code generated, don't modify manually.
 
 ---@class PkgResInfo
+
+
 ---@field ref_ string @资源引用，sha1+文件类型
 ---@field from_ number @数据包起始位置
 ---@field to_ number @数据包结束位置
