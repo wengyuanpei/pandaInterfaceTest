@@ -5,8 +5,7 @@ from PIL import ImageFont, ImageDraw, Image
 
 
 def shankaTest(qrdataName:str,qrdata:str):
-    qr = qrcode.QRCode(version=2,
-                       error_correction=qrcode.constants.ERROR_CORRECT_H)
+    qr = qrcode.QRCode(version=2,error_correction=qrcode.constants.ERROR_CORRECT_H)
     #生成二维码
     qr.add_data(qrdata)
     qr.make(fit=True)
