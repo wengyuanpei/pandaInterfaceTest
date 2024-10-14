@@ -6,8 +6,7 @@ from PIL import ImageFont, ImageDraw, Image
 
 def shankaTest(qrdataName:str,qrdata:str):
     qr = qrcode.QRCode(version=2,
-                       error_correction=qrcode.constants.ERROR_CORRECT_H,
-                       )
+                       error_correction=qrcode.constants.ERROR_CORRECT_H)
     #生成二维码
     qr.add_data(qrdata)
     qr.make(fit=True)
@@ -255,7 +254,7 @@ if __name__ == '__main__':
         ['cloud','word:42394'],
 ]
     for i in list:
-        print(i[0],i[1])
+        # print(i[0],i[1])
         shankaTest(i[0],i[1])
 
 
