@@ -11,7 +11,7 @@ def shankaTest(qrdataName:str,qrdata:str):
     qr.make(fit=True)
     Img=qr.make_image()
     #保存图片的位置
-    savepath=r"C:\Users\zhang\Documents\pandaInterfaceTest\testCase\星球闪卡照片\%s.png" %(qrdataName)
+    savepath=r"C:\Users\zhang\Documents\pandaInterfaceTest\testCase\星球闪卡照片\%s.png" %( qrdataName )
     Img.save(savepath)
     img = Image.open(savepath)
     print('二维码大小：',img.size)
@@ -26,6 +26,7 @@ def shankaTest(qrdataName:str,qrdata:str):
 
 
 if __name__ == '__main__':
+
     list=[['apple','word:173254'],
         ['banana','word:173255'],
         ['pear','word:173256'],
@@ -251,7 +252,7 @@ if __name__ == '__main__':
         ['carrot','word:42535'],
         ['sun','word:42279'],
         ['cloud','word:42394'],
-]
+        ]
     for i in list:
         # print(i[0],i[1])
         shankaTest(i[0],i[1])
