@@ -7,8 +7,6 @@ UID=1640976882862985217
 header_live={"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNjQwOTc2ODgyODYyOTg1MjE3Iiwic3ViIjoie1wiaWRcIjoxNjQwOTc2ODgyODYyOTg1MjE3LFwibW9iaWxlXCI6XCIrODYxNzM0NTA0MzM2NVwifSIsImV4cCI6MTcwMTQ5NTY1NH0.Y_7I4onWlCEncBnq6wqHFzNlu49ct3_ejD-WvWrw_wo_rso-uWtVF4fgPZDQXUWLz9Yxz3FJlbCc5T205tg2kQ"}
 en_url="https://hear.abctime.com/v1/study/finish-plan"
 
-
-
 #dev
 # dev_en_url=" https://hear-dev.abctime.com/v1/study/finish-plan"
 #
