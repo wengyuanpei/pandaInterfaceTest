@@ -19,7 +19,7 @@ def shankaTest(disc,num_list,id):
     qr.add_data(qrdata)
     qr.make(fit=True)
     Img=qr.make_image()
-    savepath=r"C:\Users\zhang\Desktop\听力机\pandaInterfaceTest\testCase\验证闪卡扫绘本id功能图片\%s第%d张id为%d.png" %(disc,num_list,id)
+    savepath=r"C:\Users\zhang\Documents\pandaInterfaceTest\testCase\闪卡图片\%s第%d张id为%d.png" %(disc,num_list,id)
     # print(Img)
     Img.save(savepath)
 
