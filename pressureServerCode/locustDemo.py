@@ -137,7 +137,7 @@ if __name__ == '__main__':
     # --only - summary：只在测试结束后打印总结性的统计信息。
 
 
-    os.system("locust -f test_locust_tlj.py --host=http://hear-dev.abctime.com ")
+    os.system("locust -f test_locust_tlj.py --host=http://hear-dev.abctime.com")
     # locust -f dept_list.py --worker(从节点)/--master（主节点） --master-host=192.168.x.xx
     # os.system("locust -f locustForEmqx.py  --master --master-host =http://emqx-dev.xiongmaoboshi.com")
 
