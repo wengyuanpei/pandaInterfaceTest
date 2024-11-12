@@ -108,7 +108,7 @@ class tlj_pressure(TaskSet):
 
 
 # 创建用户类
-class TLJ(FastHttpUser):
+class TLJ(HttpUser):
     wait_time = between(1,10)   #设置运行过程中的间隔时间，需要在locust中引入between
     tasks = [tlj_pressure]
     min_wait = 1000
