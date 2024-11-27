@@ -1,5 +1,5 @@
 import os
-from locust import TaskSet, task, HttpUser,between
+from locust import TaskSet, task, HttpUser,between,stats
 import random
 
 # 创建任务类
