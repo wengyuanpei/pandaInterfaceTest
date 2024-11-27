@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
 
     '''
- report （ 文件名 -> 测试报告名称， 如果不指定默认
+report （ 文件名 -> 测试报告名称， 如果不指定默认
 文件名为report.html
 description -> 测试报告用例名称展示
 report_dir='.“ -> 报告文件写入路径
