@@ -4,7 +4,7 @@ import time
 from common.requestSimulationData import *
 
 
-def getauth():
+def getauth(phone_num_1):
     phone_num_1 =phone_num()
     # UG=user_agent()
     # print("phone_num:",phone_num_1)
@@ -65,3 +65,5 @@ def tljlogInUid(phone_num_1):
 
     return uid
 # tljlogInUid(17345011234)
+
+
