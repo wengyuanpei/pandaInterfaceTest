@@ -34,10 +34,10 @@ if __name__ == '__main__':
         difflist=diffWord(wordlistOld,wordlistNew)
         for diff in difflist:
             if diff in wordlistOld:
-                print(diff,'单词在老表的位置是：level',str(level)+"  unit是：",str(unit))
+                print(diff,'单词在老表的位置是：level',str(levelOLd)+"  unit是：",str(unitOld))
 
         for diff in difflist:
             if diff in wordlistNew:
-                print(diff,'单词在新表的位置是：level',str(level)+"  unit是：",str(unit))
+                print(diff,'单词在新表的位置是：level',str(levelNew)+"  unit是：",str(unitNew))
 
 
