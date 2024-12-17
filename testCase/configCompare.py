@@ -10,8 +10,6 @@ def diffWord(oldlist,newlist):
     return listdif
 
 
-
-
 if __name__ == '__main__':
     # 老表数据处理
     oldexcel = r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\wordExcel\word.xlsx'
