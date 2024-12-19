@@ -13,6 +13,7 @@ def diffWord(oldlist,newlist):
 if __name__ == '__main__':
     # 老表数据处理
     oldexcel = r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\wordExcel\word.xlsx'
+    oldWordlist=[]
     for num in range(260):
         numm=str(num+4)
         post="A"+numm+":"+"C"+numm
@@ -21,18 +22,40 @@ if __name__ == '__main__':
         levelOLd=infoOld[0]
         unitOld=infoOld[1]
         oldListInfo=[levelOLd,unitOld,wordlistOld]
-
+        oldWordlist.append(oldListInfo)
+    print('老版本单词表',oldWordlist)
     #新版本数据
-        wordlistNew=[]
+    newexcel=r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\wordExcel\word1.xlsx'
+    newWordlist=[]
+    for num in range(260):
+        numm=str(num+4)
+        post="A"+numm+":"+"C"+numm
+        infoNew=getwordexcelinfo(newexcel,post)
+        wordlistNew=list(infoNew[2].split(":"))  #处理数据列表
+        levelNew=infoNew[0]
+        unitNew=infoNew[1]
+        newListInfo=[levelNew,unitNew,wordlistNew]
+        newWordlist.append(newListInfo)
+    print('新版本单词表',newWordlist)
 
-        difflist=diffWord(wordlistOld,wordlistNew)
-        #遍历旧表
-        for diff in difflist:
-            if diff in wordlistOld:
-                print(diff,'单词在老表的位置是：level',str(levelOLd)+"  unit是：",str(unitOld))
-        # 遍历新表
-        for diff in difflist:
-            if diff in wordlistNew:
-                print(diff,'单词在新表的位置是：level',str(levelNew)+"  unit是：",str(unitNew))
+
+    for old,new in zip(oldWordlist,newWordlist):
+        print(old,new)
+        diffIdList=diffWord(old[2],new[2])
+
+
+        for diffId in diffIdList:
+            for oldunitlist in oldWordlist:
+                for oldIdd in oldunitlist[2]:
+                    if diffId==oldIdd:
+                        print('单词id',diffId,'在老版本的 level：',oldunitlist[0],'unit:',oldunitlist[1])
+
+            for newunitlist in newWordlist:
+                for newidd in newunitlist[2]:
+                    if diffId == newidd:
+                        print('单词id', diffId, '在老版本的 level：', newunitlist[0], 'unit:', newunitlist[1])
+
+
+
 
 
