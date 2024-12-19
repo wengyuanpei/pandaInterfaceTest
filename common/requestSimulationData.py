@@ -8,7 +8,7 @@ def user_agent():
     return user_agt
 
 def phone_num():
-    fake=Faker(locale='zh_CN') # 初始化，指定生成中文格式数据---电话号码
+    fake=Faker(locale='zh_CN')  # 初始化，指定生成中文格式数据---电话号码
     phone = fake.phone_number()
     return phone
 
@@ -19,7 +19,7 @@ def manname_num():
     return name
 
 def cart_num():
-    fake = Faker(locale='zh_CN') # 初始化，指定生成中文格式数据--证件号码
+    fake = Faker(locale='zh_CN')  # 初始化，指定生成中文格式数据--证件号码
     cart_num=fake.ssn()
     print(cart_num)
 
