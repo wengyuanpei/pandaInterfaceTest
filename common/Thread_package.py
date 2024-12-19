@@ -14,9 +14,10 @@ def demo1():
 
     a = 1
     while True:
-        auth_end = getauth()[0]  # 令牌
-        phone_end = getauth()[1]  # 手机号
-        uid_end = getauth()[2]  # uid
+        randomphone=phone_num()
+        auth_end = getauth(randomphone)[0]  # 令牌
+        phone_end = getauth(randomphone)[1]  # 手机号
+        uid_end = getauth(randomphone)[2]  # uid
         print("uid:", uid_end)
         print("auth_end:", auth_end)
 
@@ -84,15 +85,15 @@ def demo1():
         # time.sleep(0.5)
         a += 1
 
-        # print(a)
-        # if a==8000:
-        #     break
+        print(a)
+        if a==8000:
+            break
 
 
 
 if __name__ == '__main__':
     print('主线程开始...')
-    threads = [Thread(target=demo1) for _ in range(500)]  # 这里是创建3个线程，放到一个列表里
+    threads = [Thread(target=demo1) for _ in range(5)]  # 这里是创建3个线程，放到一个列表里
     for t in threads:
         t.start()  # 启动线程
     for t in threads:
