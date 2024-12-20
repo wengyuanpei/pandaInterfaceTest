@@ -6,8 +6,17 @@ def getwordexcelinfo(oldexcel,info):
 
 
 def diffWord(oldlist,newlist):
+    listend=[]
+    list=[]
     listdif=set(oldlist)-set(newlist)
-    return listdif
+    if len(listdif)>0:
+        list.append(listdif)
+        for i in list:
+            for a in i:
+                listend.append(a)
+
+
+    return listend
 
 
 if __name__ == '__main__':
@@ -23,7 +32,7 @@ if __name__ == '__main__':
         unitOld=infoOld[1]
         oldListInfo=[levelOLd,unitOld,wordlistOld]
         oldWordlist.append(oldListInfo)
-    print('老版本单词表',oldWordlist)
+    # print('老版本单词表',oldWordlist)
     #新版本数据
     newexcel=r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\wordExcel\word1.xlsx'
     newWordlist=[]
@@ -36,26 +45,25 @@ if __name__ == '__main__':
         unitNew=infoNew[1]
         newListInfo=[levelNew,unitNew,wordlistNew]
         newWordlist.append(newListInfo)
-    print('新版本单词表',newWordlist)
+    # print('新版本单词表',newWordlist)
 
-
+    diffIdList=[]
     for old,new in zip(oldWordlist,newWordlist):
-        print(old,new)
-        diffIdList=diffWord(old[2],new[2])
+        diffIdLists=diffWord(old[2],new[2])
+        if len(diffIdLists)>0:
+            diffIdList.append(diffIdLists)
+    diffend=[]
+    for diff in diffIdList:
+        for i in diff:
+            diffend.append(i)
+    print('差异的列表：',diffend)
 
+    for diffwordid in diffend:
 
-        for diffId in diffIdList:
-            for oldunitlist in oldWordlist:
-                for oldIdd in oldunitlist[2]:
-                    if diffId==oldIdd:
-                        print('单词id',diffId,'在老版本的 level：',oldunitlist[0],'unit:',oldunitlist[1])
+        for widOld,widNew in zip(oldWordlist,newWordlist):
 
-            for newunitlist in newWordlist:
-                for newidd in newunitlist[2]:
-                    if diffId == newidd:
-                        print('单词id', diffId, '在老版本的 level：', newunitlist[0], 'unit:', newunitlist[1])
+            if diffwordid in widOld[2]:
+                print(diffwordid,"单词在老配置表的level：",widOld[0],'unit是：',widOld[1])
 
-
-
-
-
+            if diffwordid in widNew[2]:
+                print(diffwordid, "单词在新配置表的level：", widNew[0], 'unit是：', widNew[1])
