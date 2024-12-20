@@ -17,9 +17,10 @@ def demo1():
 
     a = 1
     while True:
-        auth_end = getauth()[0]  # 令牌
-        phone_end = getauth()[1]  # 手机号
-        uid_end = getauth()[2]  # uid
+        phone=phone_num()
+        auth_end = getauth(phone)[0]  # 令牌
+        phone_end = getauth(phone)[1]  # 手机号
+        uid_end = getauth(phone)[2]  # uid
         print("uid:", uid_end)
         print("auth_end:", auth_end)
 

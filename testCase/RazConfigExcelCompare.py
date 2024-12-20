@@ -62,6 +62,10 @@ if __name__ == '__main__':
 
         for widOld,widNew in zip(oldWordlist,newWordlist):
 
+            nowlevel=widOld[0]
+            nowunit=widOld[1]
+
+            print('当前level：',nowlevel,'当前unit：',nowunit)
             if diffwordid in widOld[2]:
                 print(diffwordid,"单词在老配置表的level：",widOld[0],'unit是：',widOld[1])
 
