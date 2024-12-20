@@ -1,5 +1,5 @@
 import requests
-from time import  sleep
+from time import sleep
 
 #听写单词扣词验证PRE环境
 

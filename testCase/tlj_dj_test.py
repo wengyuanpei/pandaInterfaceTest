@@ -16,9 +16,10 @@ cn_fn=0 #语文顶级次数统计
 fails=0 #失败次数统计
 a=0
 while True:
-    auth_end = getauth()[0]   #令牌
-    phone_end = getauth()[1]  #手机号
-    uid_end=int(getauth()[3])     #uid
+    phone=phone_num()
+    auth_end = getauth(phone)[0]   #令牌
+    phone_end = getauth(phone)[1]  #手机号
+    uid_end=int(getauth(phone)[3])     #uid
     print("uid:",uid_end)
     print("auth_end:",auth_end)
     print("手机号:",phone_end)
