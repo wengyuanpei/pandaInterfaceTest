@@ -1,11 +1,10 @@
-import re
+import random
+list1=list([173872,111,1868,3873])
 
-text = 'name_ = "The Building of the Transcontinental Railroad" ncaj_ =alksasdoandoasd'
 
-start='name_ ='
-end='ncaj_'
-regex = rf"{s}\s*(.+?)\s*{end}"
+# damo={"words_list":[49265,49266,49268,49269],"wordId":49265}
 
-matches = re.findall(regex, text)
-for match in matches:
-    print(match)
+for wid in list1:
+    print(wid)
+    list=list1.remove(wid)
+    print(list)
