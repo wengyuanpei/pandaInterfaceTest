@@ -20,7 +20,7 @@ def excel_read(excelname:str,getvaluestation:str)->list:
     return celllist
 
 def excel_write(cell_list: list,start: int,station: str,excelname: str,sheetname:str):
-    print('写入文件名字' ,'行位置' ,'表格列位置' ,'文件绝对路径','sheet名字')
+    print('写入数据列表' ,'起始行位置（自动递增）' ,'起始表格列位置' ,'文件绝对路径','sheet名字')
     print(excel_write.__annotations__)
     workbook = openpyxl.load_workbook(excelname)
     start =start
