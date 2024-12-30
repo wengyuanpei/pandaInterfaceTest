@@ -42,7 +42,7 @@ def checkwords(id):
     return response.json()
 
 def getAllwords(station):
-    path=r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\studyFExcel\checkWordsDG.xlsx'
+    path= r'/testCase/studyFExcel/checkWordsDG.xlsx'
 
     listID=excel_read(path,station)
     return listID
