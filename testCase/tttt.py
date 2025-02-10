@@ -55,15 +55,12 @@ if __name__ == '__main__':
         for i in listend:
             i=str(i)
             listend1 = i.split(":")
-            # print(listend1)
             for ide in listend1:
-                # print(ide)
                 if ide != "":
                     sleep(1)
                     ide = str(ide)
                     try:
                         response=checkwords(ide)
-                        # print(response)
                         if response["code"] ==0:
                             if response["data"]["total"] == "0" :
                                 print("添加",ide,"到错误列表")
@@ -74,7 +71,6 @@ if __name__ == '__main__':
                             continue
                     except:
                         response = checkwords(ide)
-                        # print(response)
                         if response["code"] == 0:
                             if response["data"]["total"] == "0":
                                 print("添加", ide, "到错误列表")
