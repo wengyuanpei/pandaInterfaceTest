@@ -82,7 +82,9 @@ def getSignEnd(requestData,env:str):
 
 if __name__ == '__main__':
     js={
-        "uid":60645,"event_id":63,"content_id":1284
+        "uid": 53068,
+        "interact_type": 2,
+        "coin": 100000
 }
     a=getSignEnd(js,'dev')
     #验证签名

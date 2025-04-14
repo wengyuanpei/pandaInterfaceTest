@@ -1,5 +1,4 @@
 import requests
-
 from common.abcReqHeader import abcBaseUrl
 from common.abcSign import *
 from time import *
