@@ -1,87 +1,46 @@
-import requests
-from time import sleep
-from common.excelreadwrite import *
-def checkwords(id):
+# coding=utf-8
+import os
+import subprocess
+from datetime import datetime
 
-    url = 'https://cms-dev.xiongmaoboshi.com/s/dp/lighthouse/web/word/page?sf_request_type=fetch'
-    headers = {
-        'accept': 'application/json',
-        'accept-language': 'zh-CN,zh;q=0.9',
-        'authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJlbWFpbFwiOlwid2VuZ3l1YW5wZWlAZHJwYW5kYS5jb21cIixcImlkXCI6MjIzLFwibW9iaWxlXCI6XCIxNzM0NTA0MzM2NVwiLFwidXNlcm5hbWVcIjpcIndlbmd5dWFucGVpXCIsXCJ3b3JrY29kZVwiOlwiVjAwMTM3NTBcIixcInp5bE5hbWVcIjpcIjU3K0I2TCtjNlptcVwifSIsImV4cCI6MTczNTk3NTkyOX0.rh-eKzk8M28eGJIW_K46iOKvLB1wc2iwVKhgbvLIIKH-bY1QtEeun7gg2wotArAyfDenq1xWQ_gX3iR_1Jr_jw',
-        'cache-control': 'no-cache',
-        'content-type': 'application/json; charset=utf-8',
-        'credentials': 'include',
-        'domain': 'CMS',
-        'mode': 'no-cors',
-        'origin': 'https://cms-dev.xiongmaoboshi.com',
-        'pragma': 'no-cache',
-        'priority': 'u=1, i',
-        'roles': 'ivan',
-        'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
-    }
-    data = {
-        "body": {
-            "pageSize": 10,
-            "current": 1,
-            "total": 0,
-            "showSizeChanger": True,
-            "typeId": 5588,
-            "path": "-1/5588/",
-            "backupType": 0,
-            "id": id
-        }
-    }
+COMMAND = "adb shell top"  # 常量
+cur_path = os.path.dirname(os.path.realpath(__file__))
+log_path = os.path.join(os.path.dirname(cur_path), "Log")
+print(log_path)
 
-    response = requests.post(url, headers=headers, json=data)
-    return response.json()
 
-def getAllwords(station):
-    path=r'C:\Users\zhang\Documents\pandaInterfaceTest\testCase\studyFExcel\checkWordsDG.xlsx'
+class LogcatCathcher(object):
+    def __init__(self):
+        self.log_file = None
+        self.hf = None
+        self._create_hf()
+        self.p_obj = subprocess.Popen(
+            args=COMMAND,
+            stdin=None, stdout=self.hf,
+            stderr=self.hf, shell=False)
 
-    listID=excel_read(path,station)
-    return listID
+    def _create_hf(self):
+        now_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.log_file = os.path.join(log_path, "Logcat_" + now_time + ".txt")
+        # 因为没指定具体路径，默认就是在当前脚本运行的路径下创建这个log_file
+        self.hf = open("%s" % self.log_file, "wb")
+
+    def catch_logcat(self):
+        print("Logcat catching...")
+        # 持续询问是否需要停止截取
+        judgement = input("If you think it is enough, please input Y:")
+        while judgement != "Y" and judgement != "y":  # 这里必须是and.
+            print("Invalid input, please input Y")
+            judgement = input("If you think it is enough, please input Y:")
+        else:
+            if judgement == "Y" or judgement == "y":  # 如果收到停止Yes信号，则开始结束截取
+                self.p_obj.terminate()
+                self.p_obj.kill()
+                self.hf.close()  # 关闭文件句柄
+        return os.path.abspath(self.log_file)
+
 
 if __name__ == '__main__':
-    errorlist = []
-    for staion in range(1,445):
-        stationE="P"+str(staion) +":"+ "P"+str(staion)
-        listend=getAllwords(stationE)
-        for i in listend:
-            i=str(i)
-            listend1 = i.split(":")
-            for ide in listend1:
-                if ide != "":
-                    sleep(1)
-                    ide = str(ide)
-                    try:
-                        response=checkwords(ide)
-                        if response["code"] ==0:
-                            if response["data"]["total"] == "0" :
-                                print("添加",ide,"到错误列表")
-                                errorlist.append(ide)
-                            else:
-                                print(ide,'单词在灯塔数据正常！')
-                        else:
-                            continue
-                    except:
-                        response = checkwords(ide)
-                        if response["code"] == 0:
-                            if response["data"]["total"] == "0":
-                                print("添加", ide, "到错误列表")
-                                errorlist.append(ide)
-                            else:
-                                print(ide, '单词在灯塔数据正常！')
-
-                else:
-                    continue
-
-        print('灯塔无数据id:   ',errorlist)
-
-
-
+    l_obj = LogcatCathcher()
+    print("Logcat log has saved to %s" % l_obj.catch_logcat())
+    os.system("pause")
