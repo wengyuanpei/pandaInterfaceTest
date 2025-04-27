@@ -2,9 +2,9 @@ import requests
 from common.abcSign import *
 from common.abcReqHeader import *
 
-envermen='dev'
 
-baseurl=abcBaseUrl(envermen)
+envermen = 'dev'
+baseurl = abcBaseUrl(envermen)
 
 def coincoin(uid:int,uids:str,token:str,coinnum:int):
     url=baseurl+'/v5/clock/give_interact_coin'
@@ -21,6 +21,8 @@ def coincoin(uid:int,uids:str,token:str,coinnum:int):
     print(req.json())
 
 if __name__ == '__main__':
+
+
     uid=70294
     uids='70294'
     token='67fca1acbd079' #可用的token
