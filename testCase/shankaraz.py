@@ -1,7 +1,5 @@
 import random
-
 import requests
-
 from common.get_tlj_auth import *
 import qrcode
 from PIL import ImageFont, ImageDraw, Image
