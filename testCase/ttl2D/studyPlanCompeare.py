@@ -24,13 +24,13 @@ def get_excel_date():
         for word in daylist:
             #book id unit id
             if word[0]==bookIdNum and word[6]==unitidNum and word[2]==dayIdNum and word[4]==wordTypeNum:
-                pass
-            elif  word[0]==bookIdNum and word[6]==unitidNum and word[2]==dayIdNum and word[4]==wordTypeNum:
-                pass
-            elif  word[0]==bookIdNum and word[6]==unitidNum and word[2]==dayIdNum and word[4]==wordTypeNum:
-                pass
+                dataList1.append([bookIdNum,unitidNum,dayIdNum,wordTypeNum])
+            elif word[0]==bookIdNum and word[6]==unitidNum and word[2]==dayIdNum and word[4]==wordTypeNum:
+                dataList1.append([bookIdNum, unitidNum, dayIdNum, wordTypeNum])
+            elif word[0]==bookIdNum and word[6]==unitidNum and word[2]==dayIdNum and word[4]==wordTypeNum:
+                dataList1.append([bookIdNum, unitidNum, dayIdNum, wordTypeNum])
 
-
+        return dataList1
 
 #获取接口返回的每日计划
 def get_plan_interfacedate():
