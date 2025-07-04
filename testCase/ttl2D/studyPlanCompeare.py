@@ -39,4 +39,5 @@ def get_plan_interfacedate():
 
 #对数据
 if __name__ == '__main__':
-    get_excel_date()
+    dateaaa=get_excel_date()
+    print(dateaaa)
