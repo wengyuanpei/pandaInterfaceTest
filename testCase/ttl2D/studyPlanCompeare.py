@@ -12,7 +12,18 @@ def get_plan_interfacedate():
     pass
 
 
+
+
+
+
+
 #对数据
 if __name__ == '__main__':
-    dateaaa=get_excel_date()
-    print(dateaaa)
+    exceldata=get_excel_date()
+    interfacedata=get_plan_interfacedate()
+    for day in exceldata:
+        for dataw in interfacedata:
+            if day[0]==dataw[0] and  day[1]==dataw[1] and day[2]==dataw[2] and day[3]==dataw[3] and day[5]== day[5]:
+                print("book%s,%d,%d,%d************数据一致" %day[0],day[1],day[2],day[3])
+            else:
+                print('excel:'+str(day)+"接口返回数据"+str(dataw))
