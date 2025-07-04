@@ -1,39 +1,47 @@
-import json
+from openpyxl import load_workbook
+from collections import defaultdict
 
+# 加载Excel文件
+wb = load_workbook('ttlstudydate.xlsx')
+ws = wb['Sheet1']  # 假设数据在Sheet1中
 
+# 用于存储合并后的数据
+merged_data = defaultdict(list)
 
-def traverse_json(data, indent=0):
-    if isinstance(data, dict):
-        for key, value in data.items():
-            print("  " * indent + f"Key: {key}")
-            traverse_json(value, indent + 1)
-    elif isinstance(data, list):
-        for item in data:
-            traverse_json(item, indent + 1)
-    else:
-        print("  " * indent + f"Value: {data}")
+# 遍历每一行（跳过标题行）
+for row in ws.iter_rows(min_row=2, values_only=True):
+    book_id = row[0]
+    unit_number = row[1]
+    day = row[2]
+    stage = row[3]
+    content = row[4]
+    unit_id = row[5]
 
+    # 创建组合键
+    key = (book_id, unit_number, day, stage, unit_id)
 
-if __name__ == '__main__':
-    js = {
-        "ab_study_flow3": 1,
-        "again_coin": 5,
-        "challenges_id": 208,
-        "continue_true_num": 0,
-        "cost_time": 1,
-        "extra": "{\"allCount\":0,\"challengeRate\":1,\"correctCount\":0,\"currentCorrectCount\":0,\"maxCorrentCount\":0,\"maxScore\":0,\"openCount\":0}",
-        "false_num": 0,
-        "is_again": "false",
+    # 将content添加到对应的键中
+    merged_data[key].append(content)
 
-        "proportion": 25,
-        "repair_date": 0,
-        "score": 0,
-        "stage": -1,
-        "stage_num": 3,
-        "stage_type": 1,
-        "true_num": 0,
-        "true_proportion": 0,
-        "uid": 73279,
-        "video_urls": []}
-    traverse_json(js)
+# 转换为最终结果格式
+result = []
+for key, contents in merged_data.items():
+    row = list(key) + contents
+    result.append(row)
 
+# 打印结果
+for row in result:
+    print(row)
+
+# 可选：将结果写入新Excel文件
+from openpyxl import Workbook
+
+wb_output = Workbook()
+ws_output = wb_output.active
+ws_output.append(
+    ['book_id', 'unit_number', 'day', 'stage', 'unit_id', 'content 1', 'content 2', 'content 3', ...])  # 根据需要调整列名
+
+for row in result:
+    ws_output.append(row)
+
+wb_output.save('merged_ttlstudydate_openpyxl.xlsx')
