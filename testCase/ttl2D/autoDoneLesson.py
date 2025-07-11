@@ -1,6 +1,6 @@
-import pymysql
+
 import redis
-from pymysql
+import pymysql
 def connect_redis():
 
 
