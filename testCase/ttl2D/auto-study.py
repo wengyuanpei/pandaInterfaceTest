@@ -5,6 +5,11 @@ import os
 import subprocess
 import re
 
+import requests
+
+from common.excelreadwrite import excel_read
+
+
 def execute_redis_command(command_type, key, value=None):
 
     REDIS_HOST = "10.176.5.171"
@@ -110,9 +115,64 @@ def fix_mysql_time(uid):
     finally:
         if conn:
             conn.close()
+def generate_stage_ids(day_number):
 
+    if day_number < 1:
+        return []
+
+    start_num = (day_number - 1) * 4 + 1
+    return [start_num, start_num + 1, start_num + 2]
+
+
+def get_study_plan_config(book, unit, day):
+    study_day_list = []
+    for staion in range(2, 172):
+        station = f"A{staion}:C{staion}"
+        liststudy = excel_read("ttlstudylist.xlsx", station)
+        study_day_list.append(liststudy)
+        print(liststudy)
+        # print(type(liststudy[0]))
+        # print(type(book))
+        print(liststudy[0],liststudy[1],liststudy[2])
+        if liststudy[0]==book and liststudy[1]==unit and liststudy[2]==day:
+            break
+
+
+    return study_day_list
 def finish_day(book,unit,day,uid):
-    pass
+
+    finish_book=[]
+    for book_num in range(1,book+1):
+        finish_book.append(book_num)
+    finish_unit1=[]
+    if book==1:
+        for unit_num  in range(1,unit+1) :
+            finish_unit1.append(unit_num)
+    elif book==2:
+        for unit_num  in range(1,unit+1+8) :
+            finish_unit1.append(unit_num)
+    elif book==3:
+        for unit_num  in range(1,unit+1+20) :
+            finish_unit1.append(unit_num)
+    all_day = 1
+    for finish_book_num in finish_book:
+        for finish_unit1_num in finish_unit1:
+
+            for dayy in range(1,6):
+                # stage_id_start = 1
+                current_stage_ids = generate_stage_ids(all_day)
+                for current_stage in current_stage_ids:
+                    url = 'https://app-test.chuangjing.com/abc-api/preschool/study/report-daily-proscess'
+                    header = {
+                        "ntu-token": uid
+                    }
+                    body = {"stage_id": 1, "learn_day_id": dayy, "book_id": finish_book_num, "unit_id": finish_unit1_num}
+                    # req = requests.post(url=url, json=body, headers=header)
+                    print(f"在完成{finish_book_num}下的{finish_unit1_num}第{dayy}天的step{current_stage}任务")
+                all_day += 1
+                if book==finish_book_num and unit==finish_unit1_num and day==dayy:
+                    break
+
 
 
 def redis_cmd(type,uid):
