@@ -2,7 +2,7 @@ import requests
 import time
 from common.make_num_random import random_num
 from common.get_tlj_auth import *
-token=getauth()[0]
+token=getauth(13800000001)[0]
 
 
 url="https://pad-api-dev.xiongmaoboshi.com/s/drpanda/pad/pad/mqtt/auth/token"
