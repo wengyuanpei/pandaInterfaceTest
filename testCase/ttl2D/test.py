@@ -1,47 +1,32 @@
-from common.excelreadwrite import *
-def generate_stage_ids(day_number):
-    """根据天数生成对应的stage_id列表"""
-    if day_number < 1:
-        return []
-    start_num = (day_number - 1) * 4 + 1
-    return [start_num, start_num + 1, start_num + 2]
+from datetime import datetime, timedelta
+import redis
+def execute_redis(uid):
+    """清空指定用户当天的学习记录缓存"""
+    try:
+        # 使用 redis-py 管道执行命令
+        r = redis.Redis(
+            host='xue-xi-yan-fa-redis-nextapp-twproxy.xesv5.com',
+            port=2080,
+            password='hSL18msdMCrxp5Z_',
+            decode_responses=True
+        )
+
+        today = datetime.now().strftime("%Y%m%d")
+        key = f"preschool:study:v2:user_today_finished_day:{uid}:{today}"
+
+        # 使用管道执行命令
+        pipe = r.pipeline()
+        pipe.delete(key)
+        result = pipe.execute()
+
+        if result and result[0] > 0:
+            print(f"redis已清空: 删除了 {result[0]} 个 key")
+        else:
+            print("redis已清空: key 不存在")
+
+    except Exception as e:
+        print(f"Redis操作失败: {e}")
 
 
-def get_study_plan_config(book, unit, day):
-    study_day_list = []
-    for staion in range(2, 172):
-        station = f"A{staion}:C{staion}"
-        liststudy = excel_read("ttlstudylist.xlsx", station)
-        study_day_list.append(liststudy)
-        print(liststudy)
-        # print(type(liststudy[0]))
-        # print(type(book))
-        print(liststudy[0],liststudy[1],liststudy[2])
-        if liststudy[0]==book and liststudy[1]==unit and liststudy[2]==day:
-            break
-
-
-    return study_day_list
-
-def finish_day(uthtoken):
-
-
-    url = 'https://app-test.chuangjing.com/abc-api/preschool/study/report-daily-proscess'
-    header = {"ntu-token": "uid"}
-    body = {
-        "stage_id": "current_stage",  # 使用生成的stage_id
-        "learn_day_id": "dayy",
-        "book_id": "finish_book_num",
-        "unit_id": "finish_unit_num"
-    }
-    # req = requests.post(url=url, json=body, headers=header)
-    print(f"在完成{1}下的{1}第{1}天的step{1}任务")
-
-
-
-# 使用示例
-b=2
-unit=7
-day=2
-a=get_study_plan_config(b,unit,day)
-print(a)
+if __name__ == '__main__':
+    execute_redis(123)

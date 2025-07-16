@@ -4,7 +4,7 @@ __author__ = 'weng'
 
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from config import setting
+from testCase.AutoTestApi.config import setting
 from pymysql import connect,cursors
 from pymysql.err import OperationalError
 import configparser as cparser
