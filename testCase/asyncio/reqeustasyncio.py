@@ -35,6 +35,7 @@ async def fetch(url, request_id, executor, loop):
 
 
 async def main():
+
     url = "https://httpbin.org/get"
     concurrency = 100  # 合理设置并发数，避免过高
 
@@ -42,7 +43,6 @@ async def main():
     executor = ThreadPoolExecutor(max_workers=20)  # 限制线程池大小
 
     # 为每个请求创建独立的session会带来额外开销，这里使用统一处理函数
-
     tasks = []
     for i in range(concurrency):
         task = asyncio.create_task(fetch(url, i + 1, executor, asyncio.get_event_loop()))
