@@ -40,7 +40,7 @@ async def main():
     concurrency = 100  # 合理设置并发数，避免过高
 
     # 创建线程池
-    executor = ThreadPoolExecutor(max_workers=20)  # 限制线程池大小
+    executor = ThreadPoolExecutor(max_workers=200)  # 限制线程池大小
 
     # 为每个请求创建独立的session会带来额外开销，这里使用统一处理函数
     tasks = []
