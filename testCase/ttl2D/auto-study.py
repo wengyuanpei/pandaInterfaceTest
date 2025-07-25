@@ -71,7 +71,7 @@ def change_user_level(uid: str):
 
         # 执行设置命令
         result_get1 = result_get[0]
-        print("result_get:", result_get)
+        print("result_ge1t:", result_get1)
         set_cmd = f"redis-cli -h {redis_host} -p {redis_port} -a {redis_password} set preschool:study:v2:user_next_book_unit_learning_day:{uid}:{formatted_date}"+" "+result_get1
         result = execute(set_cmd)
         print(f"设置新键结果: {result}")
@@ -164,31 +164,35 @@ def finish_day(report_list: list, token: str,uid:str):
     }
     book, unit, day, stage = report_list[0], report_list[1], report_list[2], report_list[3]
     body = {"stage_id": stage, "learn_day_id": day, "book_id": book, "unit_id": unit}
-    print(f"正在完成{book}下的{unit}第{day}天的step{stage}任务")
+    print(f"正在完成BOOK:{book}下的unit:{unit}第{day}天的step{stage}任务")
     try:
         response = requests.post(url=url, json=body, headers=headers)
         print(response.text)
-        response.raise_for_status()
+        # response.raise_for_status()
         #处理切换unit/book逻辑
-        if day==5 and stage+1%4==0:
-            change_user_level(uid)
+        if day==5 and stage+1 % 20==0:
+            #手动切换unit
+            pass
     except requests.exceptions.RequestException as e:
         print(f"请求失败: {e}")
 
 
 if __name__ == "__main__":
     book = 1
-    unit = 5
-    day = 3
-    uid = '1090022822'
-    token = '75dbebe13b44e82ec9cd7f7d3fc06d3d55e83f5243dda6c46f64d57ddefc1f6df7acda194a1b510cd62935c42b1c63c90464b0018a2d3a6a4fcf1ade1ccff60c40fd066ad7a498e7d41e0c1a75ed079fac775b20fcf67714761036592b5d290cbf4bec92fea856753f2b1decf7607702c51fa385dc5a7913e7c28aec0769577ab83d0bdd9a9eafac93b5d4cd8cd8b75d2fc812fdc036f0e92b65ad7f3fcde30e9e1befc732a0f474d89426215dbbc43880329f588d06d5bfdff43b0926af12e98a3256c0ba91bd8fc374249a1afb75ba'
+    unit = 1
+    day = 5
+    uid = '1090022859'
+    token = '75dbebe13b44e82ec9cd7f7d3fc06d3d55e83f5243dda6c46f64d57ddefc1f6d9c544c8e29a420480e28c8baeae8bc160464b0018a2d3a6a4fcf1ade1ccff60c40fd066ad7a498e7d41e0c1a75ed079fac775b20fcf67714761036592b5d290cbf4bec92fea856753f2b1decf7607702c51fa385dc5a7913e7c28aec0769577ab83d0bdd9a9eafac93b5d4cd8cd8b75d4e7f08ed7ddd98ae912c70f43fabf30d9e1befc732a0f474d89426215dbbc43880329f588d06d5bfdff43b0926af12e9b34804ffbc75bb9a1435abef72ff8ecf'
 
-    # config_list = get_study_plan_config(book, unit, day)
-    # for report_list in config_list:
-    #     sleep(1)
-    #     finish_day(report_list, token)
-    #     execute_redis(uid)
-    #     sleep(1)
-    #     fix_mysql_time(uid)
-    #     sleep(1)
-    change_user_level(uid)
+    config_list = get_study_plan_config(book, unit, day)
+    print("config_list:", config_list[0][3])
+    print(type(config_list[0][3]))
+    for report_list in config_list:
+        sleep(1)
+        finish_day(report_list, token,uid)
+        execute_redis(uid)
+        sleep(1)
+        fix_mysql_time(uid)
+        sleep(1)
+
+    # change_user_level(uid)
