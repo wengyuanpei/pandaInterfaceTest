@@ -1,12 +1,15 @@
 import json
 import os
-from locust import TaskSet, task, HttpUser,between,FastHttpUser
+from locust import TaskSet, task, HttpUser,between,FastHttpUser,events
 import random
 import requests
 
 from gevent._semaphore import Semaphore #集合点
 
-
+@events.init.add_listener
+def on_locust_init(environment, **_kwargs):
+    environment.web_ui.host = "10.85.35.144"  # 强制绑定所有接口0.0.0.0
+    environment.web_ui.port = 8099
 
 # 创建任务类
 class tlj_pressure(TaskSet):
@@ -115,4 +118,4 @@ class TLJ(HttpUser):
     max_wait = 2000
 
 if __name__ == '__main__':
-    os.system("locust -f test_locust_tlj.py --host=http://hear-dev.abctime.com  --run-time 60m")
+    os.system("locust -f TLJ_pressure.py --host=http://hear-dev.abctime.com  --run-time 60m")

@@ -4,6 +4,9 @@ __author__ = 'weng'
 
 
 import os,sys
+
+from testCase.AutoTestApi.common.requirements import requirements_pull
+
 sys.path.append(os.path.dirname(__file__))
 from testCase.AutoTestApi.config import setting
 import unittest,time
@@ -37,6 +40,7 @@ def run_case(all_case, result_path=setting.TEST_REPORT):
     send_mail(report) #调用发送邮件模块
 
 if __name__ =="__main__":
+    requirements_pull()
     def runcase():
         cases = add_case()
         run_case(cases)

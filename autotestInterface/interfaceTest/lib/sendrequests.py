@@ -25,7 +25,7 @@ class SendRequests():
                 body_data = None
             else:
                 body_data = eval(apiData["body"])
-            type = apiData["type"]
+            type = apiData["body_type"]
             v = False
             if type == "data":
                 body = body_data
@@ -42,6 +42,6 @@ class SendRequests():
 
 
 if __name__ == '__main__':
-    req={'module': '订单查询', 'ID': 'event_query_001', 'UseCase': '订单id查询', 'url': 'https://api-ext.abctime.com/dev/market_service/admin/order/detail', 'method': 'post', 'params': '', 'headers': '{"workcode":"V0013750","x-api-uis-secret":"kC0q4jVixSFqL4UHlf39erFNShDrRqVD"}', 'body': '{"order_no":"518b1909-f3fc-4fa6-a168-cc88866117c7"}', 'type': '', 'status_code': 200.0, 'msg': 'success', 'result': '', ' testers': ''}
+    req={'module': '订单查询', 'ID': 'event_query_001', 'UseCase': '订单id查询', 'url': 'https://api-ext.abctime.com/dev/market_service/admin/order/detail', 'method': 'post', 'params': '', 'headers': '{"workcode":"V0013750","x-api-uis-secret":"kC0q4jVixSFqL4UHlf39erFNShDrRqVD"}', 'body': '{"order_no":"518b1909-f3fc-4fa6-a168-cc88866117c7"}', 'body_type': '', 'status_code': 200.0, 'msg': 'success', 'result': '', ' testers': ''}
     reqq=SendRequests().sendRequests(req)
-    print(reqq.json())
+    print(reqq.status_code)

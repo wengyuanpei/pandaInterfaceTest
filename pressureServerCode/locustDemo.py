@@ -93,47 +93,39 @@ class tlj_pressure(TaskSet):
             else:
                 responsecc.failure('Failed!')
 
-
-
-
     def on_stop(self):
         # 清除方法，相当于teardown
         print('清除数据')
 
 
-
-
 # 创建用户类
 class TLJ(HttpUser):
+    """
+    TLJ用户类，用于模拟HTTP用户行为进行压力测试
+
+    该类继承自HttpUser，定义了用户在压力测试中的行为模式，
+    包括请求间隔时间、任务列表等配置参数
+    """
     # 设置运行过程中的间隔时间，需要在locust中引入between
     wait_time = between(1,10)
-    #声明执行压测的类
     tasks = [tlj_pressure]
     min_wait = 1000
     max_wait = 2000
 
 
 
+
 if __name__ == '__main__':
 
     # --no - web - ui：启动Locust而不启动Web界面，这个参数需要与 - c和 - r一起使用，因为没有Web界面，这两个参数就没有存在的意义了。
-
     # -H, --host：指定被测试的网站的地址。
-
     # -f, --config - file：指定一个Python文件来导入配置。
-
     # -c, --num - clients：设置并发用户的数量。
-
     # -r, --hatch - rate：设置并发用户启动的速度。
-
     # -t, --run - time：设置测试的持续时间。
-
     # --csv：保存测试结果到CSV文件。
-
     # --logfile：保存测试过程的日志。
-
     # --print - stats：在测试结束后，打印测试结果到控制台。
-
     # --only - summary：只在测试结束后打印总结性的统计信息。
 
 

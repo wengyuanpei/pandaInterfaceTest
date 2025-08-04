@@ -14,7 +14,7 @@ testData = ReadExcel(setting.SOURCE_FILE, "Sheet1").read_data()
 
 @ddt.ddt
 class Demo_API(unittest.TestCase):
-    """发布会系统"""
+    """自动化测试demo"""
     def setUp(self):
         self.s = requests.session()
 

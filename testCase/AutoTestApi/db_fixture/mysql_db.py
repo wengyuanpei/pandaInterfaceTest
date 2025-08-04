@@ -2,13 +2,17 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'weng'
 
+from testCase.AutoTestApi.common.requirements import requirements_pull
 import os,sys
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from testCase.AutoTestApi.config import setting
-from pymysql import connect,cursors
-from pymysql.err import OperationalError
-import configparser as cparser
-
+try:
+    sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+    from testCase.AutoTestApi.config import setting
+    from pymysql import connect,cursors
+    from pymysql.err import OperationalError
+    import configparser as cparser
+except:
+    requirements_path=requirements_pull()
+    os.system("pip install -r %s" % requirements_path)
 # --------- 读取config.ini配置文件 ---------------
 cf = cparser.ConfigParser()
 cf.read(setting.TEST_CONFIG,encoding='UTF-8')

@@ -1,9 +1,18 @@
+"""
+环境准备：
+1、appium 图形化界面工具，使用inspcter进行页面元素获取 、java环境、node.js环境
+2、安装Android SDK
+3、python appium 本地开发环境  pip install Appium-Python-Client -i https://pypi.tuna.tsinghua.edu.cn/simple
+"""
+
+
+
 from time import sleep
 from xmlrpc.client import Boolean
-
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
+
 
 desired_caps = {
   "platformName": "Android",

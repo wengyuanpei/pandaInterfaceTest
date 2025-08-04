@@ -19,9 +19,7 @@ password = cf.get("mysqlconf","password")
 db = cf.get("mysqlconf","db_name")
 
 class DB:
-    """
-    MySQL基本操作
-    """
+
     def __init__(self):
         try:
             # 连接数据库

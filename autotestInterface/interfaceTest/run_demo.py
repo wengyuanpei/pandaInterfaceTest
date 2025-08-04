@@ -34,8 +34,9 @@ def run_case(all_case,result_path=setting.TEST_REPORT):
     fp.close()
     report = new_report(setting.TEST_REPORT) #调用模块生成最新的报告
 
-    send_mail(report) #调用发送邮件模块
+    # send_mail(report) #调用发送邮件模块
 
 if __name__ =="__main__":
+    os.system("pip freeze requiement.txt")
     cases = add_case()
     run_case(cases)
